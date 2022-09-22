@@ -18,17 +18,40 @@ export default class Game {
     this.camera.attachControl(this.canvas, false)
     this.light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), this.scene)
 
-    let cube = BABYLON.MeshBuilder.CreateBox('cube', {width: 10, height: 5, depth: 0.5}, this.scene)
+    let cubeOne = BABYLON.MeshBuilder.CreateBox('cubeOne', {width: 10, height: 1.5, depth: 0.2}, this.scene)
+    cubeOne.position.x = 0
+    cubeOne.position.y = 0.7
+    cubeOne.position.z = 6
+
+    let cubeTwo = BABYLON.MeshBuilder.CreateBox('cubeTwo', {width: 10, height: 1.5, depth: 0.2}, this.scene)
+    cubeTwo.position.x = 0
+    cubeTwo.position.y = 0.7
+    cubeTwo.position.z = -6
+
+    let cubeThree = BABYLON.MeshBuilder.CreateBox('cubeThree', {width: 12, height: 1.5, depth: 0.2}, this.scene)
+    cubeThree.position.x = 4.9
+    cubeThree.position.y = 0.7
+    cubeThree.position.z = 0
+    cubeThree.rotation.y = Math.PI / 2
+
+    let cubeFour = BABYLON.MeshBuilder.CreateBox('cubeFour', {width: 12, height: 1.5, depth: 0.2}, this.scene)
+    cubeFour.position.x = -4.9
+    cubeFour.position.y = 0.7
+    cubeFour.position.z = 0
+    cubeFour.rotation.y = Math.PI / 2
 
     BABYLON.MeshBuilder.CreateGround('ground',
       {width: 20, height: 20, subdivisions: 2}, this.scene)
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
-    const cubeMaterial = new BABYLON.StandardMaterial()
-    cubeMaterial.diffuseTexture = new BABYLON.Texture(img, this.scene)
+    const brickMaterial = new BABYLON.StandardMaterial()
+    brickMaterial.diffuseTexture = new BABYLON.Texture(img, this.scene)
 
-    cube.material = cubeMaterial
+    cubeOne.material = brickMaterial
+    cubeTwo.material = brickMaterial
+    cubeThree.material = brickMaterial
+    cubeFour.material = brickMaterial
   }
 
   doRender () {
