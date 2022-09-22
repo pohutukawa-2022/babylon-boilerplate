@@ -14,14 +14,14 @@ export default class Game {
   createScene() {
     this.scene = new BABYLON.Scene(this.engine)
 
-    this.camera = new BABYLON.FreeCamera(
+    this.camera = new BABYLON.UniversalCamera(
       'camera1',
       new BABYLON.Vector3(0, 5, -10),
       this.scene
     )
     this.camera.setTarget(BABYLON.Vector3.Zero())
     this.camera.attachControl(this.canvas, false)
-    /*--------LIGHT TESTING--------*/
+    /* --------LIGHT TESTING-------- */
 
     // Spot light (torch light)
     this.light = new BABYLON.SpotLight(
@@ -29,7 +29,7 @@ export default class Game {
       new BABYLON.Vector3(0, 1, 0),
       new BABYLON.Vector3(2, -1, 1),
       Math.PI / 1,
-      15,
+      20,
       this.scene
     )
 
@@ -42,6 +42,13 @@ export default class Game {
 
     //  Hemispheric light (natural / ambient)
     //  this.light = new BABYLON.HemisphericLight('Light1', new BABYLON.vector3(0, 1, 0), this.scene)
+
+    /* --------SCENE FX--------- */
+
+    this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
+    this.scene.fogDensity = 0.05
+    this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
+    this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
     let cubeOne = BABYLON.MeshBuilder.CreateBox(
       'cubeOne',
