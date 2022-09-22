@@ -1,9 +1,9 @@
 import * as BABYLON from 'babylonjs'
 import 'babylonjs-loaders'
-import img from './../assets/textures/bricks.jpg'
+import wallWrap from './../assets/textures/bricks.jpg'
+import floorWrap from './../assets/textures/tiles.jpg'
 import vertShader from './../shaders/shader.vert'
 import fragShader from './../shaders/shader.frag'
-import { Color3 } from 'babylonjs'
 
 export default class Game {
   constructor(canvasId) {
@@ -24,21 +24,21 @@ export default class Game {
     /*--------LIGHT TESTING--------*/
 
     // Spot light (torch light)
-    // this.light = new BABYLON.SpotLight(
-    //   'light1',
-    //   new BABYLON.Vector3(0, 10, 0),
-    //   new BABYLON.Vector3(2, -2, 1),
-    //   Math.PI / 1,
-    //   20,
-    //   this.scene
-    // )
-
-    // Point light (lightbulb)
-    this.light = new BABYLON.PointLight(
+    this.light = new BABYLON.SpotLight(
       'light1',
-      new BABYLON.Vector3(0, 2, 0),
+      new BABYLON.Vector3(0, 1, 0),
+      new BABYLON.Vector3(2, -1, 1),
+      Math.PI / 1,
+      15,
       this.scene
     )
+
+    // Point light (lightbulb)
+    // this.light = new BABYLON.PointLight(
+    //   'light1',
+    //   new BABYLON.Vector3(0, 2, 0),
+    //   this.scene
+    // )
 
     //  Hemispheric light (natural / ambient)
     //  this.light = new BABYLON.HemisphericLight('Light1', new BABYLON.vector3(0, 1, 0), this.scene)
@@ -81,17 +81,20 @@ export default class Game {
     cubeFour.position.z = 0
     cubeFour.rotation.y = Math.PI / 2
 
-    BABYLON.MeshBuilder.CreateGround(
+    let ground = BABYLON.MeshBuilder.CreateGround(
       'ground',
-      { width: 20, height: 20, subdivisions: 2 },
+      { width: 10, height: 12, subdivisions: 2 },
       this.scene
     )
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
     const brickMaterial = new BABYLON.StandardMaterial()
-    brickMaterial.diffuseTexture = new BABYLON.Texture(img, this.scene)
+    brickMaterial.diffuseTexture = new BABYLON.Texture(wallWrap, this.scene)
+    const tileMaterial = new BABYLON.StandardMaterial()
+    tileMaterial.diffuseTexture = new BABYLON.Texture(floorWrap, this.scene)
 
+    ground.material = tileMaterial
     cubeOne.material = brickMaterial
     cubeTwo.material = brickMaterial
     cubeThree.material = brickMaterial
