@@ -1,9 +1,10 @@
 import * as BABYLON from 'babylonjs'
 import 'babylonjs-loaders'
-import img from './../assets/textures/amiga.jpg'
+
 import vertShader from './../shaders/shader.vert'
 import fragShader from './../shaders/shader.frag'
 import building from './Environment'
+import grass from './../assets/textures/grass.png'
 
 export default class Game {
   constructor(canvasId) {
@@ -28,11 +29,15 @@ export default class Game {
       this.scene
     )
 
-    BABYLON.MeshBuilder.CreateGround(
+    let ground = BABYLON.MeshBuilder.CreateGround(
       'ground',
-      { width: 6, height: 6, subdivisions: 2 },
+      { width: 300, height: 300, subdivisions: 2 },
+
       this.scene
     )
+    const grassMaterial = new BABYLON.StandardMaterial()
+    grassMaterial.diffuseTexture = new BABYLON.Texture(grass, this.scene)
+    ground.material = grassMaterial
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
