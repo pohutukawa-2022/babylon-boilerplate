@@ -9,19 +9,6 @@ import img from './../assets/textures/spooky.png'
 
 /* ---------- BUILDINGS ---------- */
 export default function environment(name, scene) {
-  const extWall1 = BABYLON.MeshBuilder.CreateBox(
-    'extWall1',
-    {
-      width: 10,
-      height: 1.5,
-      depth: 0.2,
-    },
-    scene
-  )
-  extWall1.position.x = 1
-  extWall1.position.y = 0
-  extWall1.position.z = 2
-
   const building1 = BABYLON.SceneLoader.ImportMeshAsync(
     '',
     '../../public/models/',
@@ -106,9 +93,16 @@ export default function environment(name, scene) {
     // buildingFourWrap.diffuseTexture = new BABYLON.Texture(img4, scene)
     // mergedBuilding4.material = buildingFourWrap
   })
+  /* ----------COURTYARD---------- */
+  const fountain = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/fountain1_low.obj'
+  ).then((x) => {
+    const waterFountain = BABYLON.Mesh.MergeMeshes(x.meshes)
+    waterFountain.position = new BABYLON.Vector3(0, 0, 0)
+    waterFountain.scaling = new BABYLON.Vector3(3.5, 3.5, 3.5)
+  })
 }
 environment()
-
-/* ----------COURTYARD---------- */
 
 /* ------------WALLS------------ */

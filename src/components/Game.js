@@ -4,7 +4,7 @@ import 'babylonjs-loaders'
 import vertShader from './../shaders/shader.vert'
 import fragShader from './../shaders/shader.frag'
 import Furniture from './Furniture'
-import Environment from './Environment'
+import environment from './Environment'
 // import grass from './../assets/textures/grass.png'
 
 export default class Game {
@@ -48,6 +48,15 @@ export default class Game {
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
+
+    // const extWall1 = BABYLON.MeshBuilder.CreateBox('extWall1', {
+    //   width: 10,
+    //   height: 8,
+    //   depth: 2,
+    // })
+    // extWall1.position.x = 1
+    // extWall1.position.y = 5
+    // extWall1.position.z = 2
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene)
