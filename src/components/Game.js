@@ -3,8 +3,8 @@ import 'babylonjs-loaders'
 
 import vertShader from './../shaders/shader.vert'
 import fragShader from './../shaders/shader.frag'
-import building from './Environment'
 import Furniture from './Furniture'
+import Environment from './Environment'
 // import grass from './../assets/textures/grass.png'
 
 export default class Game {
@@ -49,7 +49,7 @@ export default class Game {
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
 
-    building('buildings', this.scene)
+    Environment('buildings', this.scene)
     Furniture('furniture', this.scene)
   }
 

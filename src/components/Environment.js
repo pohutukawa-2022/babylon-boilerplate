@@ -5,7 +5,7 @@ import img from './../assets/textures/spooky.png'
 // import img4 from './../assets/textures/four.png'
 
 /* ---------- BUILDINGS ---------- */
-export default function building(name, scene) {
+export default function Environment(name, scene) {
   const building1 = BABYLON.SceneLoader.ImportMeshAsync(
     '',
     '../../public/models/',
@@ -90,9 +90,10 @@ export default function building(name, scene) {
     // buildingFourWrap.diffuseTexture = new BABYLON.Texture(img4, scene)
     // mergedBuilding4.material = buildingFourWrap
   })
+  const extWall1 = new BABYLON.
 }
 
-building()
+Environment()
 
 /* ----------COURTYARD---------- */
 
