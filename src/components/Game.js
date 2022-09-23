@@ -49,14 +49,32 @@ export default class Game {
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
 
-    // const extWall1 = BABYLON.MeshBuilder.CreateBox('extWall1', {
-    //   width: 10,
-    //   height: 8,
-    //   depth: 2,
-    // })
-    // extWall1.position.x = 1
-    // extWall1.position.y = 5
-    // extWall1.position.z = 2
+    const renoWallOne = BABYLON.MeshBuilder.CreateBox('renoWallOne', {
+      width: 20,
+      height: 20,
+      depth: 20,
+    })
+    renoWallOne.position.x = 100
+    renoWallOne.position.y = 5
+    renoWallOne.position.z = 100
+
+    const renoWallTwo = BABYLON.MeshBuilder.CreateBox('renoWallTwo', {
+      width: 20,
+      height: 20,
+      depth: 20,
+    })
+    renoWallTwo.position.x = 85
+    renoWallTwo.position.y = 5
+    renoWallTwo.position.z = 85
+
+    const renoWallFour = BABYLON.MeshBuilder.CreateBox('renoWallFour', {
+      width: 20,
+      height: 20,
+      depth: 20,
+    })
+    renoWallFour.position.x = 70
+    renoWallFour.position.y = 5
+    renoWallFour.position.z = 70
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene)
