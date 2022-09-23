@@ -27,12 +27,28 @@ export default class Game {
       this.scene
     )
 
-    let sphere = BABYLON.MeshBuilder.CreateSphere(
-      'sphere',
-      { segments: 16, diameter: 2 },
-      this.scene
-    )
-    sphere.position.y = 1
+    // let sphere = BABYLON.MeshBuilder.CreateSphere(
+    //   'sphere',
+    //   { segments: 16, diameter: 2 },
+    //   this.scene
+    // )
+    // sphere.position.y = 1
+
+    BABYLON.SceneLoader.ImportMeshAsync(
+      '',
+      '../../public/models/',
+      'building.obj'
+    ).then((result) => {
+      result.meshes[1].position.x = 20
+      result.meshes[1].scaling = new BABYLON.Vector3(3, 3, 3)
+      const myMesh1 = scene.getMeshByName('')
+      myMesh1.rotation.y = Math.PI / 2
+
+      // const myMeshMaterial = new BABYLON.StandardMaterial(
+      //   '../assets/textures/amiga.jpg',
+      //   this.scene
+      // )
+    })
 
     BABYLON.MeshBuilder.CreateGround(
       'ground',
@@ -66,7 +82,7 @@ export default class Game {
     shaderMaterial.setTexture('textureSampler', mainTexture)
     shaderMaterial.setFloat('time', 0)
     shaderMaterial.setVector3('cameraPosition', BABYLON.Vector3.Zero())
-    sphere.material = shaderMaterial
+    // sphere.material = shaderMaterial
   }
 
   doRender() {
