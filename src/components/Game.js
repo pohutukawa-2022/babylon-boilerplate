@@ -27,27 +27,30 @@ export default class Game {
       this.scene
     )
 
-    // let sphere = BABYLON.MeshBuilder.CreateSphere(
-    //   'sphere',
-    //   { segments: 16, diameter: 2 },
-    //   this.scene
-    // )
-    // sphere.position.y = 1
-
-    BABYLON.SceneLoader.ImportMeshAsync(
+    const building = BABYLON.SceneLoader.ImportMeshAsync(
       '',
       '../../public/models/',
       'building.obj'
-    ).then((result) => {
-      result.meshes[1].position.x = 20
-      result.meshes[1].scaling = new BABYLON.Vector3(3, 3, 3)
-      const myMesh1 = scene.getMeshByName('')
-      myMesh1.rotation.y = Math.PI / 2
+    ).then((x) => {
+      const mergedBuilding = BABYLON.Mesh.MergeMeshes(x.meshes)
+      mergedBuilding.scaling.y = 0.1
+      mergedBuilding.scaling.x = 0.1
+      mergedBuilding.scaling.z = 0.1
+    })
 
-      // const myMeshMaterial = new BABYLON.StandardMaterial(
-      //   '../assets/textures/amiga.jpg',
-      //   this.scene
-      // )
+    const building2 = BABYLON.SceneLoader.ImportMeshAsync(
+      '',
+      '../../public/models/',
+      'building.obj'
+    ).then((x) => {
+      const mergedBuilding2 = BABYLON.Mesh.MergeMeshes(x.meshes)
+      mergedBuilding2.position.x = 80
+      mergedBuilding2.position.y = 0
+      mergedBuilding2.position.z = 0
+      mergedBuilding2.scaling.y = 0.1
+      mergedBuilding2.scaling.x = 0.1
+      mergedBuilding2.scaling.z = 0.1
+      mergedBuilding2.rotation.y = Math.PI / 1
     })
 
     BABYLON.MeshBuilder.CreateGround(
