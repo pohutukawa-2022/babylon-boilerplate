@@ -1,5 +1,5 @@
 export default function Furniture(name, scene) {
-  const chair = BABYLON.SceneLoader.ImportMeshAsync(
+  BABYLON.SceneLoader.ImportMeshAsync(
     '',
     '../../public/models/',
     'chair.obj'
