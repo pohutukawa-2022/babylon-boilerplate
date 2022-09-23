@@ -3,6 +3,7 @@ import 'babylonjs-loaders'
 import img from './../assets/textures/amiga.jpg'
 import vertShader from './../shaders/shader.vert'
 import fragShader from './../shaders/shader.frag'
+import building from './Environment'
 
 export default class Game {
   constructor(canvasId) {
@@ -27,32 +28,6 @@ export default class Game {
       this.scene
     )
 
-    const building = BABYLON.SceneLoader.ImportMeshAsync(
-      '',
-      '../../public/models/',
-      'building.obj'
-    ).then((x) => {
-      const mergedBuilding = BABYLON.Mesh.MergeMeshes(x.meshes)
-      mergedBuilding.scaling.y = 0.1
-      mergedBuilding.scaling.x = 0.1
-      mergedBuilding.scaling.z = 0.1
-    })
-
-    const building2 = BABYLON.SceneLoader.ImportMeshAsync(
-      '',
-      '../../public/models/',
-      'building.obj'
-    ).then((x) => {
-      const mergedBuilding2 = BABYLON.Mesh.MergeMeshes(x.meshes)
-      mergedBuilding2.position.x = 80
-      mergedBuilding2.position.y = 0
-      mergedBuilding2.position.z = 0
-      mergedBuilding2.scaling.y = 0.1
-      mergedBuilding2.scaling.x = 0.1
-      mergedBuilding2.scaling.z = 0.1
-      mergedBuilding2.rotation.y = Math.PI / 1
-    })
-
     BABYLON.MeshBuilder.CreateGround(
       'ground',
       { width: 6, height: 6, subdivisions: 2 },
@@ -61,43 +36,11 @@ export default class Game {
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
-
-    const shaderMaterial = new BABYLON.ShaderMaterial(
-      'shader',
-      this.scene,
-      {
-        vertex: 'custom',
-        fragment: 'custom',
-      },
-      {
-        attributes: ['position', 'normal', 'uv'],
-        uniforms: [
-          'world',
-          'worldView',
-          'worldViewProjection',
-          'view',
-          'projection',
-        ],
-      }
-    )
-
-    const mainTexture = new BABYLON.Texture(img, this.scene)
-    shaderMaterial.setTexture('textureSampler', mainTexture)
-    shaderMaterial.setFloat('time', 0)
-    shaderMaterial.setVector3('cameraPosition', BABYLON.Vector3.Zero())
-    // sphere.material = shaderMaterial
+    building('buildings', this.scene)
   }
 
   doRender() {
     this.engine.runRenderLoop(() => {
-      const shaderMaterial = this.scene.getMaterialByName('shader')
-      shaderMaterial.setFloat('time', this.time)
-      this.time += 0.02
-
-      shaderMaterial.setVector3(
-        'cameraPosition',
-        this.scene.activeCamera.position
-      )
       this.scene.render()
     })
 
