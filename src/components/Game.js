@@ -49,7 +49,7 @@ export default class Game {
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
 
-    Environment('buildings', this.scene)
+    environment('environment', this.scene)
     Furniture('furniture', this.scene)
   }
 
