@@ -1,8 +1,8 @@
 import img from './../assets/textures/spooky.png'
-import img1 from './../assets/textures/one.png'
-import img2 from './../assets/textures/two.png'
-import img3 from './../assets/textures/three.png'
-import img4 from './../assets/textures/four.png'
+// import img1 from './../assets/textures/one.png'
+// import img2 from './../assets/textures/two.png'
+// import img3 from './../assets/textures/three.png'
+// import img4 from './../assets/textures/four.png'
 
 /* ---------- BUILDINGS ---------- */
 export default function building(name, scene) {
@@ -83,12 +83,12 @@ export default function building(name, scene) {
     mergedBuilding4.scaling.y = 0.1
     mergedBuilding4.scaling.x = 0.1
     mergedBuilding4.scaling.z = 0.1
-    const buildingFourWrap = new BABYLON.StandardMaterial(
-      'buildingFourWrapper',
-      scene
-    )
-    buildingFourWrap.diffuseTexture = new BABYLON.Texture(img4, scene)
-    mergedBuilding4.material = buildingFourWrap
+    // const buildingFourWrap = new BABYLON.StandardMaterial(
+    //   'buildingFourWrapper',
+    //   scene
+    // )
+    // buildingFourWrap.diffuseTexture = new BABYLON.Texture(img4, scene)
+    // mergedBuilding4.material = buildingFourWrap
   })
 }
 
