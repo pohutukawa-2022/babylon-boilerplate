@@ -11,7 +11,6 @@ import Player from './player'
 
 import dryGrass from './../assets/textures/dryGrass.jpg'
 
-
 export default class Game {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId)
