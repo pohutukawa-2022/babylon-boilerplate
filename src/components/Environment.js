@@ -1,8 +1,8 @@
 import * as BABYLON from 'babylonjs'
 import 'babylonjs-loaders'
 
-import img from './../assets/textures/spooky.png'
-import darkWall from './../assets/textures/dark-wall.jpeg'
+import img from './../assets/textures/bricks.png'
+// import darkWall from './../assets/textures/dark-wall.jpeg'
 
 export default function environment(name, scene) {
   /* ---------- BUILDINGS ---------- */
