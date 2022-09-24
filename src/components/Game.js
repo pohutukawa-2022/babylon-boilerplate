@@ -9,7 +9,7 @@ import environment from './Environment'
 import Player from './player'
 
 import dryGrass from './../assets/textures/dryGrass.jpg'
-
+// join
 export default class Game {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId)
