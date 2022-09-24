@@ -1,7 +1,7 @@
 import * as BABYLON from 'babylonjs'
 import 'babylonjs-loaders'
 
-import img from './../assets/textures/bricks.png'
+import bricks from './../assets/textures/bricks.jpg'
 // import darkWall from './../assets/textures/dark-wall.jpeg'
 
 export default function environment(name, scene) {
@@ -17,9 +17,11 @@ export default function environment(name, scene) {
     mergedBuilding1.scaling.x = 0.1
     mergedBuilding1.scaling.z = 0.1
     mergedBuilding1.rotation.y = Math.PI / 2
-    const buildingWrap = new BABYLON.StandardMaterial('buildingWrap', scene)
-    buildingWrap.diffuseTexture = new BABYLON.Texture(darkWall, scene)
-    mergedBuilding1.material = buildingWrap
+
+    const buildingWrap1 = new BABYLON.StandardMaterial('building1', scene)
+    buildingWrap1.diffuseTexture = new BABYLON.Texture(bricks, scene)
+
+    mergedBuilding1.material = buildingWrap1
     mergedBuilding1.checkCollisions = true
   })
 
@@ -37,10 +39,10 @@ export default function environment(name, scene) {
     mergedBuilding2.scaling.z = 0.1
     mergedBuilding2.rotation.y = Math.PI / -2
 
-    const buildingWrap = new BABYLON.StandardMaterial('buildingWrap', scene)
-    buildingWrap.diffuseTexture = new BABYLON.Texture(darkWall, scene)
-    mergedBuilding2.material = buildingWrap
+    const buildingWrap2 = new BABYLON.StandardMaterial('building2', scene)
+    buildingWrap2.diffuseTexture = new BABYLON.Texture(bricks, scene)
 
+    mergedBuilding2.material = buildingWrap2
     mergedBuilding2.checkCollisions = true
   })
 
@@ -57,6 +59,11 @@ export default function environment(name, scene) {
     mergedBuilding3.scaling.x = 0.1
     mergedBuilding3.scaling.z = 0.1
     mergedBuilding3.rotation.y = Math.PI / 1
+
+    const buildingWrap3 = new BABYLON.StandardMaterial('building3', scene)
+    buildingWrap3.diffuseTexture = new BABYLON.Texture(bricks, scene)
+
+    mergedBuilding3.material = buildingWrap3
     mergedBuilding3.checkCollisions = true
   })
 
@@ -72,6 +79,11 @@ export default function environment(name, scene) {
     mergedBuilding4.scaling.y = 0.1
     mergedBuilding4.scaling.x = 0.1
     mergedBuilding4.scaling.z = 0.1
+
+    const buildingWrap4 = new BABYLON.StandardMaterial('building4', scene)
+    buildingWrap4.diffuseTexture = new BABYLON.Texture(bricks, scene)
+
+    mergedBuilding4.material = buildingWrap4
     mergedBuilding4.checkCollisions = true
 
     const extWallOne = BABYLON.MeshBuilder.CreateBox('extWallOne', {
@@ -164,12 +176,17 @@ export default function environment(name, scene) {
     plaza1.position.x = 0
     plaza1.position.y = 1
     plaza1.position.z = 0
+
+    plaza1.checkCollisions = true
+
     const plaza2 = new BABYLON.MeshBuilder.CreateCylinder('plaza2', {
       height: 1,
       diameter: 70,
       tessellation: 300,
     })
     plaza2.position.y = 1
+
+    plaza2.checkCollisions = true
   })
 
   const bench2 = BABYLON.SceneLoader.ImportMeshAsync(

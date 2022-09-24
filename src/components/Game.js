@@ -3,14 +3,12 @@ import 'babylonjs-loaders'
 
 import vertShader from './../shaders/shader.vert'
 import fragShader from './../shaders/shader.frag'
+
 import Furniture from './Furniture'
 import environment from './Environment'
-import dirtImg from './../assets/textures/dirt.jpeg'
-
-import concreteImg from './../assets/textures/concrete2.jpeg'
-
 import Player from './player'
-import { Vector3 } from 'babylonjs'
+
+import dryGrass from './../assets/textures/dryGrass.jpg'
 
 export default class Game {
   constructor(canvasId) {
@@ -78,16 +76,12 @@ export default class Game {
 
       this.scene
     )
+
+    const groundOutside = new BABYLON.StandardMaterial()
+    groundOutside.diffuseTexture = new BABYLON.Texture(dryGrass, this.scene)
+
     ground.checkCollisions = true
-    const dummyGroundTexture = new BABYLON.StandardMaterial()
-    dummyGroundTexture.diffuseTexture = new BABYLON.Texture(
-      new BABYLON.Color3(1, 2, 1),
-      this.scene
-    )
-    ground.material = dummyGroundTexture
-    // const dirtMaterial = new BABYLON.StandardMaterial()
-    // dirtMaterial.diffuseTexture = new BABYLON.Texture(concreteImg, this.scene)
-    // ground.material = dirtMaterial
+    ground.material = groundOutside
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
