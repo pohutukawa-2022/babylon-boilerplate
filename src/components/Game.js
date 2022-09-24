@@ -60,6 +60,42 @@ export default class Game {
         
 
     this.player = new Player(this.camera)
+    this.createOrb()
+  }
+  createOrb(){
+    const key1Location = {x:30, y:3, z:20, radius: 1.5}
+    const key2Location = {x:40, y:3, z:10, radius: 1.5}
+    const key4Location = {x:50, y:3, z:5, radius: 1.5}
+    const key5Location = {x:60, y:3, z:15, radius: 1.5}
+    const key1 = BABYLON.MeshBuilder.CreateSphere(
+      'key1',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key1.position = new Vector3(30, 3, 20)
+    const key2 = BABYLON.MeshBuilder.CreateSphere(
+      'key2',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key2.position = new Vector3(40, 3, 10)
+
+    const key4 = BABYLON.MeshBuilder.CreateSphere(
+      'key4',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key4.position = new Vector3(50, 3, 5)
+    const key5 = BABYLON.MeshBuilder.CreateSphere(
+      'key5',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+
+
+    key5.position = new Vector3(60, 3, 15)
+    this.keys = [key1Location, key2Location,  key4Location, key5Location]
+    this.player.keyLocations = this.keys
 
   }
   createScene() {
@@ -144,48 +180,28 @@ export default class Game {
     newBuildingRoof.position.y = 17
     newBuildingRoof.position.z = 96
 
-    const keySize = new BABYLON.Vector3(2, 2, 2)
-    const key1 = BABYLON.MeshBuilder.CreateSphere(
-      'key1',
-      { segments: 12, diameter: 3 },
-      this.scene
-    )
-    key1.position = new Vector3(10, 3, 20)
-    const key2 = BABYLON.MeshBuilder.CreateSphere(
-      'key2',
-      { segments: 12, diameter: 3 },
-      this.scene
-    )
-    key2.position = new Vector3(20, 3, 10)
-    const key3 = BABYLON.MeshBuilder.CreateSphere(
-      'key3',
-      { segments: 12, diameter: 3 },
-      this.scene
-    )
-    key3.position = new Vector3(5, 13, 10)
-    const key4 = BABYLON.MeshBuilder.CreateSphere(
-      'key4',
-      { segments: 12, diameter: 3 },
-      this.scene
-    )
-    key4.position = new Vector3(10, 3, 5)
-    const key5 = BABYLON.MeshBuilder.CreateSphere(
-      'key5',
-      { segments: 12, diameter: 3 },
-      this.scene
-    )
-    key5.position = new Vector3(6, 3, 15)
-    let keys = [key1, key2, key3, key4, key5]
+    
+
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene)
-
+    
     this.createCamera()
+    document.addEventListener('keydown', (e)=> {
+      if(e.key === 'e'){
+        let foundKey = this.player.checkForKey()
+        if(foundKey){
+          console.log('got key');
+        }
+      }
+    })
   }
 
   doRender() {
     this.engine.runRenderLoop(() => {
+      this.player.updatePlayer(this.camera)
       this.scene.render()
+
     })
 
     window.addEventListener('resize', () => {

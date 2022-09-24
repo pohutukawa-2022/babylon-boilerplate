@@ -5,5 +5,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
   game.createScene()
   game.doRender()
-  game.player.logPlayer()
+
 })
