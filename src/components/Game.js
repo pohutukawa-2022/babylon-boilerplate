@@ -30,9 +30,9 @@ export default class Game {
     this.camera.angularSensibility = 8000;
     this.camera.speed = 1;
 
-    this.camera.applyGravity = false
+    this.camera.applyGravity = true
     this.camera.checkCollisions = true
-    // this.camera.ellipsoid = new Vector3(1, 1, 1)
+    this.camera.ellipsoid = new Vector3(1, 1, 1)
     
     //   // clipping
     //   this.camera.minZ = 0.3
