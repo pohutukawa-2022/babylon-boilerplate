@@ -2,6 +2,7 @@ import * as BABYLON from 'babylonjs'
 import 'babylonjs-loaders'
 
 import bricks from './../assets/textures/bricks.jpg'
+import ceramicTexture from './../assets/textures/ceramics.png'
 // import darkWall from './../assets/textures/dark-wall.jpeg'
 
 export default function environment(name, scene) {
@@ -158,6 +159,10 @@ export default function environment(name, scene) {
     waterFountain.position = new BABYLON.Vector3(0, 0, 0)
     waterFountain.scaling = new BABYLON.Vector3(3.5, 3.5, 3.5)
     waterFountain.checkCollisions = true
+
+    const fWrap = new BABYLON.StandardMaterial('fWrap', scene)
+    fWrap.diffuseTexture = new BABYLON.Texture(ceramicTexture, scene)
+    waterFountain.material = fWrap
   })
 
   const bench1 = BABYLON.SceneLoader.ImportMeshAsync(
