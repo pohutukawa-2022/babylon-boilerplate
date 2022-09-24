@@ -8,9 +8,7 @@ import Furniture from './Furniture'
 import environment from './Environment'
 import Player from './player'
 
-
 import dryGrass from './../assets/textures/dryGrass.jpg'
-
 
 export default class Game {
   constructor(canvasId) {
@@ -34,7 +32,7 @@ export default class Game {
     this.camera.angularSensibility = 8000
     this.camera.speed = 1
 
-    this.camera.applyGravity = true
+    this.camera.applyGravity = false
     this.camera.checkCollisions = true
 
     this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)
@@ -53,8 +51,6 @@ export default class Game {
 
       this.scene
     )
-
-    // this.light = new BABYLON.HemisphericLight()
 
     this.light.parent = this.camera
     this.light.intensity = 1
@@ -88,7 +84,6 @@ export default class Game {
     ground.checkCollisions = true
 
     ground.material = groundOutside
-
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader

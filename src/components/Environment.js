@@ -3,6 +3,8 @@ import 'babylonjs-loaders'
 
 import bricks from './../assets/textures/bricks.jpg'
 import ceramicTexture from './../assets/textures/ceramics.png'
+import outhouseTexture from './../assets/textures/outhouse.jpeg'
+import tintexture from './../assets/textures/tin.jpeg'
 // import darkWall from './../assets/textures/dark-wall.jpeg'
 
 export default function environment(name, scene) {
@@ -163,6 +165,7 @@ export default function environment(name, scene) {
     const fWrap = new BABYLON.StandardMaterial('fWrap', scene)
     fWrap.diffuseTexture = new BABYLON.Texture(ceramicTexture, scene)
     waterFountain.material = fWrap
+    waterFountain.checkCollisions = true
   })
 
   const bench1 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -173,6 +176,8 @@ export default function environment(name, scene) {
     benchMesh.position = new BABYLON.Vector3(0, 0, -25)
     benchMesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
 
+    benchMesh.checkCollisions = true
+
     const plaza1 = BABYLON.MeshBuilder.CreateBox('plaza1', {
       width: 80,
       height: 0.3,
@@ -182,7 +187,7 @@ export default function environment(name, scene) {
     plaza1.position.y = 1
     plaza1.position.z = 0
 
-    plaza1.checkCollisions = true
+    // plaza1.checkCollisions = true
 
     const plaza2 = new BABYLON.MeshBuilder.CreateCylinder('plaza2', {
       height: 1,
@@ -191,7 +196,7 @@ export default function environment(name, scene) {
     })
     plaza2.position.y = 1
 
-    plaza2.checkCollisions = true
+    // plaza2.checkCollisions = true
   })
 
   const bench2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -202,6 +207,50 @@ export default function environment(name, scene) {
     benchMesh.position = new BABYLON.Vector3(0, 0, 25)
     benchMesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
     benchMesh.rotation.y = Math.PI / 1
+
+    benchMesh.checkCollisions = true
+  })
+
+  const outhouse = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'Toilet.obj'
+  ).then((x) => {
+    const houseMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    houseMesh.position.x = 110
+    houseMesh.position.y = 0
+    houseMesh.position.z = 90
+
+    houseMesh.scaling.x = 0.15
+    houseMesh.scaling.y = 0.15
+    houseMesh.scaling.z = 0.15
+
+    houseMesh.rotation.y = Math.PI / -2
+
+    const houseWrap = new BABYLON.StandardMaterial('houseWrap', scene)
+    houseWrap.diffuseTexture = new BABYLON.Texture(outhouseTexture, scene)
+    houseMesh.material = houseWrap
+  })
+
+  const shed = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'GeneratorShed.obj'
+  ).then((x) => {
+    const houseMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    houseMesh.position.x = -90
+    houseMesh.position.y = 0
+    houseMesh.position.z = 90
+
+    houseMesh.scaling.x = 2.2
+    houseMesh.scaling.y = 2.2
+    houseMesh.scaling.z = 2.2
+
+    houseMesh.rotation.y = Math.PI / 1
+
+    const houseWrap = new BABYLON.StandardMaterial('houseWrap', scene)
+    houseWrap.diffuseTexture = new BABYLON.Texture(tintexture, scene)
+    houseMesh.material = houseWrap
   })
 }
 
