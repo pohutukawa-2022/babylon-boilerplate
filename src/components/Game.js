@@ -6,9 +6,12 @@ import fragShader from './../shaders/shader.frag'
 import Furniture from './Furniture'
 import environment from './Environment'
 import dirtImg from './../assets/textures/dirt.jpeg'
-import concreteImg from './../assets/textures/concrete.jpeg'
+
+import concreteImg from './../assets/textures/concrete2.jpeg'
+
 import Player from './player'
 import { Vector3 } from 'babylonjs'
+
 
 
 export default class Game {
@@ -18,7 +21,7 @@ export default class Game {
     this.time = 0
     
   }
-  createCamera(){
+  createCamera() {
     this.camera = new BABYLON.UniversalCamera(
       'camera1',
       new BABYLON.Vector3(0, 5, -10),
@@ -27,15 +30,16 @@ export default class Game {
     this.camera.setTarget(BABYLON.Vector3.Zero())
     this.camera.attachControl(this.canvas, false)
 
-    this.camera.keysUp.push(87);
-    this.camera.keysDown.push(83);
-    this.camera.keysLeft.push(65);
-    this.camera.keysRight.push(68);
-    this.camera.angularSensibility = 8000;
-    this.camera.speed = 1;
+    this.camera.keysUp.push(87)
+    this.camera.keysDown.push(83)
+    this.camera.keysLeft.push(65)
+    this.camera.keysRight.push(68)
+    this.camera.angularSensibility = 8000
+    this.camera.speed = 1
 
     this.camera.applyGravity = true
     this.camera.checkCollisions = true
+
     this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)
     
     //   // clipping
@@ -56,6 +60,7 @@ export default class Game {
         
 
     this.player = new Player(this.camera)
+
   }
   createScene() {
     this.scene = new BABYLON.Scene(this.engine)
@@ -171,8 +176,6 @@ export default class Game {
     )
     key5.position = new Vector3(6, 3, 15)
     let keys = [key1, key2, key3, key4, key5]
-
-
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene)
