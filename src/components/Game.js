@@ -58,45 +58,8 @@ export default class Game {
     this.light.intensity = 1
 
     this.player = new Player(this.camera)
-
-    this.createOrb()
   }
-  createOrb(){
-    const key1Location = {x:30, y:3, z:20, radius: 1.5}
-    const key2Location = {x:40, y:3, z:10, radius: 1.5}
-    const key4Location = {x:50, y:3, z:5, radius: 1.5}
-    const key5Location = {x:60, y:3, z:15, radius: 1.5}
-    const key1 = BABYLON.MeshBuilder.CreateSphere(
-      'key1',
-      { segments: 12, diameter: 3 },
-      this.scene
-    )
-    key1.position = new Vector3(30, 3, 20)
-    const key2 = BABYLON.MeshBuilder.CreateSphere(
-      'key2',
-      { segments: 12, diameter: 3 },
-      this.scene
-    )
-    key2.position = new Vector3(40, 3, 10)
 
-    const key4 = BABYLON.MeshBuilder.CreateSphere(
-      'key4',
-      { segments: 12, diameter: 3 },
-      this.scene
-    )
-    key4.position = new Vector3(50, 3, 5)
-    const key5 = BABYLON.MeshBuilder.CreateSphere(
-      'key5',
-      { segments: 12, diameter: 3 },
-      this.scene
-    )
-
-
-    key5.position = new Vector3(60, 3, 15)
-    this.keys = [key1Location, key2Location,  key4Location, key5Location]
-    this.player.keyLocations = this.keys
-
-  }
   createScene() {
     this.scene = new BABYLON.Scene(this.engine)
     this.scene.onPointerDown = (evt) => {
@@ -127,7 +90,6 @@ export default class Game {
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
-
 
     const extWallOne = BABYLON.MeshBuilder.CreateBox('extWallOne', {
       width: 111,
@@ -181,24 +143,20 @@ export default class Game {
     newBuildingRoof.position.y = 17
     newBuildingRoof.position.z = 96
 
-    
-
-
     this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
     this.scene.fogDensity = 0.02
     this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
     this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
-
     environment('environment', this.scene)
     Furniture('furniture', this.scene)
-    
+
     this.createCamera()
-    document.addEventListener('keydown', (e)=> {
-      if(e.key === 'e'){
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'e') {
         let foundKey = this.player.checkForKey()
-        if(foundKey){
-          console.log('got key');
+        if (foundKey) {
+          console.log('got key')
         }
       }
     })
@@ -208,7 +166,6 @@ export default class Game {
     this.engine.runRenderLoop(() => {
       this.player.updatePlayer(this.camera)
       this.scene.render()
-
     })
 
     window.addEventListener('resize', () => {

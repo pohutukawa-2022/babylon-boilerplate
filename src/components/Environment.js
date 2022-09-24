@@ -115,6 +115,7 @@ export default function environment(name, scene) {
     threeTop.position.x = 69
     threeTop.position.y = 15.2
     threeTop.position.z = 66
+    threeTop.checkForCollisions
 
     const threeLeft = BABYLON.MeshBuilder.CreateBox('WallThreeLeft', {
       width: 13,
@@ -134,6 +135,10 @@ export default function environment(name, scene) {
     threeRight.position.y = 8
     threeRight.position.z = 66
 
+    const doorway = [threeTop, threeLeft, threeRight]
+    const extWallThree = new BABYLON.Mesh.MergeMeshes(doorway, scene)
+    extWallThree.checkCollisions = true
+
     const newBuildingRoof = BABYLON.MeshBuilder.CreateBox('plaza1', {
       width: 145,
       height: 0.5,
@@ -142,10 +147,6 @@ export default function environment(name, scene) {
     newBuildingRoof.position.x = 60
     newBuildingRoof.position.y = 17
     newBuildingRoof.position.z = 96
-
-    const doorway = [threeTop, threeLeft, threeRight]
-    const extWallThree = new BABYLON.Mesh.MergeMeshes(doorway, scene)
-    extWallThree.checkCollisions = true
   })
 
   /* ----------COURTYARD---------- */
