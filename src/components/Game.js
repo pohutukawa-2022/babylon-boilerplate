@@ -93,7 +93,7 @@ export default class Game {
       tessellation: 300,
     })
     plaza2.position.y = 1
-
+    //test
     const newBuildingRoof = BABYLON.MeshBuilder.CreateBox('plaza1', {
       width: 145,
       height: 0.5,
