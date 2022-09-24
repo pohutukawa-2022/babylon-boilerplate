@@ -38,9 +38,13 @@ export default function environment(name, scene) {
     mergedBuilding2.scaling.z = 0.1
     mergedBuilding2.rotation.y = Math.PI / -2
 
+
     const buildingWrap = new BABYLON.StandardMaterial('buildingWrap', scene)
     buildingWrap.diffuseTexture = new BABYLON.Texture(darkWall, scene)
     mergedBuilding2.material = buildingWrap
+
+    mergedBuilding2.checkCollisions = true
+
   })
 
   const building3 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -56,6 +60,7 @@ export default function environment(name, scene) {
     mergedBuilding3.scaling.x = 0.1
     mergedBuilding3.scaling.z = 0.1
     mergedBuilding3.rotation.y = Math.PI / 1
+    mergedBuilding3.checkCollisions = true
   })
 
   const building4 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -70,8 +75,10 @@ export default function environment(name, scene) {
     mergedBuilding4.scaling.y = 0.1
     mergedBuilding4.scaling.x = 0.1
     mergedBuilding4.scaling.z = 0.1
+    mergedBuilding4.checkCollisions = true
   })
   /* ----------COURTYARD---------- */
+
   const fountain = BABYLON.SceneLoader.ImportMeshAsync(
     '',
     '../../public/models/fountain1_low.obj'
@@ -79,6 +86,7 @@ export default function environment(name, scene) {
     const waterFountain = BABYLON.Mesh.MergeMeshes(x.meshes)
     waterFountain.position = new BABYLON.Vector3(0, 0, 0)
     waterFountain.scaling = new BABYLON.Vector3(3.5, 3.5, 3.5)
+    waterFountain.checkCollisions = true
   })
 
   const bench = BABYLON.SceneLoader.ImportMeshAsync(
@@ -99,6 +107,58 @@ export default function environment(name, scene) {
     benchMesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
     benchMesh.rotation.y = Math.PI / 1
   })
+
+  // const extWallOne = BABYLON.MeshBuilder.CreateBox('extWallOne', {
+  //   width: 111,
+  //   height: 17,
+  //   depth: 2,
+  // })
+  // extWallOne.position.x = 75
+  // extWallOne.position.y = 8
+  // extWallOne.position.z = 129
+
+  // const extWallTwo = BABYLON.MeshBuilder.CreateBox('extWallTwo', {
+  //   width: 66,
+  //   height: 17,
+  //   depth: 2,
+  // })
+  // extWallTwo.position.x = 129.5
+  // extWallTwo.position.y = 8
+  // extWallTwo.position.z = 95
+  // extWallTwo.rotation.y = Math.PI / 2
+
+  // const extWallThree = BABYLON.MeshBuilder.CreateBox('extWallThree', {
+  //   width: 35,
+  //   height: 17,
+  //   depth: 7,
+  // })
+  // extWallThree.position.x = 69
+  // extWallThree.position.y = 8
+  // extWallThree.position.z = 66
+
+  // const plaza1 = BABYLON.MeshBuilder.CreateBox('plaza1', {
+  //   width: 80,
+  //   height: 0.3,
+  //   depth: 80,
+  // })
+  // plaza1.position.x = 0
+  // plaza1.position.y = 1
+  // plaza1.position.z = 0
+  // const plaza2 = new BABYLON.MeshBuilder.CreateCylinder('plaza2', {
+  //   height: 1,
+  //   diameter: 70,
+  //   tessellation: 300,
+  // })
+  // plaza2.position.y = 1
+
+  // const newBuildingRoof = BABYLON.MeshBuilder.CreateBox('plaza1', {
+  //   width: 145,
+  //   height: 0.5,
+  //   depth: 70,
+  // })
+  // newBuildingRoof.position.x = 60
+  // newBuildingRoof.position.y = 17
+  // newBuildingRoof.position.z = 96
 }
 
 environment()
