@@ -3,7 +3,7 @@ import 'babylonjs-loaders'
 
 import metalTexture from '../assets/textures/metal.jpeg'
 
-import woodTexture from '../assets/textures/wood.jpeg'
+import woodTexture from '../assets/textures/darkWood.jpeg'
 
 import bathTexture from '../assets/textures/bath.jpeg'
 
@@ -24,6 +24,10 @@ export default function Furniture(name, scene) {
     deskMesh.scaling.z = 0.15
 
     deskMesh.rotation.y = Math.PI / 2
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    deskMesh.material = lockerWrap
   })
 
   const schoolDesk2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -40,6 +44,10 @@ export default function Furniture(name, scene) {
     deskMesh.scaling.z = 0.15
 
     deskMesh.rotation.y = Math.PI / 2
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    deskMesh.material = lockerWrap
   })
 
   const schoolDesk3 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -56,6 +64,10 @@ export default function Furniture(name, scene) {
     deskMesh.scaling.z = 0.15
 
     deskMesh.rotation.y = Math.PI / 2
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    deskMesh.material = lockerWrap
   })
 
   const schoolDesk4 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -72,6 +84,10 @@ export default function Furniture(name, scene) {
     deskMesh.scaling.z = 0.15
 
     deskMesh.rotation.y = Math.PI / 2
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    deskMesh.material = lockerWrap
   })
 
   const schoolDesk5 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -88,6 +104,10 @@ export default function Furniture(name, scene) {
     deskMesh.scaling.z = 0.15
 
     deskMesh.rotation.y = Math.PI / 2
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    deskMesh.material = lockerWrap
   })
 
   const schoolDesk6 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -104,6 +124,10 @@ export default function Furniture(name, scene) {
     deskMesh.scaling.z = 0.15
 
     deskMesh.rotation.y = Math.PI / 2
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    deskMesh.material = lockerWrap
   })
 
   const schoolChair = BABYLON.SceneLoader.ImportMeshAsync(
@@ -118,6 +142,10 @@ export default function Furniture(name, scene) {
     chairMesh.scaling.x = 0.05
     chairMesh.scaling.y = 0.05
     chairMesh.scaling.z = 0.05
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    chairMesh.material = lockerWrap
   })
 
   const schoolChair2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -132,6 +160,10 @@ export default function Furniture(name, scene) {
     chairMesh.scaling.x = 0.05
     chairMesh.scaling.y = 0.05
     chairMesh.scaling.z = 0.05
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    chairMesh.material = lockerWrap
   })
 
   const schoolChair3 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -146,6 +178,10 @@ export default function Furniture(name, scene) {
     chairMesh.scaling.x = 0.05
     chairMesh.scaling.y = 0.05
     chairMesh.scaling.z = 0.05
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    chairMesh.material = lockerWrap
   })
 
   const schoolChair4 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -160,6 +196,10 @@ export default function Furniture(name, scene) {
     chairMesh.scaling.x = 0.05
     chairMesh.scaling.y = 0.05
     chairMesh.scaling.z = 0.05
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    chairMesh.material = lockerWrap
   })
 
   const schoolChair5 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -174,6 +214,10 @@ export default function Furniture(name, scene) {
     chairMesh.scaling.x = 0.05
     chairMesh.scaling.y = 0.05
     chairMesh.scaling.z = 0.05
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    chairMesh.material = lockerWrap
   })
 
   const schoolChair6 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -188,6 +232,10 @@ export default function Furniture(name, scene) {
     chairMesh.scaling.x = 0.05
     chairMesh.scaling.y = 0.05
     chairMesh.scaling.z = 0.05
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    chairMesh.material = lockerWrap
   })
 
   const locker = BABYLON.SceneLoader.ImportMeshAsync(
