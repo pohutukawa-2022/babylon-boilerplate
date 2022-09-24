@@ -14,22 +14,52 @@ export default class Game {
     this.engine = new BABYLON.Engine(this.canvas, true)
     this.time = 0
   }
-
-  createScene() {
-    this.scene = new BABYLON.Scene(this.engine)
-
-    this.camera = new BABYLON.FreeCamera(
+  createCamera(){
+    this.camera = new BABYLON.UniversalCamera(
       'camera1',
-      new BABYLON.Vector3(0, 5, -10),
+      new BABYLON.Vector3(0, 10, -10),
       this.scene
     )
     this.camera.setTarget(BABYLON.Vector3.Zero())
     this.camera.attachControl(this.canvas, false)
-    this.light = new BABYLON.HemisphericLight(
+
+    this.camera.keysUp.push(87);
+    this.camera.keysDown.push(83);
+    this.camera.keysLeft.push(65);
+    this.camera.keysRight.push(68);
+    this.camera.angularSensibility = 8000;
+    this.camera.speed = 1;
+
+    this.camera.applyGravity = false
+    this.camera.checkCollisions = true
+    // this.camera.ellipsoid = new Vector3(1, 1, 1)
+    
+    //   // clipping
+    //   this.camera.minZ = 0.3
+    this.light = new BABYLON.SpotLight(
       'light1',
-      new BABYLON.Vector3(0, 1, 0),
+      new BABYLON.Vector3(0, 5,  -10),
+      new BABYLON.Vector3(
+        0, 0, 1),
+      Math.PI / 2,
+      20,
       this.scene
     )
+
+    this.light.parent = this.camera
+    
+    // this.light.parent = this.camera
+    // this.light.parent(this.camera)
+    // this.camera.set(this.light)
+      
+    this.light.intensity = 1
+  
+  }
+  createScene() {
+    this.scene = new BABYLON.Scene(this.engine)
+    this.scene.onPointerDown = (evt) => {
+      if (evt.button === 0) this.canvas.requestPointerLock()
+    }
 
     let ground = BABYLON.MeshBuilder.CreateGround(
       'ground',
@@ -37,6 +67,7 @@ export default class Game {
 
       this.scene
     )
+    ground.checkCollisions = true
     const dummyGroundTexture = new BABYLON.StandardMaterial()
     dummyGroundTexture.diffuseTexture = new BABYLON.Texture(
       new BABYLON.Color3(1, 2, 1),
@@ -76,6 +107,8 @@ export default class Game {
     renoWallFour.position.x = 70
     renoWallFour.position.y = 5
     renoWallFour.position.z = 70
+
+
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene)
