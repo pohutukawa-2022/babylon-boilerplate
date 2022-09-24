@@ -8,8 +8,9 @@ import Furniture from './Furniture'
 import environment from './Environment'
 import Player from './player'
 
+
 import dryGrass from './../assets/textures/dryGrass.jpg'
-// join
+
 export default class Game {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId)
@@ -40,12 +41,15 @@ export default class Game {
     //   // clipping
     this.camera.minZ = 0.3
 
+    // this.light = new BABYLON.HemisphericLight()
     this.light = new BABYLON.SpotLight(
       'light1',
       new BABYLON.Vector3(0, 5, -10),
       new BABYLON.Vector3(0, 0, 1),
+
       Math.PI / 3,
       60,
+
       this.scene
     )
 
@@ -81,7 +85,9 @@ export default class Game {
     groundOutside.diffuseTexture = new BABYLON.Texture(dryGrass, this.scene)
 
     ground.checkCollisions = true
+
     ground.material = groundOutside
+
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
