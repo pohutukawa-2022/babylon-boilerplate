@@ -7,6 +7,7 @@ import Furniture from './Furniture'
 import environment from './Environment'
 import dirtImg from './../assets/textures/dirt.jpeg'
 import concreteImg from './../assets/textures/concrete.jpeg'
+import { Vector3 } from 'babylonjs'
 
 export default class Game {
   constructor(canvasId) {
@@ -101,6 +102,39 @@ export default class Game {
     newBuildingRoof.position.x = 60
     newBuildingRoof.position.y = 17
     newBuildingRoof.position.z = 96
+
+    const keySize = new BABYLON.Vector3(2, 2, 2)
+    const key1 = BABYLON.MeshBuilder.CreateSphere(
+      'key1',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key1.position = new Vector3(10, 3, 20)
+    const key2 = BABYLON.MeshBuilder.CreateSphere(
+      'key2',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key2.position = new Vector3(20, 3, 10)
+    const key3 = BABYLON.MeshBuilder.CreateSphere(
+      'key3',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key3.position = new Vector3(5, 13, 10)
+    const key4 = BABYLON.MeshBuilder.CreateSphere(
+      'key4',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key4.position = new Vector3(10, 3, 5)
+    const key5 = BABYLON.MeshBuilder.CreateSphere(
+      'key5',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key5.position = new Vector3(6, 3, 15)
+    let keys = [key1, key2, key3, key4, key5]
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene)
