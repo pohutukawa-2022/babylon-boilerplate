@@ -7,17 +7,19 @@ import Furniture from './Furniture'
 import environment from './Environment'
 import dirtImg from './../assets/textures/dirt.jpeg'
 import concreteImg from './../assets/textures/concrete.jpeg'
+import Player from './player'
 
 export default class Game {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId)
     this.engine = new BABYLON.Engine(this.canvas, true)
     this.time = 0
+    
   }
   createCamera(){
     this.camera = new BABYLON.UniversalCamera(
       'camera1',
-      new BABYLON.Vector3(0, 10, -10),
+      new BABYLON.Vector3(0, 5, -10),
       this.scene
     )
     this.camera.setTarget(BABYLON.Vector3.Zero())
@@ -32,10 +34,11 @@ export default class Game {
 
     this.camera.applyGravity = true
     this.camera.checkCollisions = true
-    this.camera.ellipsoid = new Vector3(1, 1, 1)
+    this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)
     
     //   // clipping
-    //   this.camera.minZ = 0.3
+    this.camera.minZ = 0.3
+
     this.light = new BABYLON.SpotLight(
       'light1',
       new BABYLON.Vector3(0, 5,  -10),
@@ -47,19 +50,20 @@ export default class Game {
     )
 
     this.light.parent = this.camera
-    
-    // this.light.parent = this.camera
-    // this.light.parent(this.camera)
-    // this.camera.set(this.light)
-      
     this.light.intensity = 1
-  
+        
+
+    this.player = new Player(this.camera)
   }
   createScene() {
     this.scene = new BABYLON.Scene(this.engine)
     this.scene.onPointerDown = (evt) => {
       if (evt.button === 0) this.canvas.requestPointerLock()
     }
+    //apply gravity
+    const assumedFramesPerSecond = 60;
+    const earthGravity = -9.81;
+    this.scene.gravity = new BABYLON.Vector3(0, earthGravity / assumedFramesPerSecond, 0);
 
     let ground = BABYLON.MeshBuilder.CreateGround(
       'ground',
@@ -112,6 +116,8 @@ export default class Game {
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene)
+
+    this.createCamera()
   }
 
   doRender() {
