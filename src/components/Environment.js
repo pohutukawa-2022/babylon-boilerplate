@@ -17,9 +17,10 @@ export default function environment(name, scene) {
     mergedBuilding1.scaling.z = 0.1
     mergedBuilding1.rotation.y = Math.PI / 2
 
-    // const buildingWrap = new BABYLON.StandardMaterial('buildingWrap', scene)
-    // buildingWrap.diffuseTexture = new BABYLON.Texture(img, scene)
-    // mergedBuilding1.material = buildingWrap
+    const buildingWrap = new BABYLON.StandardMaterial('buildingWrap', scene)
+    buildingWrap.diffuseTexture = new BABYLON.Texture(img, scene)
+    mergedBuilding1.material = buildingWrap
+    mergedBuilding1.checkCollisions = true
   })
 
   const building2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -35,6 +36,7 @@ export default function environment(name, scene) {
     mergedBuilding2.scaling.x = 0.1
     mergedBuilding2.scaling.z = 0.1
     mergedBuilding2.rotation.y = Math.PI / -2
+    mergedBuilding2.checkCollisions = true
   })
 
   const building3 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -50,6 +52,7 @@ export default function environment(name, scene) {
     mergedBuilding3.scaling.x = 0.1
     mergedBuilding3.scaling.z = 0.1
     mergedBuilding3.rotation.y = Math.PI / 1
+    mergedBuilding3.checkCollisions = true
   })
 
   const building4 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -64,6 +67,7 @@ export default function environment(name, scene) {
     mergedBuilding4.scaling.y = 0.1
     mergedBuilding4.scaling.x = 0.1
     mergedBuilding4.scaling.z = 0.1
+    mergedBuilding4.checkCollisions = true
   })
   /* ----------COURTYARD---------- */
 
@@ -74,6 +78,7 @@ export default function environment(name, scene) {
     const waterFountain = BABYLON.Mesh.MergeMeshes(x.meshes)
     waterFountain.position = new BABYLON.Vector3(0, 0, 0)
     waterFountain.scaling = new BABYLON.Vector3(3.5, 3.5, 3.5)
+    waterFountain.checkCollisions = true
   })
 
   const bench = BABYLON.SceneLoader.ImportMeshAsync(
