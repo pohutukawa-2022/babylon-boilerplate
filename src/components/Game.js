@@ -12,14 +12,11 @@ import concreteImg from './../assets/textures/concrete2.jpeg'
 import Player from './player'
 import { Vector3 } from 'babylonjs'
 
-
-
 export default class Game {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId)
     this.engine = new BABYLON.Engine(this.canvas, true)
     this.time = 0
-    
   }
   createCamera() {
     this.camera = new BABYLON.UniversalCamera(
@@ -37,30 +34,28 @@ export default class Game {
     this.camera.angularSensibility = 8000
     this.camera.speed = 1
 
-    this.camera.applyGravity = true
+    this.camera.applyGravity = false
     this.camera.checkCollisions = true
 
     this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)
-    
+
     //   // clipping
     this.camera.minZ = 0.3
 
-    this.light = new BABYLON.SpotLight(
-      'light1',
-      new BABYLON.Vector3(0, 5,  -10),
-      new BABYLON.Vector3(
-        0, 0, 1),
-      Math.PI / 2,
-      20,
-      this.scene
-    )
+    this.light = new BABYLON.HemisphericLight()
+    // this.light = new BABYLON.SpotLight(
+    //   'light1',
+    //   new BABYLON.Vector3(0, 5, -10),
+    //   new BABYLON.Vector3(0, 0, 1),
+    //   Math.PI / 2,
+    //   20,
+    //   this.scene
+    // )
 
-    this.light.parent = this.camera
+    // this.light.parent = this.camera
     this.light.intensity = 1
-        
 
     this.player = new Player(this.camera)
-
   }
   createScene() {
     this.scene = new BABYLON.Scene(this.engine)
@@ -68,9 +63,13 @@ export default class Game {
       if (evt.button === 0) this.canvas.requestPointerLock()
     }
     //apply gravity
-    const assumedFramesPerSecond = 60;
-    const earthGravity = -9.81;
-    this.scene.gravity = new BABYLON.Vector3(0, earthGravity / assumedFramesPerSecond, 0);
+    const assumedFramesPerSecond = 60
+    const earthGravity = -9.81
+    this.scene.gravity = new BABYLON.Vector3(
+      0,
+      earthGravity / assumedFramesPerSecond,
+      0
+    )
 
     let ground = BABYLON.MeshBuilder.CreateGround(
       'ground',
@@ -79,15 +78,15 @@ export default class Game {
       this.scene
     )
     ground.checkCollisions = true
-    const dummyGroundTexture = new BABYLON.StandardMaterial()
-    dummyGroundTexture.diffuseTexture = new BABYLON.Texture(
-      new BABYLON.Color3(1, 2, 1),
-      this.scene
-    )
-    ground.material = dummyGroundTexture
-    // const dirtMaterial = new BABYLON.StandardMaterial()
-    // dirtMaterial.diffuseTexture = new BABYLON.Texture(concreteImg, this.scene)
-    // ground.material = dirtMaterial
+    // const dummyGroundTexture = new BABYLON.StandardMaterial()
+    // dummyGroundTexture.diffuseTexture = new BABYLON.Texture(
+    //   new BABYLON.Color3(1, 2, 1),
+    //   this.scene
+    // )
+    // ground.material = dummyGroundTexture
+    const dirtMaterial = new BABYLON.StandardMaterial()
+    dirtMaterial.diffuseTexture = new BABYLON.Texture(concreteImg, this.scene)
+    ground.material = dirtMaterial
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
