@@ -6,7 +6,7 @@ import fragShader from './../shaders/shader.frag'
 import Furniture from './Furniture'
 import environment from './Environment'
 import dirtImg from './../assets/textures/dirt.jpeg'
-import concreteImg from './../assets/textures/concrete.jpeg'
+import concreteImg from './../assets/textures/concrete2.jpeg'
 
 export default class Game {
   constructor(canvasId) {
@@ -14,7 +14,7 @@ export default class Game {
     this.engine = new BABYLON.Engine(this.canvas, true)
     this.time = 0
   }
-  createCamera(){
+  createCamera() {
     this.camera = new BABYLON.UniversalCamera(
       'camera1',
       new BABYLON.Vector3(0, 10, -10),
@@ -23,37 +23,38 @@ export default class Game {
     this.camera.setTarget(BABYLON.Vector3.Zero())
     this.camera.attachControl(this.canvas, false)
 
-    this.camera.keysUp.push(87);
-    this.camera.keysDown.push(83);
-    this.camera.keysLeft.push(65);
-    this.camera.keysRight.push(68);
-    this.camera.angularSensibility = 8000;
-    this.camera.speed = 1;
+    this.camera.keysUp.push(87)
+    this.camera.keysDown.push(83)
+    this.camera.keysLeft.push(65)
+    this.camera.keysRight.push(68)
+    this.camera.angularSensibility = 8000
+    this.camera.speed = 1
 
     this.camera.applyGravity = false
     this.camera.checkCollisions = true
     // this.camera.ellipsoid = new Vector3(1, 1, 1)
-    
+
     //   // clipping
     //   this.camera.minZ = 0.3
-    this.light = new BABYLON.SpotLight(
-      'light1',
-      new BABYLON.Vector3(0, 5,  -10),
-      new BABYLON.Vector3(
-        0, 0, 1),
-      Math.PI / 2,
-      20,
-      this.scene
-    )
 
-    this.light.parent = this.camera
-    
+    // this.light = new BABYLON.SpotLight(
+    //   'light1',
+    //   new BABYLON.Vector3(0, 5, -10),
+    //   new BABYLON.Vector3(0, 0, 1),
+    //   Math.PI / 2,
+    //   20,
+    //   this.scene
+    // )
+
+    this.light = new BABYLON.HemisphericLight()
+
+    // this.light.parent = this.camera
+
     // this.light.parent = this.camera
     // this.light.parent(this.camera)
     // this.camera.set(this.light)
-      
+
     this.light.intensity = 1
-  
   }
   createScene() {
     this.scene = new BABYLON.Scene(this.engine)
@@ -107,8 +108,6 @@ export default class Game {
     renoWallFour.position.x = 70
     renoWallFour.position.y = 5
     renoWallFour.position.z = 70
-
-
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene)

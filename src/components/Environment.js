@@ -2,6 +2,7 @@ import * as BABYLON from 'babylonjs'
 import 'babylonjs-loaders'
 
 import img from './../assets/textures/spooky.png'
+import darkWall from './../assets/textures/dark-wall.jpeg'
 
 /* ---------- BUILDINGS ---------- */
 export default function environment(name, scene) {
@@ -18,8 +19,9 @@ export default function environment(name, scene) {
     mergedBuilding1.rotation.y = Math.PI / 2
 
     const buildingWrap = new BABYLON.StandardMaterial('buildingWrap', scene)
-    buildingWrap.diffuseTexture = new BABYLON.Texture(img, scene)
+    buildingWrap.diffuseTexture = new BABYLON.Texture(darkWall, scene)
     mergedBuilding1.material = buildingWrap
+    mergedBuilding1.checkCollisions = true
   })
 
   const building2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -35,6 +37,10 @@ export default function environment(name, scene) {
     mergedBuilding2.scaling.x = 0.1
     mergedBuilding2.scaling.z = 0.1
     mergedBuilding2.rotation.y = Math.PI / -2
+
+    const buildingWrap = new BABYLON.StandardMaterial('buildingWrap', scene)
+    buildingWrap.diffuseTexture = new BABYLON.Texture(darkWall, scene)
+    mergedBuilding2.material = buildingWrap
   })
 
   const building3 = BABYLON.SceneLoader.ImportMeshAsync(
