@@ -3,15 +3,13 @@ import 'babylonjs-loaders'
 
 import vertShader from './../shaders/shader.vert'
 import fragShader from './../shaders/shader.frag'
+
 import Furniture from './Furniture'
 import environment from './Environment'
-import dirtImg from './../assets/textures/dirt.jpeg'
-
-import concreteImg from './../assets/textures/concrete2.jpeg'
-
 import Player from './player'
-import { Vector3 } from 'babylonjs'
 
+
+import dryGrass from './../assets/textures/dryGrass.jpg'
 
 
 export default class Game {
@@ -19,7 +17,6 @@ export default class Game {
     this.canvas = document.getElementById(canvasId)
     this.engine = new BABYLON.Engine(this.canvas, true)
     this.time = 0
-    
   }
   createCamera() {
     this.camera = new BABYLON.UniversalCamera(
@@ -41,25 +38,29 @@ export default class Game {
     this.camera.checkCollisions = true
 
     this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)
-    
+
     //   // clipping
     this.camera.minZ = 0.3
 
+    // this.light = new BABYLON.HemisphericLight()
     this.light = new BABYLON.SpotLight(
       'light1',
-      new BABYLON.Vector3(0, 5,  -10),
-      new BABYLON.Vector3(
-        0, 0, 1),
-      Math.PI / 2,
-      20,
+      new BABYLON.Vector3(0, 5, -10),
+      new BABYLON.Vector3(0, 0, 1),
+
+      Math.PI / 3,
+      60,
+
       this.scene
     )
 
+    // this.light = new BABYLON.HemisphericLight()
+
     this.light.parent = this.camera
     this.light.intensity = 1
-        
 
     this.player = new Player(this.camera)
+
     this.createOrb()
   }
   createOrb(){
@@ -104,9 +105,13 @@ export default class Game {
       if (evt.button === 0) this.canvas.requestPointerLock()
     }
     //apply gravity
-    const assumedFramesPerSecond = 60;
-    const earthGravity = -9.81;
-    this.scene.gravity = new BABYLON.Vector3(0, earthGravity / assumedFramesPerSecond, 0);
+    const assumedFramesPerSecond = 60
+    const earthGravity = -9.81
+    this.scene.gravity = new BABYLON.Vector3(
+      0,
+      earthGravity / assumedFramesPerSecond,
+      0
+    )
 
     let ground = BABYLON.MeshBuilder.CreateGround(
       'ground',
@@ -114,19 +119,18 @@ export default class Game {
 
       this.scene
     )
+
+    const groundOutside = new BABYLON.StandardMaterial()
+    groundOutside.diffuseTexture = new BABYLON.Texture(dryGrass, this.scene)
+
     ground.checkCollisions = true
-    const dummyGroundTexture = new BABYLON.StandardMaterial()
-    dummyGroundTexture.diffuseTexture = new BABYLON.Texture(
-      new BABYLON.Color3(1, 2, 1),
-      this.scene
-    )
-    ground.material = dummyGroundTexture
-    // const dirtMaterial = new BABYLON.StandardMaterial()
-    // dirtMaterial.diffuseTexture = new BABYLON.Texture(concreteImg, this.scene)
-    // ground.material = dirtMaterial
+
+    ground.material = groundOutside
+
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
+
 
     const extWallOne = BABYLON.MeshBuilder.CreateBox('extWallOne', {
       width: 111,
@@ -181,6 +185,12 @@ export default class Game {
     newBuildingRoof.position.z = 96
 
     
+
+
+    this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
+    this.scene.fogDensity = 0.02
+    this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
+    this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
 
     environment('environment', this.scene)
