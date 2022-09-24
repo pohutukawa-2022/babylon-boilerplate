@@ -8,7 +8,6 @@ import Furniture from './Furniture'
 import environment from './Environment'
 import Player from './player'
 
-
 import dryGrass from './../assets/textures/dryGrass.jpg'
 
 export default class Game {
@@ -20,7 +19,7 @@ export default class Game {
   createCamera() {
     this.camera = new BABYLON.UniversalCamera(
       'camera1',
-      new BABYLON.Vector3(0, 5, -10),
+      new BABYLON.Vector3(0, 7, -10),
       this.scene
     )
     this.camera.setTarget(BABYLON.Vector3.Zero())
@@ -87,7 +86,6 @@ export default class Game {
     ground.checkCollisions = true
 
     ground.material = groundOutside
-
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
