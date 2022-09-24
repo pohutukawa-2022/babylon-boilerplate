@@ -8,6 +8,8 @@ import environment from './Environment'
 import dirtImg from './../assets/textures/dirt.jpeg'
 import concreteImg from './../assets/textures/concrete.jpeg'
 import Player from './player'
+import { Vector3 } from 'babylonjs'
+
 
 export default class Game {
   constructor(canvasId) {
@@ -78,39 +80,97 @@ export default class Game {
       this.scene
     )
     ground.material = dummyGroundTexture
-    const dirtMaterial = new BABYLON.StandardMaterial()
-    dirtMaterial.diffuseTexture = new BABYLON.Texture(concreteImg, this.scene)
-    ground.material = dirtMaterial
+    // const dirtMaterial = new BABYLON.StandardMaterial()
+    // dirtMaterial.diffuseTexture = new BABYLON.Texture(concreteImg, this.scene)
+    // ground.material = dirtMaterial
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
 
-    const renoWallOne = BABYLON.MeshBuilder.CreateBox('renoWallOne', {
-      width: 20,
-      height: 20,
-      depth: 20,
+    const extWallOne = BABYLON.MeshBuilder.CreateBox('extWallOne', {
+      width: 111,
+      height: 17,
+      depth: 2,
     })
-    renoWallOne.position.x = 100
-    renoWallOne.position.y = 5
-    renoWallOne.position.z = 100
+    extWallOne.position.x = 75
+    extWallOne.position.y = 8
+    extWallOne.position.z = 129
 
-    const renoWallTwo = BABYLON.MeshBuilder.CreateBox('renoWallTwo', {
-      width: 20,
-      height: 20,
-      depth: 20,
+    const extWallTwo = BABYLON.MeshBuilder.CreateBox('extWallTwo', {
+      width: 66,
+      height: 17,
+      depth: 2,
     })
-    renoWallTwo.position.x = 85
-    renoWallTwo.position.y = 5
-    renoWallTwo.position.z = 85
+    extWallTwo.position.x = 129.5
+    extWallTwo.position.y = 8
+    extWallTwo.position.z = 95
+    extWallTwo.rotation.y = Math.PI / 2
 
-    const renoWallFour = BABYLON.MeshBuilder.CreateBox('renoWallFour', {
-      width: 20,
-      height: 20,
-      depth: 20,
+    const extWallThree = BABYLON.MeshBuilder.CreateBox('extWallThree', {
+      width: 35,
+      height: 17,
+      depth: 7,
     })
-    renoWallFour.position.x = 70
-    renoWallFour.position.y = 5
-    renoWallFour.position.z = 70
+    extWallThree.position.x = 69
+    extWallThree.position.y = 8
+    extWallThree.position.z = 66
+
+    const plaza1 = BABYLON.MeshBuilder.CreateBox('plaza1', {
+      width: 80,
+      height: 0.3,
+      depth: 80,
+    })
+    plaza1.position.x = 0
+    plaza1.position.y = 1
+    plaza1.position.z = 0
+    const plaza2 = new BABYLON.MeshBuilder.CreateCylinder('plaza2', {
+      height: 1,
+      diameter: 70,
+      tessellation: 300,
+    })
+    plaza2.position.y = 1
+    //test
+    const newBuildingRoof = BABYLON.MeshBuilder.CreateBox('plaza1', {
+      width: 145,
+      height: 0.5,
+      depth: 70,
+    })
+    newBuildingRoof.position.x = 60
+    newBuildingRoof.position.y = 17
+    newBuildingRoof.position.z = 96
+
+    const keySize = new BABYLON.Vector3(2, 2, 2)
+    const key1 = BABYLON.MeshBuilder.CreateSphere(
+      'key1',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key1.position = new Vector3(10, 3, 20)
+    const key2 = BABYLON.MeshBuilder.CreateSphere(
+      'key2',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key2.position = new Vector3(20, 3, 10)
+    const key3 = BABYLON.MeshBuilder.CreateSphere(
+      'key3',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key3.position = new Vector3(5, 13, 10)
+    const key4 = BABYLON.MeshBuilder.CreateSphere(
+      'key4',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key4.position = new Vector3(10, 3, 5)
+    const key5 = BABYLON.MeshBuilder.CreateSphere(
+      'key5',
+      { segments: 12, diameter: 3 },
+      this.scene
+    )
+    key5.position = new Vector3(6, 3, 15)
+    let keys = [key1, key2, key3, key4, key5]
 
 
 
