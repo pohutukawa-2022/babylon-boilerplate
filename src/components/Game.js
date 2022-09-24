@@ -34,7 +34,7 @@ export default class Game {
     this.camera.angularSensibility = 8000
     this.camera.speed = 1
 
-    this.camera.applyGravity = false
+    this.camera.applyGravity = true
     this.camera.checkCollisions = true
 
     this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)
@@ -42,16 +42,16 @@ export default class Game {
     //   // clipping
     this.camera.minZ = 0.3
 
-    // this.light = new BABYLON.SpotLight(
-    //   'light1',
-    //   new BABYLON.Vector3(0, 5, -10),
-    //   new BABYLON.Vector3(0, 0, 1),
-    //   Math.PI / 2,
-    //   20,
-    //   this.scene
-    // )
+    this.light = new BABYLON.SpotLight(
+      'light1',
+      new BABYLON.Vector3(0, 5, -10),
+      new BABYLON.Vector3(0, 0, 1),
+      Math.PI / 2,
+      20,
+      this.scene
+    )
 
-    this.light = new BABYLON.HemisphericLight()
+    // this.light = new BABYLON.HemisphericLight()
 
     this.light.parent = this.camera
     this.light.intensity = 1
@@ -91,8 +91,6 @@ export default class Game {
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
-
-  
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene)

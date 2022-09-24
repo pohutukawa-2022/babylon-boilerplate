@@ -3,9 +3,6 @@ import 'babylonjs-loaders'
 
 import img from './../assets/textures/spooky.png'
 import darkWall from './../assets/textures/dark-wall.jpeg'
-import img1 from './../assets/textures/one.png'
-import img2 from './../assets/textures/two.png'
-import img3 from './../assets/textures/three.png'
 
 export default function environment(name, scene) {
   /* ---------- BUILDINGS ---------- */
@@ -86,9 +83,6 @@ export default function environment(name, scene) {
     extWallOne.position.y = 8
     extWallOne.position.z = 129
     extWallOne.checkCollisions = true
-    const testWrap1 = new BABYLON.StandardMaterial('test1', scene)
-    testWrap1.diffuseTexture = new BABYLON.Texture(img1, scene)
-    extWallOne.material = testWrap1
 
     const extWallTwo = BABYLON.MeshBuilder.CreateBox('extWallTwo', {
       width: 66,
@@ -100,9 +94,6 @@ export default function environment(name, scene) {
     extWallTwo.position.z = 95
     extWallTwo.rotation.y = Math.PI / 2
     extWallTwo.checkCollisions = true
-    const testWrap2 = new BABYLON.StandardMaterial('test2', scene)
-    testWrap2.diffuseTexture = new BABYLON.Texture(img2, scene)
-    extWallTwo.material = testWrap2
 
     const threeTop = BABYLON.MeshBuilder.CreateBox('WallThreeTop', {
       width: 35,
@@ -112,7 +103,6 @@ export default function environment(name, scene) {
     threeTop.position.x = 69
     threeTop.position.y = 15.2
     threeTop.position.z = 66
-    threeTop.checkCollisions = true
 
     const threeLeft = BABYLON.MeshBuilder.CreateBox('WallThreeLeft', {
       width: 13,
@@ -143,6 +133,7 @@ export default function environment(name, scene) {
 
     const doorway = [threeTop, threeLeft, threeRight]
     const extWallThree = new BABYLON.Mesh.MergeMeshes(doorway, scene)
+    extWallThree.checkCollisions = true
   })
 
   /* ----------COURTYARD---------- */
