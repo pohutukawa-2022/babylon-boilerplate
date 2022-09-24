@@ -50,34 +50,33 @@ export default class Game {
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
 
-    const renoWallOne = BABYLON.MeshBuilder.CreateBox('renoWallOne', {
+    const extWallOne = BABYLON.MeshBuilder.CreateBox('extWallOne', {
       width: 111,
       height: 17,
       depth: 2,
     })
-    renoWallOne.position.x = 75
-    renoWallOne.position.y = 8
-    renoWallOne.position.z = 129
-    0
+    extWallOne.position.x = 75
+    extWallOne.position.y = 8
+    extWallOne.position.z = 129
 
-    const renoWallTwo = BABYLON.MeshBuilder.CreateBox('renoWallTwo', {
+    const extWallTwo = BABYLON.MeshBuilder.CreateBox('extWallTwo', {
       width: 66,
       height: 17,
       depth: 2,
     })
-    renoWallTwo.position.x = 129.5
-    renoWallTwo.position.y = 8
-    renoWallTwo.position.z = 95
-    renoWallTwo.rotation.y = Math.PI / 2
+    extWallTwo.position.x = 129.5
+    extWallTwo.position.y = 8
+    extWallTwo.position.z = 95
+    extWallTwo.rotation.y = Math.PI / 2
 
-    const renoWallThree = BABYLON.MeshBuilder.CreateBox('renoWallThree', {
+    const extWallThree = BABYLON.MeshBuilder.CreateBox('extWallThree', {
       width: 35,
       height: 17,
       depth: 7,
     })
-    renoWallThree.position.x = 69
-    renoWallThree.position.y = 8
-    renoWallThree.position.z = 66
+    extWallThree.position.x = 69
+    extWallThree.position.y = 8
+    extWallThree.position.z = 66
 
     const plaza1 = BABYLON.MeshBuilder.CreateBox('plaza1', {
       width: 80,
@@ -87,11 +86,11 @@ export default class Game {
     plaza1.position.x = 0
     plaza1.position.y = 1
     plaza1.position.z = 0
-    const plaza2 = new BABYLON.MeshBuilder.CreateCylinder(
-      'plaza2',
-      { height: 1, diameter: 70, tessellation: 300 },
-      this.scene
-    )
+    const plaza2 = new BABYLON.MeshBuilder.CreateCylinder('plaza2', {
+      height: 1,
+      diameter: 70,
+      tessellation: 300,
+    })
     plaza2.position.y = 1
 
     const newBuildingRoof = BABYLON.MeshBuilder.CreateBox('plaza1', {
