@@ -8,6 +8,8 @@ import benchWrap from './../assets/textures/bench.jpg'
 import ceramicTexture from './../assets/textures/ceramics.png'
 import outhouseTexture from './../assets/textures/Toilet.png'
 import tintexture from './../assets/textures/tin.jpeg'
+import keyTexture from '../assets/textures/key.jpeg'
+import ghostTexture from '../assets/textures/Ghost_color.png'
 
 // import darkWall from './../assets/textures/dark-wall.jpeg'
 
@@ -399,6 +401,46 @@ export default function environment(name, scene) {
     plaza2.material = plaza2Wrap
     benchMesh2.material = bench2Wrap
     plaza2.checkCollisions = true
+  })
+
+  const torch = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'Flashlight_01.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+    keyMesh.position.x = 0
+    keyMesh.position.y = 20
+    keyMesh.position.z = 0
+
+    keyMesh.scaling.x = 10
+    keyMesh.scaling.y = 10
+    keyMesh.scaling.z = 10
+
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
+    keyMesh.material = keyWrap
+  })
+
+  const ghost = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'Ghost.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+    keyMesh.position.x = 20
+    keyMesh.position.y = 1
+    keyMesh.position.z = 0
+
+    keyMesh.scaling.x = 0.07
+    keyMesh.scaling.y = 0.07
+    keyMesh.scaling.z = 0.07
+
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(ghostTexture, scene)
+    keyMesh.material = keyWrap
   })
 }
 

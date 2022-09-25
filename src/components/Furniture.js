@@ -23,7 +23,7 @@ import redwoodTexture from '../assets/textures/redwood.jpeg'
 
 import tvTexture from '../assets/textures/tv.jpg'
 
-import mirrorTexture from '../assets/textures/mirror.jpg'
+import linoTexture from '../assets/textures/lino.jpeg'
 
 export default function Furniture(name, scene, player) {
   const schoolDesk = BABYLON.SceneLoader.ImportMeshAsync(
@@ -363,7 +363,7 @@ export default function Furniture(name, scene, player) {
 
     // podiumMesh.rotation.y = Math.PI / -1
 
-    const bathWrap = new BABYLON.StandardMaterial('bathdWrap', scene)
+    const bathWrap = new BABYLON.StandardMaterial('bathWrap', scene)
     bathWrap.diffuseTexture = new BABYLON.Texture(bathTexture, scene)
     bathMesh.material = bathWrap
   })
@@ -386,7 +386,7 @@ export default function Furniture(name, scene, player) {
     keyMesh.rotation.y = Math.PI / 2
     keyMesh.rotation.x = Math.PI / 2
 
-    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
     keyMesh.material = keyWrap
     player.keys.push({ key: keyMesh, xMax: 101, xMin: 96, zMax: 21, zMin: 15 })
@@ -410,7 +410,7 @@ export default function Furniture(name, scene, player) {
     keyMesh.rotation.y = Math.PI / 2
     keyMesh.rotation.x = Math.PI / 2
 
-    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
     keyMesh.material = keyWrap
     player.keys.push({ key: keyMesh, xMax: 120, xMin: 110, zMax: 2, zMin: -6 })
@@ -434,7 +434,7 @@ export default function Furniture(name, scene, player) {
     // keyMesh.rotation.y = Math.PI / 2
     // keyMesh.rotation.x = Math.PI / 2
 
-    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(bookTexture, scene)
     keyMesh.material = keyWrap
   })
@@ -457,7 +457,7 @@ export default function Furniture(name, scene, player) {
     // keyMesh.rotation.y = Math.PI / 2
     // keyMesh.rotation.x = Math.PI / 2
 
-    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(bookTexture, scene)
     keyMesh.material = keyWrap
   })
@@ -480,7 +480,7 @@ export default function Furniture(name, scene, player) {
     keyMesh.rotation.y = Math.PI / 1.5
     // keyMesh.rotation.x = Math.PI / 2
 
-    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(wellTexture, scene)
     keyMesh.material = keyWrap
   })
@@ -503,7 +503,7 @@ export default function Furniture(name, scene, player) {
     keyMesh.rotation.y = Math.PI / -2
     // keyMesh.rotation.x = Math.PI / 2
 
-    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(stairTexture, scene)
     keyMesh.material = keyWrap
 
@@ -526,7 +526,7 @@ export default function Furniture(name, scene, player) {
 
     keyMesh.rotation.y = Math.PI / -1
 
-    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(sofaTexture, scene)
     keyMesh.material = keyWrap
 
@@ -550,7 +550,7 @@ export default function Furniture(name, scene, player) {
 
     keyMesh.rotation.y = Math.PI / 1
 
-    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     keyMesh.material = keyWrap
 
@@ -574,7 +574,7 @@ export default function Furniture(name, scene, player) {
 
     keyMesh.rotation.y = Math.PI / 2
 
-    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(redwoodTexture, scene)
     keyMesh.material = keyWrap
 
@@ -596,7 +596,7 @@ export default function Furniture(name, scene, player) {
     keyMesh.scaling.y = 5
     keyMesh.scaling.z = 5
 
-    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(tvTexture, scene)
     keyMesh.material = keyWrap
   })
@@ -616,15 +616,15 @@ export default function Furniture(name, scene, player) {
     keyMesh.scaling.y = 0.07
     keyMesh.scaling.z = 0.07
 
-    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(woodTexture, scene)
     keyMesh.material = keyWrap
   })
 
-  const mirror = BABYLON.SceneLoader.ImportMeshAsync(
+  const gas = BABYLON.SceneLoader.ImportMeshAsync(
     '',
     '../../public/models/',
-    'mirror.obj'
+    'turbo.obj'
   ).then((x) => {
     const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
 
@@ -632,12 +632,34 @@ export default function Furniture(name, scene, player) {
     keyMesh.position.y = 0
     keyMesh.position.z = 120
 
-    keyMesh.scaling.x = 5
-    keyMesh.scaling.y = 5
-    keyMesh.scaling.z = 5
+    keyMesh.scaling.x = 0.5
+    keyMesh.scaling.y = 0.5
+    keyMesh.scaling.z = 0.5
 
-    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
-    keyWrap.diffuseTexture = new BABYLON.Texture(mirrorTexture, scene)
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    keyMesh.material = keyWrap
+  })
+
+  const cabinet1 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'Cabinet_1.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+    keyMesh.position.x = -15
+    keyMesh.position.y = 0
+    keyMesh.position.z = 127.5
+
+    keyMesh.scaling.x = 0.7
+    keyMesh.scaling.y = 0.7
+    keyMesh.scaling.z = 0.7
+
+    keyMesh.rotation.y = Math.PI / 1
+
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(linoTexture, scene)
     keyMesh.material = keyWrap
   })
 }
