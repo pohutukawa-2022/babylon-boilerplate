@@ -36,7 +36,7 @@ export default class Game {
     this.camera.angularSensibility = 8000
     this.camera.speed = 1
 
-    this.camera.applyGravity = false
+    this.camera.applyGravity = true
     this.camera.checkCollisions = true
 
     this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)

@@ -384,6 +384,7 @@ export default function environment(name, scene) {
     benchMesh2.position = new BABYLON.Vector3(0, 0, 25)
     benchMesh2.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
     benchMesh2.rotation.y = Math.PI / 1
+
     const plaza2 = new BABYLON.MeshBuilder.CreateCylinder('plaza2', {
       height: 1,
       diameter: 70,
@@ -399,6 +400,36 @@ export default function environment(name, scene) {
     plaza2.material = plaza2Wrap
     benchMesh2.material = bench2Wrap
     plaza2.checkCollisions = true
+  })
+
+  const bench3 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/Bench_LowRes.obj'
+  ).then((x) => {
+    const benchMesh3 = BABYLON.Mesh.MergeMeshes(x.meshes)
+    benchMesh3.position = new BABYLON.Vector3(-25, 0, 0)
+    benchMesh3.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
+    benchMesh3.rotation.y = Math.PI / 2
+
+    const bench3Wrap = new BABYLON.StandardMaterial('bench3Wrap', scene)
+    bench3Wrap.diffuseTexture = new BABYLON.Texture(benchWrap, scene)
+
+    benchMesh3.material = bench3Wrap
+  })
+
+  const bench4 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/Bench_LowRes.obj'
+  ).then((x) => {
+    const benchMesh4 = BABYLON.Mesh.MergeMeshes(x.meshes)
+    benchMesh4.position = new BABYLON.Vector3(25, 0, 0)
+    benchMesh4.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
+    benchMesh4.rotation.y = Math.PI / -2
+
+    const bench4Wrap = new BABYLON.StandardMaterial('bench4Wrap', scene)
+    bench4Wrap.diffuseTexture = new BABYLON.Texture(benchWrap, scene)
+
+    benchMesh4.material = bench4Wrap
   })
   /* ------------ LIGHTS --------------- */
 
