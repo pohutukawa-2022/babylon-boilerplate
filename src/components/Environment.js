@@ -1,8 +1,14 @@
 import * as BABYLON from 'babylonjs'
 import 'babylonjs-loaders'
 
-import bricks from './../assets/textures/bricks.jpg'
+
 import floorboards from './../assets/textures/floorboards.jpg'
+
+import bricks from './../assets/textures/stair.jpg'
+import ceramicTexture from './../assets/textures/ceramics.png'
+import outhouseTexture from './../assets/textures/Toilet.png'
+import tintexture from './../assets/textures/tin.jpeg'
+
 // import darkWall from './../assets/textures/dark-wall.jpeg'
 
 export default function environment(name, scene) {
@@ -223,10 +229,12 @@ export default function environment(name, scene) {
     const wallWrap1 = new BABYLON.StandardMaterial('extWall1Wrap', scene)
     wallWrap1.diffuseTexture = new BABYLON.Texture(bricks, scene)
 
+
     extWall1.material = wallWrap1
     extWall1.checkCollisions = true
 
     const extWall2 = BABYLON.MeshBuilder.CreateBox('extWall2', {
+
       width: 66,
       height: 17,
       depth: 2,
@@ -242,6 +250,8 @@ export default function environment(name, scene) {
     extWall2.material = wallWrap2
     extWall2.checkCollisions = true
 
+    extWallTwo.material = wallWrap
+
     const threeTop = BABYLON.MeshBuilder.CreateBox('WallThreeTop', {
       width: 35,
       height: 4,
@@ -251,6 +261,7 @@ export default function environment(name, scene) {
     threeTop.position.y = 15.2
     threeTop.position.z = 66
     threeTop.checkForCollisions
+    threeTop.material = wallWrap
 
     const threeLeft = BABYLON.MeshBuilder.CreateBox('WallThreeLeft', {
       width: 13,
@@ -260,6 +271,7 @@ export default function environment(name, scene) {
     threeLeft.position.x = 55
     threeLeft.position.y = 8
     threeLeft.position.z = 66
+    threeLeft.material = wallWrap
 
     const threeRight = BABYLON.MeshBuilder.CreateBox('WallThreeRight', {
       width: 13,
@@ -269,6 +281,7 @@ export default function environment(name, scene) {
     threeRight.position.x = 79
     threeRight.position.y = 8
     threeRight.position.z = 66
+    threeRight.material = wallWrap
 
     const doorway = [threeTop, threeLeft, threeRight]
     const extWallThree = new BABYLON.Mesh.MergeMeshes(doorway, scene)
@@ -297,6 +310,9 @@ export default function environment(name, scene) {
     const waterFountain = BABYLON.Mesh.MergeMeshes(x.meshes)
     waterFountain.position = new BABYLON.Vector3(0, 0, 0)
     waterFountain.scaling = new BABYLON.Vector3(3.5, 3.5, 3.5)
+    const fWrap = new BABYLON.StandardMaterial('fWrap', scene)
+    fWrap.diffuseTexture = new BABYLON.Texture(ceramicTexture, scene)
+    waterFountain.material = fWrap
     waterFountain.checkCollisions = true
   })
 
@@ -317,7 +333,7 @@ export default function environment(name, scene) {
     plaza1.position.y = 1
     plaza1.position.z = 0
 
-    plaza1.checkCollisions = true
+    // plaza1.checkCollisions = true
 
     const plaza2 = new BABYLON.MeshBuilder.CreateCylinder('plaza2', {
       height: 1,
@@ -326,7 +342,7 @@ export default function environment(name, scene) {
     })
     plaza2.position.y = 1
 
-    plaza2.checkCollisions = true
+    // plaza2.checkCollisions = true
   })
 
   const bench2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -337,6 +353,48 @@ export default function environment(name, scene) {
     benchMesh.position = new BABYLON.Vector3(0, 0, 25)
     benchMesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
     benchMesh.rotation.y = Math.PI / 1
+  })
+
+  const outhouse = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'Toilet.obj'
+  ).then((x) => {
+    const houseMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    houseMesh.position.x = 110
+    houseMesh.position.y = 0
+    houseMesh.position.z = 90
+
+    houseMesh.scaling.x = 0.15
+    houseMesh.scaling.y = 0.15
+    houseMesh.scaling.z = 0.15
+
+    houseMesh.rotation.y = Math.PI / -2
+
+    const houseWrap = new BABYLON.StandardMaterial('houseWrap', scene)
+    houseWrap.diffuseTexture = new BABYLON.Texture(outhouseTexture, scene)
+    houseMesh.material = houseWrap
+  })
+
+  const shed = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'GeneratorShed.obj'
+  ).then((x) => {
+    const houseMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    houseMesh.position.x = -90
+    houseMesh.position.y = 0
+    houseMesh.position.z = 90
+
+    houseMesh.scaling.x = 2.2
+    houseMesh.scaling.y = 2.2
+    houseMesh.scaling.z = 2.2
+
+    houseMesh.rotation.y = Math.PI / 1
+
+    const houseWrap = new BABYLON.StandardMaterial('houseWrap', scene)
+    houseWrap.diffuseTexture = new BABYLON.Texture(tintexture, scene)
+    houseMesh.material = houseWrap
   })
 }
 
