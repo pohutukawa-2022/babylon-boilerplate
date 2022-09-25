@@ -9,6 +9,7 @@ import bathTexture from '../assets/textures/bath.jpeg'
 
 import keyTexture from '../assets/textures/key.jpeg'
 
+
 import bookTexture from '../assets/textures/bookshelf.png'
 
 import wellTexture from '../assets/textures/well.png'
@@ -17,7 +18,7 @@ import bedTexture from '../assets/textures/bed.png'
 
 import stairTexture from '../assets/textures/stair.jpg'
 
-export default function Furniture(name, scene) {
+export default function Furniture(name, scene, player) {
   const schoolDesk = BABYLON.SceneLoader.ImportMeshAsync(
     '',
     '../../public/models/',
@@ -385,7 +386,7 @@ export default function Furniture(name, scene) {
     const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
     keyMesh.position.x = 101
     keyMesh.position.y = 5
-    keyMesh.position.z = 17
+    keyMesh.position.z = 18
 
     keyMesh.scaling.x = 3
     keyMesh.scaling.y = 3
@@ -398,6 +399,7 @@ export default function Furniture(name, scene) {
     const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
     keyMesh.material = keyWrap
+    player.keys.push({key : keyMesh, xMax: 101, xMin:96, zMax:21, zMin:15})
   })
 
   const key2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -421,6 +423,7 @@ export default function Furniture(name, scene) {
     const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
     keyMesh.material = keyWrap
+    player.keys.push({key : keyMesh, xMax: 120, xMin:110, zMax:2, zMin:-6})
   })
 
   const bookshelf = BABYLON.SceneLoader.ImportMeshAsync(
