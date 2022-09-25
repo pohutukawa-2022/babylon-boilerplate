@@ -9,7 +9,6 @@ import bathTexture from '../assets/textures/bath.jpeg'
 
 import keyTexture from '../assets/textures/key.jpeg'
 
-
 import bookTexture from '../assets/textures/bookshelf.png'
 
 import wellTexture from '../assets/textures/well.png'
@@ -17,6 +16,8 @@ import wellTexture from '../assets/textures/well.png'
 import bedTexture from '../assets/textures/bed.png'
 
 import stairTexture from '../assets/textures/stair.jpg'
+
+import sofaTexture from '../assets/textures/sofa.jpg'
 
 export default function Furniture(name, scene, player) {
   const schoolDesk = BABYLON.SceneLoader.ImportMeshAsync(
@@ -399,7 +400,7 @@ export default function Furniture(name, scene, player) {
     const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
     keyMesh.material = keyWrap
-    player.keys.push({key : keyMesh, xMax: 101, xMin:96, zMax:21, zMin:15})
+    player.keys.push({ key: keyMesh, xMax: 101, xMin: 96, zMax: 21, zMin: 15 })
   })
 
   const key2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -423,7 +424,7 @@ export default function Furniture(name, scene, player) {
     const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
     keyMesh.material = keyWrap
-    player.keys.push({key : keyMesh, xMax: 120, xMin:110, zMax:2, zMin:-6})
+    player.keys.push({ key: keyMesh, xMax: 120, xMin: 110, zMax: 2, zMin: -6 })
   })
 
   const bookshelf = BABYLON.SceneLoader.ImportMeshAsync(
@@ -538,6 +539,54 @@ export default function Furniture(name, scene, player) {
 
     const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(stairTexture, scene)
+    keyMesh.material = keyWrap
+
+    keyMesh.checkCollisions = true
+  })
+
+  const sofa = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'Old_sofa.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+    keyMesh.position.x = 40
+    keyMesh.position.y = 0
+    keyMesh.position.z = 85
+
+    keyMesh.scaling.x = 0.08
+    keyMesh.scaling.y = 0.08
+    keyMesh.scaling.z = 0.08
+
+    keyMesh.rotation.y = Math.PI / -2
+
+    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(sofaTexture, scene)
+    keyMesh.material = keyWrap
+
+    keyMesh.checkCollisions = true
+  })
+
+  const filecabinet = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'filecabinet.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+    //z:73
+    keyMesh.position.x = 40
+    keyMesh.position.y = 0
+    keyMesh.position.z = 102
+
+    keyMesh.scaling.x = 0.2
+    keyMesh.scaling.y = 0.2
+    keyMesh.scaling.z = 0.2
+
+    keyMesh.rotation.y = Math.PI / 1
+
+    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     keyMesh.material = keyWrap
 
     keyMesh.checkCollisions = true
