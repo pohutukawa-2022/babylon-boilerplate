@@ -9,7 +9,12 @@ import environment from './Environment'
 import Player from './player'
 
 import dryGrass from './../assets/textures/dryGrass.jpg'
+
 import hedges from './../assets/textures/hedges.jpg'
+
+import { HemisphericLight } from 'babylonjs'
+import Boss from './boss'
+
 
 export default class Game {
   constructor(canvasId) {
@@ -17,13 +22,14 @@ export default class Game {
     this.engine = new BABYLON.Engine(this.canvas, true)
     this.time = 0
     this.keys = []
-    this.churchBell = new Audio()
-    this.churchBell.src = '../../public/audio/church-bell.mp3'
+    this.churchBell = new Audio('../../public/audio/church-bell.mp3')
   }
   createCamera() {
     this.camera = new BABYLON.UniversalCamera(
       'camera1',
-      new BABYLON.Vector3(20, 10, -10),
+
+      new BABYLON.Vector3(20, 6, -10),
+
       this.scene
     )
     this.camera.setTarget(BABYLON.Vector3.Zero())
@@ -43,6 +49,12 @@ export default class Game {
 
     //   // clipping
     this.camera.minZ = 0.3
+    this.light = new HemisphericLight()
+    // this.light = new BABYLON.SpotLight(
+    //   'light1',
+    //   new BABYLON.Vector3(0, 5, -10),
+    //   new BABYLON.Vector3(0, 0, 1),
+
 
     this.light = new BABYLON.HemisphericLight()
     this.light = new BABYLON.SpotLight(
@@ -53,26 +65,27 @@ export default class Game {
       Math.PI / 3,
       60,
 
-      this.scene
-    )
 
-    this.light.parent = this.camera
-    this.light.intensity = 2
+    //   this.scene
+    // )
 
-    this.player = new Player(this.camera)
+    // this.light.parent = this.camera
+    // this.light.intensity = 2
+
+    this.player = new Player(this.camera, this.light)
+    this.boss = new Boss()
   }
-
   createScene() {
     this.scene = new BABYLON.Scene(this.engine)
     this.scene.onPointerDown = (evt) => {
       if (evt.button === 0) this.canvas.requestPointerLock()
     }
-    //apply gravity
+    // apply gravity
     const assumedFramesPerSecond = 60
     const earthGravity = -9.81
     this.scene.gravity = new BABYLON.Vector3(
       0,
-      earthGravity / assumedFramesPerSecond,
+      -1,
       0
     )
 
@@ -176,6 +189,7 @@ export default class Game {
     // this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
     // this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
+
     /* ------------ LIGHTS --------------- */
 
     // let light1 = new BABYLON.SpotLight(
@@ -222,12 +236,18 @@ export default class Game {
     //   this.scene
     // )
 
+
     environment('environment', this.scene)
     Furniture('furniture', this.scene)
     this.createCamera()
-
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'e') {
+      if(e.key === 'Shift'){
+        this.player.sprinting = true
+      }
+      else if(e.key === 'f'){
+        this.player.toggleLight()
+      }
+      else if (e.key === 'e') {
         let foundKey = this.player.checkForKey(this.keys)
         if (foundKey) {
           document.getElementById(
@@ -243,12 +263,18 @@ export default class Game {
         }
       }
     })
+    document.addEventListener('keyup', (e)=>{
+      if(e.key === 'Shift'){
+        this.player.sprinting = false
+      }
+    })
   }
 
   doRender() {
     this.engine.runRenderLoop(() => {
       this.player.updatePlayer(this.camera)
       this.scene.render()
+      this.boss.rotate()
     })
 
     window.addEventListener('resize', () => {

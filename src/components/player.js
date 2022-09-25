@@ -1,8 +1,16 @@
 export default class Player{
-  constructor(camera){
+  constructor(camera, light){
+    this.camera = camera
+    this.light = light
+    this.isLightOn = true
     this.position = camera.position
     this.keysFound = 0
     this.battery = 10
+    this.maxStamina = 100
+    this.sprintMeter = this.maxStamina
+    this.sprinting = false
+    this.maxSpeed = 2
+    this.minSpeed = 0.7
   }
   updateLocation(camera){
     this.position = camera.position
@@ -21,7 +29,6 @@ export default class Player{
           this.keysFound += 1
           foundKey = true
           keyToDelete = i
-
         }
     }
     if(!isNaN(keyToDelete)){
@@ -30,7 +37,43 @@ export default class Player{
     }
     return foundKey
   }
+  toggleLight(){
+    if(this.isLightOn){
+      console.log(this.light);
+       this.light.setEnabled(false)
+       this.isLightOn = false
+       console.log('off');
+    } else{
+      this.light.setEnabled(true)
+      this.isLightOn = true
+    }
+  }
+  flickerLight(){
+    this.light.intensity = 0.7
+    let randomNumber = Math.floor(Math.random() * 5000)
+    setTimeout(()=> this.light.intensity = 1, 100)
+    setTimeout(()=> this.flickerLight(), randomNumber)
+  }
+  stamina(){
+    if(this.sprinting && this.sprintMeter > 0){
+      this.sprintMeter -= 0.2
+    }else if(this.sprintMeter < 100){
+      this.sprintMeter += 0.2
+    }
+  }
+  sprint(){
+    if(this.sprintMeter > 2 && this.sprinting){
+      this.camera.speed = this.maxSpeed
+    }else{
+      this.camera.speed = this.minSpeed
+    }
+  }
+  walk(){
+    this.camera.speed = this.minSpeed
+  }
   updatePlayer(camera){
     this.updateLocation(camera)
+    this.sprint()
+    this.stamina()
   }
 }
