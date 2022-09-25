@@ -2,6 +2,7 @@ import * as BABYLON from 'babylonjs'
 import 'babylonjs-loaders'
 
 import bricks from './../assets/textures/bricks.jpg'
+import bricks from '/../assets/texture/floorboards.jpg'
 // import darkWall from './../assets/textures/dark-wall.jpeg'
 
 export default function environment(name, scene) {
@@ -18,10 +19,40 @@ export default function environment(name, scene) {
     mergedBuilding1.scaling.z = 0.1
     mergedBuilding1.rotation.y = Math.PI / 2
 
-    const buildingWrap1 = new BABYLON.StandardMaterial('building1', scene)
-    buildingWrap1.diffuseTexture = new BABYLON.Texture(bricks, scene)
+    const building1Floor1 = BABYLON.MeshBuilder.CreateBox('building1Floor1', {
+      width: 35,
+      height: 1,
+      depth: 61,
+    })
+    building1Floor1.position.x = -86
+    building1Floor1.position.y = 17
+    building1Floor1.position.z = 21
 
-    mergedBuilding1.material = buildingWrap1
+    const building1Floor2 = BABYLON.MeshBuilder.CreateBox('building1Floor2', {
+      width: 46,
+      height: 1,
+      depth: 82,
+    })
+    building1Floor2.position.x = -108
+    building1Floor2.position.y = 17
+    building1Floor2.position.z = -20
+
+    const building1Wrap = new BABYLON.StandardMaterial('building1', scene)
+    building1Wrap.diffuseTexture = new BABYLON.Texture(bricks, scene)
+    const building1Floor1Wrap = new BABYLON.StandardMaterial(
+      'building1Floor1Wrap',
+      scene
+    )
+    building1Floor1Wrap.diffuseTexture = new BABYLON.Texture(floorboards, scene)
+    const building1Floor2Wrap = new BABYLON.StandardMaterial(
+      'building1Floor2Wrap',
+      scene
+    )
+    building1Floor2Wrap.diffuseTexture = new BABYLON.Texture(floorboards, scene)
+
+    mergedBuilding1.material = building1Wrap
+    building1Floor1.material = building1Floor1Wrap
+    building1Floor2.material = building1Floor2Wrap
     mergedBuilding1.checkCollisions = true
   })
 
@@ -39,10 +70,40 @@ export default function environment(name, scene) {
     mergedBuilding2.scaling.z = 0.1
     mergedBuilding2.rotation.y = Math.PI / -2
 
+    const building2Floor1 = BABYLON.MeshBuilder.CreateBox('building2Floor1', {
+      width: 35,
+      height: 1,
+      depth: 61,
+    })
+    building2Floor1.position.x = 86
+    building2Floor1.position.y = 17
+    building2Floor1.position.z = -21
+
+    const building2Floor2 = BABYLON.MeshBuilder.CreateBox('building2Floor2', {
+      width: 46,
+      height: 1,
+      depth: 82,
+    })
+    building2Floor2.position.x = 108
+    building2Floor2.position.y = 17
+    building2Floor2.position.z = 20
+
     const buildingWrap2 = new BABYLON.StandardMaterial('building2', scene)
     buildingWrap2.diffuseTexture = new BABYLON.Texture(bricks, scene)
+    const building2Floor1Wrap = new BABYLON.StandardMaterial(
+      'building2Floor1Wrap',
+      scene
+    )
+    building2Floor1Wrap.diffuseTexture = new BABYLON.Texture(floorboards, scene)
+    const building2Floor2Wrap = new BABYLON.StandardMaterial(
+      'building2Floor2Wrap',
+      scene
+    )
+    building2Floor2Wrap.diffuseTexture = new BABYLON.Texture(floorboards, scene)
 
     mergedBuilding2.material = buildingWrap2
+    building2Floor1.material = building2Floor2Wrap
+    building2Floor2.material = building2Floor2Wrap
     mergedBuilding2.checkCollisions = true
   })
 
@@ -59,6 +120,26 @@ export default function environment(name, scene) {
     mergedBuilding3.scaling.x = 0.1
     mergedBuilding3.scaling.z = 0.1
     mergedBuilding3.rotation.y = Math.PI / 1
+
+    const building3Floor1 = BABYLON.MeshBuilder.CreateBox('building3Floor1', {
+      width: 35,
+      height: 1,
+      depth: 61,
+    })
+    building3Floor1.position.x = -21
+    building3Floor1.position.y = 17
+    building3Floor1.position.z = -86
+    building3Floor1.rotation.y = Math.PI / 2
+
+    const building3Floor2 = BABYLON.MeshBuilder.CreateBox('building3Floor2', {
+      width: 46,
+      height: 1,
+      depth: 82,
+    })
+    building3Floor2.position.x = 21.5
+    building3Floor2.position.y = 17
+    building3Floor2.position.z = -108.5
+    building3Floor2.rotation.y = Math.PI / 2
 
     const buildingWrap3 = new BABYLON.StandardMaterial('building3', scene)
     buildingWrap3.diffuseTexture = new BABYLON.Texture(bricks, scene)
@@ -80,32 +161,62 @@ export default function environment(name, scene) {
     mergedBuilding4.scaling.x = 0.1
     mergedBuilding4.scaling.z = 0.1
 
+    const building4Floor1 = BABYLON.MeshBuilder.CreateBox('building4Floor1', {
+      width: 35,
+      height: 1,
+      depth: 61,
+    })
+    building4Floor1.position.x = 21
+    building4Floor1.position.y = 17
+    building4Floor1.position.z = 86
+    building4Floor1.rotation.y = Math.PI / -2
+
+    const building4Floor2 = BABYLON.MeshBuilder.CreateBox('building4Floor2', {
+      width: 46,
+      height: 1,
+      depth: 82,
+    })
+    building4Floor2.position.x = -21.5
+    building4Floor2.position.y = 17
+    building4Floor2.position.z = 108.5
+    building4Floor2.rotation.y = Math.PI / -2
+
     const buildingWrap4 = new BABYLON.StandardMaterial('building4', scene)
     buildingWrap4.diffuseTexture = new BABYLON.Texture(bricks, scene)
 
     mergedBuilding4.material = buildingWrap4
     mergedBuilding4.checkCollisions = true
 
-    const extWallOne = BABYLON.MeshBuilder.CreateBox('extWallOne', {
+    const extWall1 = BABYLON.MeshBuilder.CreateBox('extWall1', {
       width: 111,
       height: 17,
       depth: 2,
     })
-    extWallOne.position.x = 75
-    extWallOne.position.y = 8
-    extWallOne.position.z = 129
-    extWallOne.checkCollisions = true
+    extWall1.position.x = 75
+    extWall1.position.y = 8
+    extWall1.position.z = 129
 
-    const extWallTwo = BABYLON.MeshBuilder.CreateBox('extWallTwo', {
+    const wallWrap1 = new BABYLON.StandardMaterial('extWall1Wrap', scene)
+    wallWrap1.diffuseTexture = new BABYLON.Texture(bricks, scene)
+
+    extWall1.material = wallWrap1
+    extWall1.checkCollisions = true
+
+    const extWall2 = BABYLON.MeshBuilder.CreateBox('extWall2', {
       width: 66,
       height: 17,
       depth: 2,
     })
-    extWallTwo.position.x = 129.5
-    extWallTwo.position.y = 8
-    extWallTwo.position.z = 95
-    extWallTwo.rotation.y = Math.PI / 2
-    extWallTwo.checkCollisions = true
+    extWall2.position.x = 129.5
+    extWall2.position.y = 8
+    extWall2.position.z = 95
+    extWall2.rotation.y = Math.PI / 2
+
+    const wallWrap2 = new BABYLON.StandardMaterial('extWall2Wrap', scene)
+    wallWrap2.diffuseTexture = new BABYLON.Texture(bricks, scene)
+
+    extWall2.material = wallWrap2
+    extWall2.checkCollisions = true
 
     const threeTop = BABYLON.MeshBuilder.CreateBox('WallThreeTop', {
       width: 35,
@@ -137,16 +248,20 @@ export default function environment(name, scene) {
 
     const doorway = [threeTop, threeLeft, threeRight]
     const extWallThree = new BABYLON.Mesh.MergeMeshes(doorway, scene)
+    const doorwayWrap = new BABYLON.StandardMaterial('building5', scene)
+    doorwayWrap.diffuseTexture = new BABYLON.Texture(bricks, scene)
+
+    extWallThree.material = doorwayWrap
     extWallThree.checkCollisions = true
 
-    const newBuildingRoof = BABYLON.MeshBuilder.CreateBox('plaza1', {
+    const roof1 = BABYLON.MeshBuilder.CreateBox('roof1', {
       width: 145,
       height: 0.5,
       depth: 70,
     })
-    newBuildingRoof.position.x = 60
-    newBuildingRoof.position.y = 17
-    newBuildingRoof.position.z = 96
+    roof1.position.x = 60
+    roof1.position.y = 17
+    roof1.position.z = 96
   })
 
   /* ----------COURTYARD---------- */
