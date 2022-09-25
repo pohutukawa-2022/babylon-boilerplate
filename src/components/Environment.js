@@ -344,7 +344,7 @@ export default function environment(name, scene) {
     '../../public/models/fountain1_low.obj'
   ).then((x) => {
     const waterFountain = BABYLON.Mesh.MergeMeshes(x.meshes)
-    waterFountain.position = new BABYLON.Vector3(0, 0, 0)
+    waterFountain.position = new BABYLON.Vector3(0, 1, 0)
     waterFountain.scaling = new BABYLON.Vector3(3.5, 3.5, 3.5)
     const fWrap = new BABYLON.StandardMaterial('fWrap', scene)
     fWrap.diffuseTexture = new BABYLON.Texture(ceramicTexture, scene)
@@ -386,6 +386,7 @@ export default function environment(name, scene) {
     benchMesh2.position = new BABYLON.Vector3(0, 0, 25)
     benchMesh2.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
     benchMesh2.rotation.y = Math.PI / 1
+
     const plaza2 = new BABYLON.MeshBuilder.CreateCylinder('plaza2', {
       height: 1,
       diameter: 70,
@@ -402,6 +403,82 @@ export default function environment(name, scene) {
     benchMesh2.material = bench2Wrap
     plaza2.checkCollisions = true
   })
+
+
+  const bench3 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/Bench_LowRes.obj'
+  ).then((x) => {
+    const benchMesh3 = BABYLON.Mesh.MergeMeshes(x.meshes)
+    benchMesh3.position = new BABYLON.Vector3(-25, 0, 0)
+    benchMesh3.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
+    benchMesh3.rotation.y = Math.PI / 2
+
+    const bench3Wrap = new BABYLON.StandardMaterial('bench3Wrap', scene)
+    bench3Wrap.diffuseTexture = new BABYLON.Texture(benchWrap, scene)
+
+    benchMesh3.material = bench3Wrap
+  })
+
+  const bench4 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/Bench_LowRes.obj'
+  ).then((x) => {
+    const benchMesh4 = BABYLON.Mesh.MergeMeshes(x.meshes)
+    benchMesh4.position = new BABYLON.Vector3(25, 0, 0)
+    benchMesh4.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1)
+    benchMesh4.rotation.y = Math.PI / -2
+
+    const bench4Wrap = new BABYLON.StandardMaterial('bench4Wrap', scene)
+    bench4Wrap.diffuseTexture = new BABYLON.Texture(benchWrap, scene)
+
+    benchMesh4.material = bench4Wrap
+  })
+  /* ------------ LIGHTS --------------- */
+
+  // const lightbulb1 = new BABYLON.SpotLight(
+  //   'light1',
+  //   new BABYLON.Vector3(0, 5, -10),
+  //   new BABYLON.Vector3(0, -1, 0),
+
+  //   Math.PI / 3,
+  //   60,
+
+  //   scene
+  // )
+
+  // const lightBulb2 = new BABYLON.SpotLight(
+  //   'light2',
+  //   new BABYLON.Vector3(0, 5, 10),
+  //   new BABYLON.Vector3(0, -1, 0),
+
+  //   Math.PI / 3,
+  //   60,
+
+  //   scene
+  // )
+
+  // const lightbulb3 = new BABYLON.SpotLight(
+  //   'light3',
+  //   new BABYLON.Vector3(-10, 5, 0),
+  //   new BABYLON.Vector3(0, -1, 0),
+
+  //   Math.PI / 3,
+  //   60,
+
+  //   scene
+  // )
+
+  // const lightbulb4 = new BABYLON.SpotLight(
+  //   'light4',
+  //   new BABYLON.Vector3(10, 5, 0),
+  //   new BABYLON.Vector3(0, -1, 0),
+
+  //   Math.PI / 3,
+  //   60,
+
+  //   scene
+  // )
 
   const torch = BABYLON.SceneLoader.ImportMeshAsync(
     '',
@@ -442,6 +519,7 @@ export default function environment(name, scene) {
     keyWrap.diffuseTexture = new BABYLON.Texture(ghostTexture, scene)
     keyMesh.material = keyWrap
   })
+
 }
 
 environment()
