@@ -89,6 +89,7 @@ export default class Game {
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
 
+
     const extWallOne = BABYLON.MeshBuilder.CreateBox('extWallOne', {
       width: 111,
       height: 17,
@@ -145,6 +146,7 @@ export default class Game {
     // this.scene.fogDensity = 0.02
     // this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
     // this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
+
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene)
