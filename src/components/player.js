@@ -1,33 +1,32 @@
 export default class Player{
   constructor(camera){
     this.position = camera.position
-    this.keys = 0
+    this.keysFound = 0
     this.battery = 10
-    this.keyLocations = null
   }
   updateLocation(camera){
     this.position = camera.position
   }
-  checkForKey(){
+  checkForKey(allKeys){
     let foundKey = false
     let keyToDelete
-    for(let i=0; i < this.keyLocations.length; i++){
-      let key = this.keyLocations[i]
-      let {x, y, z, radius} = key
+    for(let i=0; i < allKeys.length; i++){
+      let key = allKeys[i]
+      let {xMax, xMin, zMax, zMin} = key
       let position = this.position
-      if(position.x < x + radius &&
-        position.x > x - radius &&
-        position.z < z + radius &&
-        position.z > z -radius){
+      if(position.x < xMax &&
+        position.x > xMin &&
+        position.z < zMax &&
+        position.z > zMin){
+          this.keysFound += 1
           foundKey = true
           keyToDelete = i
+
         }
     }
     if(!isNaN(keyToDelete)){
-      console.log(keyToDelete, '11');
-      console.log(this.keyLocations);
-      this.keyLocations.splice(keyToDelete, 1)
-      console.log(this.keyLocations);
+      allKeys[keyToDelete].key.dispose()
+      allKeys.splice(keyToDelete, 1)
     }
     return foundKey
   }

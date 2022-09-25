@@ -15,11 +15,14 @@ export default class Game {
     this.canvas = document.getElementById(canvasId)
     this.engine = new BABYLON.Engine(this.canvas, true)
     this.time = 0
+    this.keys = []
+    this.churchBell = new Audio()
+    this.churchBell.src = '../../public/audio/church-bell.mp3'
   }
   createCamera() {
     this.camera = new BABYLON.UniversalCamera(
       'camera1',
-      new BABYLON.Vector3(0, 7, -10),
+      new BABYLON.Vector3(0, 10, -10),
       this.scene
     )
     this.camera.setTarget(BABYLON.Vector3.Zero())
@@ -46,7 +49,7 @@ export default class Game {
       new BABYLON.Vector3(0, 5, -10),
       new BABYLON.Vector3(0, 0, 1),
 
-      Math.PI / 3,
+      Math.PI / 2,
       60,
 
       this.scene
@@ -55,7 +58,7 @@ export default class Game {
     // this.light = new BABYLON.HemisphericLight()
 
     this.light.parent = this.camera
-    this.light.intensity = 1
+    this.light.intensity = 2
 
     this.player = new Player(this.camera)
   }
@@ -143,20 +146,27 @@ export default class Game {
     newBuildingRoof.position.y = 17
     newBuildingRoof.position.z = 96
 
-    this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
-    this.scene.fogDensity = 0.02
-    this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
-    this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
+    // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
+    // this.scene.fogDensity = 0.02
+    // this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
+    // this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
     environment('environment', this.scene)
-    Furniture('furniture', this.scene)
+    Furniture('furniture', this.scene, this)
 
     this.createCamera()
     document.addEventListener('keydown', (e) => {
       if (e.key === 'e') {
-        let foundKey = this.player.checkForKey()
+        let foundKey = this.player.checkForKey(this.keys)
         if (foundKey) {
-          console.log('got key')
+          document.getElementById('key-found').innerHTML = `${this.player.keysFound} OUT OF 5 KEYS FOUND`
+          this.churchBell.play()
+          
+          setTimeout(()=> {
+            document.getElementById('key-found').innerHTML = ''
+            this.churchBell.pause()
+            this.churchBell.currentTime = 0
+          }, 4000)
         }
       }
     })
