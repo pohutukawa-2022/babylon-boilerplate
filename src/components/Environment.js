@@ -342,7 +342,7 @@ export default function environment(name, scene) {
     '../../public/models/fountain1_low.obj'
   ).then((x) => {
     const waterFountain = BABYLON.Mesh.MergeMeshes(x.meshes)
-    waterFountain.position = new BABYLON.Vector3(0, 0, 0)
+    waterFountain.position = new BABYLON.Vector3(0, 1, 0)
     waterFountain.scaling = new BABYLON.Vector3(3.5, 3.5, 3.5)
     const fWrap = new BABYLON.StandardMaterial('fWrap', scene)
     fWrap.diffuseTexture = new BABYLON.Texture(ceramicTexture, scene)
