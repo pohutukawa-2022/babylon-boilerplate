@@ -23,7 +23,9 @@ export default class Game {
   createCamera() {
     this.camera = new BABYLON.UniversalCamera(
       'camera1',
+
       new BABYLON.Vector3(20, 6, -10),
+
       this.scene
     )
     this.camera.setTarget(BABYLON.Vector3.Zero())
@@ -36,7 +38,7 @@ export default class Game {
     this.camera.angularSensibility = 8000
     this.camera.speed = 1
 
-    this.camera.applyGravity = true
+    this.camera.applyGravity = false
     this.camera.checkCollisions = true
 
     this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)
@@ -49,10 +51,8 @@ export default class Game {
     //   new BABYLON.Vector3(0, 5, -10),
     //   new BABYLON.Vector3(0, 0, 1),
 
-
     //   Math.PI / 3,
     //   60,
-
 
     //   this.scene
     // )
@@ -77,6 +77,7 @@ export default class Game {
       0
     )
 
+    /* ---------------MAP----------------- */
     let ground = BABYLON.MeshBuilder.CreateGround(
       'ground',
       { width: 300, height: 300, subdivisions: 2 },
@@ -84,80 +85,34 @@ export default class Game {
       this.scene
     )
 
+    let boundry1 = new BABYLON.MeshBuilder.CreateBox('boundry1', {
+      width: 300,
+      height: 10,
+      depth: 2,
+    })
+    boundry1.position.x = 150
+    boundry1.position.y = 7
+    boundry1.position.z = 150
+
+    // ground.diffuseTexture = new BABYLON.light()
+
     const groundOutside = new BABYLON.StandardMaterial()
     groundOutside.diffuseTexture = new BABYLON.Texture(dryGrass, this.scene)
 
     ground.checkCollisions = true
-
     ground.material = groundOutside
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
-
-
-    const extWallOne = BABYLON.MeshBuilder.CreateBox('extWallOne', {
-      width: 111,
-      height: 17,
-      depth: 2,
-    })
-    extWallOne.position.x = 75
-    extWallOne.position.y = 8
-    extWallOne.position.z = 129
-
-    const extWallTwo = BABYLON.MeshBuilder.CreateBox('extWallTwo', {
-      width: 66,
-      height: 17,
-      depth: 2,
-    })
-    extWallTwo.position.x = 129.5
-    extWallTwo.position.y = 8
-    extWallTwo.position.z = 95
-    extWallTwo.rotation.y = Math.PI / 2
-
-    const extWallThree = BABYLON.MeshBuilder.CreateBox('extWallThree', {
-      width: 35,
-      height: 17,
-      depth: 7,
-    })
-    extWallThree.position.x = 69
-    extWallThree.position.y = 8
-    extWallThree.position.z = 66
-
-    const plaza1 = BABYLON.MeshBuilder.CreateBox('plaza1', {
-      width: 80,
-      height: 0.3,
-      depth: 80,
-    })
-    plaza1.position.x = 0
-    plaza1.position.y = 1
-    plaza1.position.z = 0
-    const plaza2 = new BABYLON.MeshBuilder.CreateCylinder('plaza2', {
-      height: 1,
-      diameter: 70,
-      tessellation: 300,
-    })
-    plaza2.position.y = 1
-    //test
-    const newBuildingRoof = BABYLON.MeshBuilder.CreateBox('plaza1', {
-      width: 145,
-      height: 0.5,
-      depth: 70,
-    })
-    newBuildingRoof.position.x = 60
-    newBuildingRoof.position.y = 17
-    newBuildingRoof.position.z = 96
 
     // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
     // this.scene.fogDensity = 0.02
     // this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
     // this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
-  
-
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene, this)
-
     this.createCamera()
     document.addEventListener('keydown', (e) => {
       if(e.key === 'Shift'){
@@ -169,10 +124,12 @@ export default class Game {
       else if (e.key === 'e') {
         let foundKey = this.player.checkForKey(this.keys)
         if (foundKey) {
-          document.getElementById('key-found').innerHTML = `${this.player.keysFound} OUT OF 5 KEYS FOUND`
+          document.getElementById(
+            'key-found'
+          ).innerHTML = `${this.player.keysFound} OUT OF 5 KEYS FOUND`
           this.churchBell.play()
-          
-          setTimeout(()=> {
+
+          setTimeout(() => {
             document.getElementById('key-found').innerHTML = ''
             this.churchBell.pause()
             this.churchBell.currentTime = 0
