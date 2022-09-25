@@ -1,6 +1,8 @@
 export default class Player{
-  constructor(camera){
+  constructor(camera, light){
     this.camera = camera
+    this.light = light
+    this.isLightOn = true
     this.position = camera.position
     this.keysFound = 0
     this.battery = 10
@@ -34,6 +36,23 @@ export default class Player{
       allKeys.splice(keyToDelete, 1)
     }
     return foundKey
+  }
+  toggleLight(){
+    if(this.isLightOn){
+      console.log(this.light);
+       this.light.setEnabled(false)
+       this.isLightOn = false
+       console.log('off');
+    } else{
+      this.light.setEnabled(true)
+      this.isLightOn = true
+    }
+  }
+  flickerLight(){
+    this.light.intensity = 0.7
+    let randomNumber = Math.floor(Math.random() * 5000)
+    setTimeout(()=> this.light.intensity = 1, 100)
+    setTimeout(()=> this.flickerLight(), randomNumber)
   }
   stamina(){
     if(this.sprinting && this.sprintMeter > 0){
