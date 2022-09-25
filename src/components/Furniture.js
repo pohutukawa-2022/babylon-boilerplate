@@ -9,6 +9,15 @@ import bathTexture from '../assets/textures/bath.jpeg'
 
 import keyTexture from '../assets/textures/key.jpeg'
 
+
+import bookTexture from '../assets/textures/bookshelf.png'
+
+import wellTexture from '../assets/textures/well.png'
+
+import bedTexture from '../assets/textures/bed.png'
+
+import stairTexture from '../assets/textures/stair.jpg'
+
 export default function Furniture(name, scene, player) {
   const schoolDesk = BABYLON.SceneLoader.ImportMeshAsync(
     '',
@@ -415,6 +424,123 @@ export default function Furniture(name, scene, player) {
     keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
     keyMesh.material = keyWrap
     player.keys.push({key : keyMesh, xMax: 120, xMin:110, zMax:2, zMin:-6})
+  })
+
+  const bookshelf = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'bookshelf.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+    keyMesh.position.x = 20
+    keyMesh.position.y = 0
+    keyMesh.position.z = 101
+
+    keyMesh.scaling.x = 7
+    keyMesh.scaling.y = 7
+    keyMesh.scaling.z = 7
+
+    // keyMesh.rotation.z = Math.PI / 2
+    // keyMesh.rotation.y = Math.PI / 2
+    // keyMesh.rotation.x = Math.PI / 2
+
+    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(bookTexture, scene)
+    keyMesh.material = keyWrap
+  })
+
+  const bookshelf2 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'bookshelf.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+    keyMesh.position.x = 26
+    keyMesh.position.y = 0
+    keyMesh.position.z = 101
+
+    keyMesh.scaling.x = 7
+    keyMesh.scaling.y = 7
+    keyMesh.scaling.z = 7
+
+    // keyMesh.rotation.z = Math.PI / 2
+    // keyMesh.rotation.y = Math.PI / 2
+    // keyMesh.rotation.x = Math.PI / 2
+
+    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(bookTexture, scene)
+    keyMesh.material = keyWrap
+  })
+
+  const well = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'Well.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+    keyMesh.position.x = -50
+    keyMesh.position.y = 0
+    keyMesh.position.z = 110
+
+    keyMesh.scaling.x = 3
+    keyMesh.scaling.y = 3
+    keyMesh.scaling.z = 3
+
+    // keyMesh.rotation.z = Math.PI / 2
+    // keyMesh.rotation.y = Math.PI / 2
+    // keyMesh.rotation.x = Math.PI / 2
+
+    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(wellTexture, scene)
+    keyMesh.material = keyWrap
+  })
+
+  // const bed = BABYLON.SceneLoader.ImportMeshAsync(
+  //   '',
+  //   '../../public/models/',
+  //   'Old_bed.obj'
+  // ).then((x) => {
+  //   const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+  //   keyMesh.position.x = -30
+  //   keyMesh.position.y = 0
+  //   keyMesh.position.z = 110
+
+  //   keyMesh.scaling.x = 0.03
+  //   keyMesh.scaling.y = 0.03
+  //   keyMesh.scaling.z = 0.03
+
+  //   // keyMesh.rotation.z = Math.PI / 2
+  //   // keyMesh.rotation.y = Math.PI / 2
+  //   // keyMesh.rotation.x = Math.PI / 2
+
+  //   const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+  //   keyWrap.diffuseTexture = new BABYLON.Texture(bedTexture, scene)
+  //   keyMesh.material = keyWrap
+  // })
+
+  const stairs = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'stair.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+    keyMesh.position.x = -90
+    keyMesh.position.y = 0
+    keyMesh.position.z = -76
+
+    keyMesh.scaling.x = 12
+    keyMesh.scaling.y = 13
+    keyMesh.scaling.z = 12
+
+    // keyMesh.rotation.z = Math.PI / 2
+    keyMesh.rotation.y = Math.PI / -2
+    // keyMesh.rotation.x = Math.PI / 2
+
+    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(stairTexture, scene)
+    keyMesh.material = keyWrap
+
+    keyMesh.checkCollisions = true
   })
 }
 Furniture()
