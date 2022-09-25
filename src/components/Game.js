@@ -159,6 +159,9 @@ export default class Game {
     this.createCamera()
 
     document.addEventListener('keydown', (e) => {
+      if(e.key === 'Shift'){
+        this.player.sprinting = true
+      }
       if (e.key === 'e') {
         let foundKey = this.player.checkForKey(this.keys)
         if (foundKey) {
@@ -171,6 +174,11 @@ export default class Game {
             this.churchBell.currentTime = 0
           }, 4000)
         }
+      }
+    })
+    document.addEventListener('keyup', (e)=>{
+      if(e.key === 'Shift'){
+        this.player.sprinting = false
       }
     })
   }

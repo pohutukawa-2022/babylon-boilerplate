@@ -1,8 +1,14 @@
 export default class Player{
   constructor(camera){
+    this.camera = camera
     this.position = camera.position
     this.keysFound = 0
     this.battery = 10
+    this.maxStamina = 100
+    this.sprintMeter = this.maxStamina
+    this.sprinting = false
+    this.maxSpeed = 2
+    this.minSpeed = 0.7
   }
   updateLocation(camera){
     this.position = camera.position
@@ -21,7 +27,6 @@ export default class Player{
           this.keysFound += 1
           foundKey = true
           keyToDelete = i
-
         }
     }
     if(!isNaN(keyToDelete)){
@@ -30,7 +35,26 @@ export default class Player{
     }
     return foundKey
   }
+  stamina(){
+    if(this.sprinting && this.sprintMeter > 0){
+      this.sprintMeter -= 0.2
+    }else if(this.sprintMeter < 100){
+      this.sprintMeter += 0.2
+    }
+  }
+  sprint(){
+    if(this.sprintMeter > 2 && this.sprinting){
+      this.camera.speed = this.maxSpeed
+    }else{
+      this.camera.speed = this.minSpeed
+    }
+  }
+  walk(){
+    this.camera.speed = this.minSpeed
+  }
   updatePlayer(camera){
     this.updateLocation(camera)
+    this.sprint()
+    this.stamina()
   }
 }
