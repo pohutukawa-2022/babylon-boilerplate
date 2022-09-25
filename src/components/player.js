@@ -1,5 +1,5 @@
-export default class Player{
-  constructor(camera, light){
+export default class Player {
+  constructor(camera, light) {
     this.camera = camera
     this.light = light
     this.isLightOn = true
@@ -12,66 +12,68 @@ export default class Player{
     this.maxSpeed = 2
     this.minSpeed = 0.7
   }
-  updateLocation(camera){
+  updateLocation(camera) {
     this.position = camera.position
   }
-  checkForKey(allKeys){
+  checkForKey(allKeys) {
     let foundKey = false
     let keyToDelete
-    for(let i=0; i < allKeys.length; i++){
+    for (let i = 0; i < allKeys.length; i++) {
       let key = allKeys[i]
-      let {xMax, xMin, zMax, zMin} = key
+      let { xMax, xMin, zMax, zMin } = key
       let position = this.position
-      if(position.x < xMax &&
+      if (
+        position.x < xMax &&
         position.x > xMin &&
         position.z < zMax &&
-        position.z > zMin){
-          this.keysFound += 1
-          foundKey = true
-          keyToDelete = i
-        }
+        position.z > zMin
+      ) {
+        this.keysFound += 1
+        foundKey = true
+        keyToDelete = i
+      }
     }
-    if(!isNaN(keyToDelete)){
+    if (!isNaN(keyToDelete)) {
       allKeys[keyToDelete].key.dispose()
       allKeys.splice(keyToDelete, 1)
     }
     return foundKey
   }
-  toggleLight(){
-    if(this.isLightOn){
-      console.log(this.light);
-       this.light.setEnabled(false)
-       this.isLightOn = false
-       console.log('off');
-    } else{
+  toggleLight() {
+    if (this.isLightOn) {
+      console.log(this.light)
+      this.light.setEnabled(false)
+      this.isLightOn = false
+      console.log('off')
+    } else {
       this.light.setEnabled(true)
       this.isLightOn = true
     }
   }
-  flickerLight(){
-    this.light.intensity = 0.7
+  flickerLight() {
+    this.light.intensity = 2.7
     let randomNumber = Math.floor(Math.random() * 5000)
-    setTimeout(()=> this.light.intensity = 1, 100)
-    setTimeout(()=> this.flickerLight(), randomNumber)
+    setTimeout(() => (this.light.intensity = 3), 100)
+    setTimeout(() => this.flickerLight(), randomNumber)
   }
-  stamina(){
-    if(this.sprinting && this.sprintMeter > 0){
+  stamina() {
+    if (this.sprinting && this.sprintMeter > 0) {
       this.sprintMeter -= 0.2
-    }else if(this.sprintMeter < 100){
+    } else if (this.sprintMeter < 100) {
       this.sprintMeter += 0.2
     }
   }
-  sprint(){
-    if(this.sprintMeter > 2 && this.sprinting){
+  sprint() {
+    if (this.sprintMeter > 2 && this.sprinting) {
       this.camera.speed = this.maxSpeed
-    }else{
+    } else {
       this.camera.speed = this.minSpeed
     }
   }
-  walk(){
+  walk() {
     this.camera.speed = this.minSpeed
   }
-  updatePlayer(camera){
+  updatePlayer(camera) {
     this.updateLocation(camera)
     this.sprint()
     this.stamina()

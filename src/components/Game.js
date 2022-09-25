@@ -24,7 +24,7 @@ export default class Game {
     this.camera = new BABYLON.UniversalCamera(
       'camera1',
 
-      new BABYLON.Vector3(20, 6, -10),
+      new BABYLON.Vector3(20, 10, -10),
 
       this.scene
     )
@@ -38,29 +38,30 @@ export default class Game {
     this.camera.angularSensibility = 8000
     this.camera.speed = 1
 
-    this.camera.applyGravity = false
+    this.camera.applyGravity = true
     this.camera.checkCollisions = true
 
     this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)
 
     //   // clipping
     this.camera.minZ = 0.3
-    this.light = new HemisphericLight()
-    // this.light = new BABYLON.SpotLight(
-    //   'light1',
-    //   new BABYLON.Vector3(0, 5, -10),
-    //   new BABYLON.Vector3(0, 0, 1),
+    // this.light = new HemisphericLight()
+    this.light = new BABYLON.SpotLight(
+      'light1',
+      new BABYLON.Vector3(0, 5, -10),
+      new BABYLON.Vector3(0, 0, 1),
 
-    //   Math.PI / 3,
-    //   60,
+      Math.PI / 3,
+      60,
 
-    //   this.scene
-    // )
+      this.scene
+    )
 
-    // this.light.parent = this.camera
-    // this.light.intensity = 2
+    this.light.parent = this.camera
+    this.light.intensity = 3
 
     this.player = new Player(this.camera, this.light)
+    this.player.flickerLight()
     this.boss = new Boss()
   }
   createScene() {
@@ -71,11 +72,7 @@ export default class Game {
     // apply gravity
     const assumedFramesPerSecond = 60
     const earthGravity = -9.81
-    this.scene.gravity = new BABYLON.Vector3(
-      0,
-      -1,
-      0
-    )
+    this.scene.gravity = new BABYLON.Vector3(0, -1, 0)
 
     /* ---------------MAP----------------- */
     let ground = BABYLON.MeshBuilder.CreateGround(
@@ -105,23 +102,20 @@ export default class Game {
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
 
-    // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
-    // this.scene.fogDensity = 0.02
-    // this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
-    // this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
-
+    this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
+    this.scene.fogDensity = 0.02
+    this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
+    this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene, this)
     this.createCamera()
     document.addEventListener('keydown', (e) => {
-      if(e.key === 'Shift'){
+      if (e.key === 'Shift') {
         this.player.sprinting = true
-      }
-      else if(e.key === 'f'){
+      } else if (e.key === 'f') {
         this.player.toggleLight()
-      }
-      else if (e.key === 'e') {
+      } else if (e.key === 'e') {
         let foundKey = this.player.checkForKey(this.keys)
         if (foundKey) {
           document.getElementById(
@@ -137,8 +131,8 @@ export default class Game {
         }
       }
     })
-    document.addEventListener('keyup', (e)=>{
-      if(e.key === 'Shift'){
+    document.addEventListener('keyup', (e) => {
+      if (e.key === 'Shift') {
         this.player.sprinting = false
       }
     })
