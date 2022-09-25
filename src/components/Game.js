@@ -9,6 +9,8 @@ import environment from './Environment'
 import Player from './player'
 
 import dryGrass from './../assets/textures/dryGrass.jpg'
+import { HemisphericLight } from 'babylonjs'
+import Boss from './boss'
 
 export default class Game {
   constructor(canvasId) {
@@ -21,7 +23,7 @@ export default class Game {
   createCamera() {
     this.camera = new BABYLON.UniversalCamera(
       'camera1',
-      new BABYLON.Vector3(20, 5, -10),
+      new BABYLON.Vector3(20, 6, -10),
       this.scene
     )
     this.camera.setTarget(BABYLON.Vector3.Zero())
@@ -41,36 +43,37 @@ export default class Game {
 
     //   // clipping
     this.camera.minZ = 0.3
-    this.light = new BABYLON.SpotLight(
-      'light1',
-      new BABYLON.Vector3(0, 5, -10),
-      new BABYLON.Vector3(0, 0, 1),
+    this.light = new HemisphericLight()
+    // this.light = new BABYLON.SpotLight(
+    //   'light1',
+    //   new BABYLON.Vector3(0, 5, -10),
+    //   new BABYLON.Vector3(0, 0, 1),
 
 
-      Math.PI / 3,
-      60,
+    //   Math.PI / 3,
+    //   60,
 
 
-      this.scene
-    )
+    //   this.scene
+    // )
 
-    this.light.parent = this.camera
-    this.light.intensity = 2
+    // this.light.parent = this.camera
+    // this.light.intensity = 2
 
     this.player = new Player(this.camera, this.light)
+    this.boss = new Boss()
   }
-
   createScene() {
     this.scene = new BABYLON.Scene(this.engine)
     this.scene.onPointerDown = (evt) => {
       if (evt.button === 0) this.canvas.requestPointerLock()
     }
-    //apply gravity
-    const assumedFramesPerSecond = 144
+    // apply gravity
+    const assumedFramesPerSecond = 60
     const earthGravity = -9.81
     this.scene.gravity = new BABYLON.Vector3(
       0,
-      earthGravity / assumedFramesPerSecond,
+      -1,
       0
     )
 
@@ -144,17 +147,18 @@ export default class Game {
     newBuildingRoof.position.y = 17
     newBuildingRoof.position.z = 96
 
-    this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
-    this.scene.fogDensity = 0.02
-    this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
-    this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
+    // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
+    // this.scene.fogDensity = 0.02
+    // this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
+    // this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
+
+  
 
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene, this)
 
     this.createCamera()
-    this.player.flickerLight()
     document.addEventListener('keydown', (e) => {
       if(e.key === 'Shift'){
         this.player.sprinting = true
@@ -187,6 +191,7 @@ export default class Game {
     this.engine.runRenderLoop(() => {
       this.player.updatePlayer(this.camera)
       this.scene.render()
+      this.boss.rotate()
     })
 
     window.addEventListener('resize', () => {
