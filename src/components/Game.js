@@ -44,17 +44,17 @@ export default class Game {
     //   // clipping
     this.camera.minZ = 0.3
 
-    this.light = new BABYLON.HemisphericLight()
-    // this.light = new BABYLON.SpotLight(
-    //   'light1',
-    //   new BABYLON.Vector3(0, 5, -10),
-    //   new BABYLON.Vector3(0, 0, 1),
+    // this.light = new BABYLON.HemisphericLight()
+    this.light = new BABYLON.SpotLight(
+      'light1',
+      new BABYLON.Vector3(0, 5, -10),
+      new BABYLON.Vector3(0, 0, 1),
 
-    //   Math.PI / 3,
-    //   60,
+      Math.PI / 3,
+      60,
 
-    //   this.scene
-    // )
+      this.scene
+    )
 
     this.light.parent = this.camera
     this.light.intensity = 2
@@ -171,10 +171,10 @@ export default class Game {
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
 
-    // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
-    // this.scene.fogDensity = 0.02
-    // this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
-    // this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
+    this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
+    this.scene.fogDensity = 0.02
+    this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
+    this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene)

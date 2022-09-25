@@ -400,6 +400,51 @@ export default function environment(name, scene) {
     benchMesh2.material = bench2Wrap
     plaza2.checkCollisions = true
   })
+  /* ------------ LIGHTS --------------- */
+
+  // const lightbulb1 = new BABYLON.SpotLight(
+  //   'light1',
+  //   new BABYLON.Vector3(0, 5, -10),
+  //   new BABYLON.Vector3(0, -1, 0),
+
+  //   Math.PI / 3,
+  //   60,
+
+  //   scene
+  // )
+
+  // const lightBulb2 = new BABYLON.SpotLight(
+  //   'light2',
+  //   new BABYLON.Vector3(0, 5, 10),
+  //   new BABYLON.Vector3(0, -1, 0),
+
+  //   Math.PI / 3,
+  //   60,
+
+  //   scene
+  // )
+
+  // const lightbulb3 = new BABYLON.SpotLight(
+  //   'light3',
+  //   new BABYLON.Vector3(-10, 5, 0),
+  //   new BABYLON.Vector3(0, -1, 0),
+
+  //   Math.PI / 3,
+  //   60,
+
+  //   scene
+  // )
+
+  // const lightbulb4 = new BABYLON.SpotLight(
+  //   'light4',
+  //   new BABYLON.Vector3(10, 5, 0),
+  //   new BABYLON.Vector3(0, -1, 0),
+
+  //   Math.PI / 3,
+  //   60,
+
+  //   scene
+  // )
 }
 
 environment()
