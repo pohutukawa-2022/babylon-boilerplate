@@ -68,6 +68,9 @@ export default class Game {
     this.boss = new Boss(this.scene, this.player)
     setTimeout(()=> this.boss.initialize(), 5000)
   }
+ exitMenu(){
+  document.getElementById('test').innerHTML = ''
+  }
   createScene() {
     this.scene = new BABYLON.Scene(this.engine)
     this.scene.onPointerDown = (evt) => {
@@ -173,10 +176,10 @@ export default class Game {
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
 
-    // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
-    // this.scene.fogDensity = 0.02
-    // this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
-    // this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
+    this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
+    this.scene.fogDensity = 0.02
+    this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
+    this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
     /* ------------ LIGHTS --------------- */
 
@@ -227,11 +230,10 @@ export default class Game {
     environment('environment', this.scene)
     Furniture('furniture', this.scene, this)
     this.createCamera()
+    document.getElementById('test').innerHTML = 'test'
     document.addEventListener('keydown', (e) => {
-      if(e.key === 'l'){this.test = true
-        this.boss.body.position =new BABYLON.Vector3(2,3,4)
-        console.log(this.boss.body.absolutePosition, 'boss');
-        console.log(this.player.position, 'player');
+      if(e.key === 'l'){
+       this.exitMenu()
       }
       if (e.key === 'Shift') {
         this.player.sprinting = true

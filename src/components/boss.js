@@ -27,7 +27,7 @@ export default class Boss{
     })
   }
   rotate(){
-    this.body.rotation.y += 0.05
+    // this.body.rotation.y += 0.05
   }
   move(playerLocation){
     let playerX = playerLocation.x
