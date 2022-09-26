@@ -224,7 +224,7 @@ export default class Game {
     // )
 
     environment('environment', this.scene)
-    Furniture('furniture', this.scene)
+    Furniture('furniture', this.scene, this)
     this.createCamera()
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Shift') {
