@@ -65,7 +65,8 @@ export default class Game {
 
     this.player = new Player(this.camera, this.light)
     this.player.flickerLight()
-    this.boss = new Boss()
+    this.boss = new Boss(this.scene, this.player)
+    setTimeout(()=> this.boss.initialize(), 5000)
   }
   createScene() {
     this.scene = new BABYLON.Scene(this.engine)
@@ -224,9 +225,14 @@ export default class Game {
     // )
 
     environment('environment', this.scene)
-    Furniture('furniture', this.scene)
+    Furniture('furniture', this.scene, this)
     this.createCamera()
     document.addEventListener('keydown', (e) => {
+      if(e.key === 'l'){this.test = true
+        this.boss.body.position =new BABYLON.Vector3(2,3,4)
+        console.log(this.boss.body.absolutePosition, 'boss');
+        console.log(this.player.position, 'player');
+      }
       if (e.key === 'Shift') {
         this.player.sprinting = true
       } else if (e.key === 'f') {
@@ -256,6 +262,11 @@ export default class Game {
 
   doRender() {
     this.engine.runRenderLoop(() => {
+      if(this.boss.startMove){
+        this.boss.move(this.player.position)
+        this.boss.updatePosition()
+        this.boss.rotate()
+      }
       this.player.updatePlayer(this.camera)
       this.scene.render()
     })

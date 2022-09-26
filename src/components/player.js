@@ -41,10 +41,8 @@ export default class Player {
   }
   toggleLight() {
     if (this.isLightOn) {
-      console.log(this.light)
       this.light.setEnabled(false)
       this.isLightOn = false
-      console.log('off')
     } else {
       this.light.setEnabled(true)
       this.isLightOn = true
