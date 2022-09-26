@@ -25,6 +25,12 @@ import tvTexture from '../assets/textures/tv.jpg'
 
 import linoTexture from '../assets/textures/lino.jpeg'
 
+import darkWood from '../assets/textures/dark_wood.jpg'
+
+import redCarpet from '../assets/textures/red_carpet.jpg'
+
+import pianoTexture from '../assets/textures/piano.jpeg'
+
 export default function Furniture(name, scene, player) {
   const schoolDesk = BABYLON.SceneLoader.ImportMeshAsync(
     '',
@@ -951,6 +957,83 @@ export default function Furniture(name, scene, player) {
 
       keyMesh.material = keyWrap
     })
+  })
+
+  /* -----DRAMA ROOM------ */
+  const stageStairs = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'small_stairs.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+    keyMesh.position.x = -108
+    keyMesh.position.y = 2
+    keyMesh.position.z = 2
+
+    keyMesh.scaling.x = 1
+    keyMesh.scaling.y = 0.7
+    keyMesh.scaling.z = 1.3
+
+    keyMesh.rotation.y = Math.PI / 1
+
+    const stageBottom = new BABYLON.MeshBuilder.CreateBox('stageBottom', {
+      width: 25.5,
+      height: 6,
+      depth: 12,
+    })
+
+    stageBottom.position.x = -116.5
+    stageBottom.position.y = 1
+    stageBottom.position.z = 11.5
+
+    const stageMaterial = new BABYLON.StandardMaterial('stageMaterial', scene)
+    stageMaterial.diffuseTexture = new BABYLON.Texture(darkWood, scene)
+    keyMesh.material = stageMaterial
+    stageBottom.material = stageMaterial
+
+    const stageTop = new BABYLON.MeshBuilder.CreateBox('stageTop', {
+      width: 25.5,
+      height: 0.5,
+      depth: 12.5,
+    })
+    stageTop.position.x = -116.5
+    stageTop.position.y = 4
+    stageTop.position.z = 11
+
+    stageTop.rotation.y = Math.PI / 1
+
+    const stageTopWrap = new BABYLON.StandardMaterial('stageTopWrap', scene)
+    stageTopWrap.diffuseTexture = new BABYLON.Texture(redCarpet, scene)
+    stageTop.material = stageTopWrap
+
+    keyMesh.checkCollisions = true
+    stageBottom.checkCollisions = true
+    stageTop.checkCollisions = true
+  })
+
+  const piano = new BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'piano.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+    keyMesh.scaling.x = 7
+    keyMesh.scaling.y = 7
+    keyMesh.scaling.z = 7
+
+    keyMesh.position.x = -122
+    keyMesh.position.y = 3
+    keyMesh.position.z = 16.5
+
+    keyMesh.rotation.y = Math.PI / 1
+
+    const pianoWrap = new BABYLON.StandardTexture('pianoWrap', scene)
+    pianoWrap.diffuseTexture = new BABYLON.Texture(pianoTexture, scene)
+
+    keyMesh.material = pianoWrap
+    keyMesh.checkCollisions = true
   })
 }
 Furniture()

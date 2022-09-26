@@ -404,7 +404,6 @@ export default function environment(name, scene) {
     plaza2.checkCollisions = true
   })
 
-
   const bench3 = BABYLON.SceneLoader.ImportMeshAsync(
     '',
     '../../public/models/Bench_LowRes.obj'
@@ -520,6 +519,54 @@ export default function environment(name, scene) {
     keyMesh.material = keyWrap
   })
 
+  /* ---------ROOFTOP--------- */
+  const gate = new BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'gate.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+    keyMesh.scaling.x = 1
+    keyMesh.scaling.y = 1
+    keyMesh.scaling.z = 1
+
+    keyMesh.position.x = 0
+    keyMesh.position.y = 1
+    keyMesh.position.z = 0
+  })
+
+  const angel1 = new BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'angel.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+    keyMesh.scaling.x = 10
+    keyMesh.scaling.y = 10
+    keyMesh.scaling.z = 10
+
+    keyMesh.position.x = 0
+    keyMesh.position.y = 1
+    keyMesh.position.z = 0
+  })
+
+  const angel2 = new BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'angel.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+    keyMesh.scaling.x = 10
+    keyMesh.scaling.y = 10
+    keyMesh.scaling.z = 10
+
+    keyMesh.position.x = 0
+    keyMesh.position.y = 1
+    keyMesh.position.z = 0
+  })
 }
 
 environment()
