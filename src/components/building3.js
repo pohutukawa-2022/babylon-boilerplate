@@ -1,3 +1,9 @@
+import metalTexture from '../assets/textures/metal.jpeg'
+import bookTexture from '../assets/textures/bookshelf.png'
+import darkWood from '../assets/textures/dark_wood.jpg'
+import redCarpet from '../assets/textures/red_carpet.jpg'
+import pianoTexture from '../assets/textures/piano.jpeg'
+
 export default function building3(name, scene) {
   /* -------LIBRARY-------- */
 

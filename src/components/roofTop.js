@@ -1,3 +1,5 @@
+import concrete from './../assets/textures/ceramics.png'
+
 export default function roofTop(name, scene) {
   /* ---------ROOFTOP--------- */
 
