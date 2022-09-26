@@ -17,6 +17,9 @@ import hedges from './../assets/textures/hedges.jpg'
 
 import { HemisphericLight } from 'babylonjs'
 import Boss from './boss'
+import building3 from './building3'
+import building4 from './building4'
+import roofTop from './roofTop'
 
 export default class Game {
   constructor(canvasId) {
@@ -44,7 +47,7 @@ export default class Game {
     this.camera.angularSensibility = 8000
     this.camera.speed = 1
 
-    this.camera.applyGravity = true
+    this.camera.applyGravity = false
     this.camera.checkCollisions = true
 
     this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)
@@ -227,10 +230,15 @@ export default class Game {
     // )
 
     environment('environment', this.scene)
-    // Furniture('furniture', this.scene, this)
+
+    Furniture('furniture', this.scene)
     building1('building1', this.scene, this)
     building2('building2', this.scene, this)
+    building3('building3', this.scene)
+    building4('building4', this.scene)
+    roofTop('roofTop', this.scene)
     keysAndMed('keysAndMed', this.scene, this)
+
 
     this.createCamera()
     document.addEventListener('keydown', (e) => {
