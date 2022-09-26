@@ -1,19 +1,7 @@
 import * as BABYLON from 'babylonjs'
 import 'babylonjs-loaders'
 
-import metalTexture from '../assets/textures/metal.jpeg'
-import woodTexture from '../assets/textures/darkWood.jpeg'
-import bathTexture from '../assets/textures/bath.jpeg'
 import keyTexture from '../assets/textures/key.jpeg'
-import bookTexture from '../assets/textures/bookshelf.png'
-import wellTexture from '../assets/textures/well.png'
-import stairTexture from '../assets/textures/stair.jpg'
-import sofaTexture from '../assets/textures/sofa.jpg'
-import redwoodTexture from '../assets/textures/redwood.jpeg'
-import tvTexture from '../assets/textures/tv.jpg'
-import linoTexture from '../assets/textures/lino.jpeg'
-import diningTexture from '../assets/textures/diningset.png'
-import plateTexture from '../assets/textures/plate.png'
 import medTexture from '../assets/textures/med.png'
 
 export default function keysAndMed(name, scene, player) {
@@ -116,13 +104,13 @@ export default function keysAndMed(name, scene, player) {
     const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
     keyMesh.material = keyWrap
-    // player.keys.push({
-    //   key: keyMesh,
-    //   xMax: -82,
-    //   xMin: -92,
-    //   zMax: -76,
-    //   zMin: -68,
-    // })
+    player.keys.push({
+      key: keyMesh,
+      xMax: 100,
+      xMin: 120,
+      zMax: 80,
+      zMin: 100,
+    })
   })
 
   //----------medkit------------//
