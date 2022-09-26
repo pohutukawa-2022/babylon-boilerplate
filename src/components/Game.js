@@ -60,8 +60,8 @@ export default class Game {
     //   this.scene
     // )
 
-    this.light.parent = this.camera
-    this.light.intensity = 3
+    // this.light.parent = this.camera
+    // this.light.intensity = 3
 
     this.player = new Player(this.camera, this.light)
     this.player.flickerLight()
@@ -75,7 +75,7 @@ export default class Game {
     // apply gravity
     const assumedFramesPerSecond = 60
     const earthGravity = -9.81
-    this.scene.gravity = new BABYLON.Vector3(0, -1, 0)
+    this.scene.gravity = new BABYLON.Vector3(0, -0.5, 0)
 
     /* ---------------MAP----------------- */
     let ground = BABYLON.MeshBuilder.CreateGround(
@@ -224,7 +224,7 @@ export default class Game {
     // )
 
     environment('environment', this.scene)
-    Furniture('furniture', this.scene)
+    Furniture('furniture', this.scene, this)
     this.createCamera()
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Shift') {

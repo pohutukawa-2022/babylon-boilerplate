@@ -519,6 +519,7 @@ export default function environment(name, scene) {
     keyMesh.material = keyWrap
   })
 
+
   /* ---------ROOFTOP--------- */
 
   const angel1 = new BABYLON.SceneLoader.ImportMeshAsync(
@@ -566,6 +567,7 @@ export default function environment(name, scene) {
     keyMesh.material = angel2Wrap
     keyMesh.checkCollisions = true
   })
+
 }
 
 environment()
