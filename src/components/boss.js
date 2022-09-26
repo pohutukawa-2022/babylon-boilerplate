@@ -1,13 +1,24 @@
 export default class Boss{
   constructor(){
-    this.boss = BABYLON.MeshBuilder.CreateBox('boss', {
-      width: 5,
-      height: 10,
-      depth: 5,
+    this.body = BABYLON.SceneLoader.ImportMeshAsync(
+      '',
+      '../../public/models/',
+      'Ghost.obj'
+    ).then((x) => {
+      const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+  
+      keyMesh.position.x = 20
+      keyMesh.position.y = 1
+      keyMesh.position.z = 0
+  
+      keyMesh.scaling.x = 0.07
+      keyMesh.scaling.y = 0.07
+      keyMesh.scaling.z = 0.07
+  
+      const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+      keyWrap.diffuseTexture = new BABYLON.Texture(ghostTexture, scene)
+      keyMesh.material = keyWrap
     })
-    this.boss.position.y = 5
-    this.boss.position.z = 20
-    this.boss.position.x = 30
     
   }
   rotate(){
