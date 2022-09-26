@@ -520,21 +520,6 @@ export default function environment(name, scene) {
   })
 
   /* ---------ROOFTOP--------- */
-  const gate = new BABYLON.SceneLoader.ImportMeshAsync(
-    '',
-    '../../public/models/',
-    'gate.obj'
-  ).then((x) => {
-    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
-
-    keyMesh.scaling.x = 1
-    keyMesh.scaling.y = 1
-    keyMesh.scaling.z = 1
-
-    keyMesh.position.x = 0
-    keyMesh.position.y = 1
-    keyMesh.position.z = 0
-  })
 
   const angel1 = new BABYLON.SceneLoader.ImportMeshAsync(
     '',
@@ -543,13 +528,20 @@ export default function environment(name, scene) {
   ).then((x) => {
     const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
 
-    keyMesh.scaling.x = 10
-    keyMesh.scaling.y = 10
-    keyMesh.scaling.z = 10
+    keyMesh.scaling.x = 0.04
+    keyMesh.scaling.y = 0.04
+    keyMesh.scaling.z = 0.04
 
-    keyMesh.position.x = 0
-    keyMesh.position.y = 1
-    keyMesh.position.z = 0
+    keyMesh.position.x = -80
+    keyMesh.position.y = 20
+    keyMesh.position.z = 6
+
+    keyMesh.rotation.y = Math.PI / 1
+
+    const angel1Wrap = new BABYLON.StandardMaterial('angel1Wrap', scene)
+    angel1Wrap.diffuseTexture = new BABYLON.Texture(concrete, scene)
+    keyMesh.material = angel1Wrap
+    keyMesh.checkCollisions = true
   })
 
   const angel2 = new BABYLON.SceneLoader.ImportMeshAsync(
@@ -559,13 +551,20 @@ export default function environment(name, scene) {
   ).then((x) => {
     const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
 
-    keyMesh.scaling.x = 10
-    keyMesh.scaling.y = 10
-    keyMesh.scaling.z = 10
+    keyMesh.scaling.x = 0.04
+    keyMesh.scaling.y = 0.04
+    keyMesh.scaling.z = 0.04
 
-    keyMesh.position.x = 0
-    keyMesh.position.y = 1
-    keyMesh.position.z = 0
+    keyMesh.position.x = -80
+    keyMesh.position.y = 20
+    keyMesh.position.z = 16
+
+    keyMesh.rotation.y = Math.PI / 1
+
+    const angel2Wrap = new BABYLON.StandardMaterial('angel2Wrap', scene)
+    angel2Wrap.diffuseTexture = new BABYLON.Texture(concrete, scene)
+    keyMesh.material = angel2Wrap
+    keyMesh.checkCollisions = true
   })
 }
 
