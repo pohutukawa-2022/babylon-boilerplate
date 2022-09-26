@@ -16,6 +16,12 @@ import diningTexture from '../assets/textures/diningset.png'
 import plateTexture from '../assets/textures/plate.png'
 import medTexture from '../assets/textures/med.png'
 
+import darkWood from '../assets/textures/dark_wood.jpg'
+
+import redCarpet from '../assets/textures/red_carpet.jpg'
+
+import pianoTexture from '../assets/textures/piano.jpeg'
+
 export default function Furniture(name, scene, player) {
   const schoolDesk = BABYLON.SceneLoader.ImportMeshAsync(
     '',
@@ -685,10 +691,13 @@ export default function Furniture(name, scene, player) {
 
       keyMesh.rotation.y = Math.PI / 1
 
-      const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
-      keyWrap.diffuseTexture = new BABYLON.Texture(bookTexture, scene)
-      keyMesh.material = keyWrap
-    })
+
+    const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(bookTexture, scene)
+    keyMesh.material = keyWrap
+  })
+
+
 
     const bookshelf10 = BABYLON.SceneLoader.ImportMeshAsync(
       '',
@@ -746,14 +755,18 @@ export default function Furniture(name, scene, player) {
       keyMesh.scaling.y = 4
       keyMesh.scaling.z = 3
 
-      keyMesh.rotation.y = Math.PI / 2
 
-      const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
-      keyWrap.diffuseTexture = new BABYLON.Texture(bookTexture, scene)
-      keyMesh.material = keyWrap
-    })
+    keyMesh.rotation.y = Math.PI / 2
 
-    const bookshelf13 = BABYLON.SceneLoader.ImportMeshAsync(
+
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(redwoodTexture, scene)
+    keyMesh.material = keyWrap
+
+    keyMesh.checkCollisions = true
+  })
+  
+      const bookshelf13 = BABYLON.SceneLoader.ImportMeshAsync(
       '',
       '../../public/models/',
       'bookshelf.obj'
@@ -834,7 +847,91 @@ export default function Furniture(name, scene, player) {
 
       const keyWrap = new BABYLON.StandardMaterial('keydWrap', scene)
       keyWrap.diffuseTexture = new BABYLON.Texture(bookTexture, scene)
+      keyMesh.material = keyWrap
+      })
 
+
+
+  /* -----DRAMA ROOM------ */
+  const stageStairs = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'small_stairs.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+    keyMesh.position.x = -108
+    keyMesh.position.y = 2
+    keyMesh.position.z = 2
+
+    keyMesh.scaling.x = 1
+    keyMesh.scaling.y = 0.7
+    keyMesh.scaling.z = 1.3
+
+    keyMesh.rotation.y = Math.PI / 1
+
+    const stageBottom = new BABYLON.MeshBuilder.CreateBox('stageBottom', {
+      width: 25.5,
+      height: 6,
+      depth: 12,
+    })
+
+    stageBottom.position.x = -116.5
+    stageBottom.position.y = 1
+    stageBottom.position.z = 11.5
+
+    const stageMaterial = new BABYLON.StandardMaterial('stageMaterial', scene)
+    stageMaterial.diffuseTexture = new BABYLON.Texture(darkWood, scene)
+    keyMesh.material = stageMaterial
+    stageBottom.material = stageMaterial
+
+    const stageTop = new BABYLON.MeshBuilder.CreateBox('stageTop', {
+      width: 25.5,
+      height: 0.5,
+      depth: 12.5,
+
+       stageTop.position.x = -116.5
+    stageTop.position.y = 4
+    stageTop.position.z = 11
+
+    stageTop.rotation.y = Math.PI / 1
+
+    const stageTopWrap = new BABYLON.StandardMaterial('stageTopWrap', scene)
+    stageTopWrap.diffuseTexture = new BABYLON.Texture(redCarpet, scene)
+    stageTop.material = stageTopWrap
+
+    keyMesh.checkCollisions = true
+    stageBottom.checkCollisions = true
+    stageTop.checkCollisions = true
+    
+    })
+    
+     const piano = new BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'piano.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+    keyMesh.scaling.x = 7
+    keyMesh.scaling.y = 7
+    keyMesh.scaling.z = 7
+
+    keyMesh.position.x = -122
+    keyMesh.position.y = 3
+    keyMesh.position.z = 17.5
+
+    keyMesh.rotation.y = Math.PI / 1
+
+    const pianoWrap = new BABYLON.StandardMaterial('pianoWrap', scene)
+    pianoWrap.diffuseTexture = new BABYLON.Color3(0, 0, 0)
+
+    keyMesh.material = pianoWrap
+    keyMesh.checkCollisions = true
+  })
+
+
+//-----------principle office--------//
       const sofa = BABYLON.SceneLoader.ImportMeshAsync(
         '',
         '../../public/models/',
@@ -945,6 +1042,8 @@ export default function Furniture(name, scene, player) {
         keyWrap.diffuseTexture = new BABYLON.Texture(woodTexture, scene)
         keyMesh.material = keyWrap
       })
+      
+      //-----------kitchen-------//
 
       const gas = BABYLON.SceneLoader.ImportMeshAsync(
         '',
@@ -1267,7 +1366,119 @@ export default function Furniture(name, scene, player) {
 
         keyMesh.material = keyWrap
       })
-    })
+
+
+ 
+
+  /*-----CLASSROOM 2------*/
+  const school2Chair = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'OldschoolChair.obj'
+  ).then((x) => {
+    const chairMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    chairMesh.position.x = -75
+    chairMesh.position.y = 0
+    chairMesh.position.z = -53
+    chairMesh.scaling.x = 0.05
+    chairMesh.scaling.y = 0.05
+    chairMesh.scaling.z = 0.05
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    chairMesh.material = lockerWrap
+  })
+
+  const school2Chair2 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'OldschoolChair.obj'
+  ).then((x) => {
+    const chairMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    chairMesh.position.x = -85
+    chairMesh.position.y = 0
+    chairMesh.position.z = -53
+    chairMesh.scaling.x = 0.05
+    chairMesh.scaling.y = 0.05
+    chairMesh.scaling.z = 0.05
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    chairMesh.material = lockerWrap
+  })
+
+  const school2Chair3 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'OldschoolChair.obj'
+  ).then((x) => {
+    const chairMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    chairMesh.position.x = -95
+    chairMesh.position.y = 0
+    chairMesh.position.z = -53
+    chairMesh.scaling.x = 0.05
+    chairMesh.scaling.y = 0.05
+    chairMesh.scaling.z = 0.05
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    chairMesh.material = lockerWrap
+  })
+
+  const school2Chair4 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'OldschoolChair.obj'
+  ).then((x) => {
+    const chairMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    chairMesh.position.x = -75
+    chairMesh.position.y = 0
+    chairMesh.position.z = -43
+    chairMesh.scaling.x = 0.05
+    chairMesh.scaling.y = 0.05
+    chairMesh.scaling.z = 0.05
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    chairMesh.material = lockerWrap
+  })
+
+  const school2Chair5 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'OldschoolChair.obj'
+  ).then((x) => {
+    const chairMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    chairMesh.position.x = -85
+    chairMesh.position.y = 0
+    chairMesh.position.z = -43
+    chairMesh.scaling.x = 0.05
+    chairMesh.scaling.y = 0.05
+    chairMesh.scaling.z = 0.05
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    chairMesh.material = lockerWrap
+  })
+
+  const school2Chair6 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'OldschoolChair.obj'
+  ).then((x) => {
+    const chairMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    chairMesh.position.x = -95
+    chairMesh.position.y = 0
+    chairMesh.position.z = -43
+    chairMesh.scaling.x = 0.05
+    chairMesh.scaling.y = 0.05
+    chairMesh.scaling.z = 0.05
+
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
+    chairMesh.material = lockerWrap
   })
 }
+
+
 Furniture()
