@@ -7,6 +7,9 @@ import fragShader from './../shaders/shader.frag'
 import Furniture from './Furniture'
 import environment from './Environment'
 import Player from './player'
+import building1 from './building1'
+import building2 from './building2'
+import keysAndMed from './keysAndMed'
 
 import dryGrass from './../assets/textures/dryGrass.jpg'
 
@@ -224,7 +227,11 @@ export default class Game {
     // )
 
     environment('environment', this.scene)
-    Furniture('furniture', this.scene, this)
+    // Furniture('furniture', this.scene, this)
+    building1('building1', this.scene, this)
+    building2('building2', this.scene, this)
+    keysAndMed('keysAndMed', this.scene, this)
+
     this.createCamera()
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Shift') {
