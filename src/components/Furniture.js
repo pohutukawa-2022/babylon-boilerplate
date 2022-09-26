@@ -929,6 +929,29 @@ export default function Furniture(name, scene, player) {
       keyMesh.material = keyWrap
     })
 
+    const sink = BABYLON.SceneLoader.ImportMeshAsync(
+      '',
+      '../../public/models/',
+      'Sink.obj'
+    ).then((x) => {
+      const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+      keyMesh.position.x = -11.8
+      keyMesh.position.y = 0
+      keyMesh.position.z = 127.5
+
+      keyMesh.scaling.x = 0.8
+      keyMesh.scaling.y = 0.8
+      keyMesh.scaling.z = 0.8
+
+      keyMesh.rotation.y = Math.PI / 1
+
+      const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+      keyWrap.diffuseTexture = new BABYLON.Texture(linoTexture, scene)
+
+      keyMesh.material = keyWrap
+    })
+
     const cabinet1 = BABYLON.SceneLoader.ImportMeshAsync(
       '',
       '../../public/models/',
@@ -936,18 +959,133 @@ export default function Furniture(name, scene, player) {
     ).then((x) => {
       const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
 
-      keyMesh.position.x = -15
+      keyMesh.position.x = 15
+      keyMesh.position.y = 0
+      keyMesh.position.z = 106
+
+      keyMesh.scaling.x = 0.8
+      keyMesh.scaling.y = 0.8
+      keyMesh.scaling.z = 0.8
+
+      keyMesh.rotation.y = Math.PI / -2
+
+      const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+      keyWrap.diffuseTexture = new BABYLON.Texture(linoTexture, scene)
+
+      keyMesh.material = keyWrap
+    })
+
+    const cabinet2 = BABYLON.SceneLoader.ImportMeshAsync(
+      '',
+      '../../public/models/',
+      'Cabinet_2.obj'
+    ).then((x) => {
+      const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+      keyMesh.position.x = 15
+      keyMesh.position.y = 0
+      keyMesh.position.z = 110.58
+
+      keyMesh.scaling.x = 0.8
+      keyMesh.scaling.y = 0.8
+      keyMesh.scaling.z = 0.8
+
+      keyMesh.rotation.y = Math.PI / -2
+
+      const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+      keyWrap.diffuseTexture = new BABYLON.Texture(linoTexture, scene)
+
+      keyMesh.material = keyWrap
+    })
+
+    const cabinet3 = BABYLON.SceneLoader.ImportMeshAsync(
+      '',
+      '../../public/models/',
+      'Cabinet_3.obj'
+    ).then((x) => {
+      const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+      keyMesh.position.x = -4.58
       keyMesh.position.y = 0
       keyMesh.position.z = 127.5
 
-      keyMesh.scaling.x = 0.7
-      keyMesh.scaling.y = 0.7
-      keyMesh.scaling.z = 0.7
+      keyMesh.scaling.x = 0.8
+      keyMesh.scaling.y = 0.8
+      keyMesh.scaling.z = 0.8
 
       keyMesh.rotation.y = Math.PI / 1
 
       const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
       keyWrap.diffuseTexture = new BABYLON.Texture(linoTexture, scene)
+
+      keyMesh.material = keyWrap
+    })
+
+    const cabinet4 = BABYLON.SceneLoader.ImportMeshAsync(
+      '',
+      '../../public/models/',
+      'Cabinet_4.obj'
+    ).then((x) => {
+      const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+      keyMesh.position.x = 0
+      keyMesh.position.y = 0
+      keyMesh.position.z = 127.5
+
+      keyMesh.scaling.x = 0.8
+      keyMesh.scaling.y = 0.8
+      keyMesh.scaling.z = 0.8
+
+      keyMesh.rotation.y = Math.PI / 1
+
+      const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+      keyWrap.diffuseTexture = new BABYLON.Texture(linoTexture, scene)
+
+      keyMesh.material = keyWrap
+    })
+
+    const cabinet5 = BABYLON.SceneLoader.ImportMeshAsync(
+      '',
+      '../../public/models/',
+      'Cabinet_5.obj'
+    ).then((x) => {
+      const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+      keyMesh.position.x = 7.2
+      keyMesh.position.y = 0
+      keyMesh.position.z = 127.5
+
+      keyMesh.scaling.x = 0.8
+      keyMesh.scaling.y = 0.8
+      keyMesh.scaling.z = 0.8
+
+      keyMesh.rotation.y = Math.PI / 1
+
+      const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+      keyWrap.diffuseTexture = new BABYLON.Texture(linoTexture, scene)
+
+      keyMesh.material = keyWrap
+    })
+
+    const fridge = BABYLON.SceneLoader.ImportMeshAsync(
+      '',
+      '../../public/models/',
+      'Refrigerator.obj'
+    ).then((x) => {
+      const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+      keyMesh.position.x = 15
+      keyMesh.position.y = 0
+      keyMesh.position.z = 116
+
+      keyMesh.scaling.x = 0.8
+      keyMesh.scaling.y = 0.8
+      keyMesh.scaling.z = 0.8
+
+      keyMesh.rotation.y = Math.PI / -2
+
+      const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+      keyWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
 
       keyMesh.material = keyWrap
     })

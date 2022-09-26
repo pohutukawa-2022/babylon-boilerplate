@@ -41,27 +41,27 @@ export default class Game {
     this.camera.angularSensibility = 8000
     this.camera.speed = 1
 
-    this.camera.applyGravity = true
+    this.camera.applyGravity = false
     this.camera.checkCollisions = true
 
     this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)
 
     //   // clipping
     this.camera.minZ = 0.3
-    // this.light = new HemisphericLight()
-    this.light = new BABYLON.SpotLight(
-      'light1',
-      new BABYLON.Vector3(0, 5, -10),
-      new BABYLON.Vector3(0, 0, 1),
+    this.light = new HemisphericLight()
+    // this.light = new BABYLON.SpotLight(
+    //   'light1',
+    //   new BABYLON.Vector3(0, 5, -10),
+    //   new BABYLON.Vector3(0, 0, 1),
 
-      Math.PI / 3,
-      60,
+    //   Math.PI / 3,
+    //   60,
 
-      this.scene
-    )
+    //   this.scene
+    // )
 
-    this.light.parent = this.camera
-    this.light.intensity = 3
+    // this.light.parent = this.camera
+    // this.light.intensity = 3
 
     this.player = new Player(this.camera, this.light)
     this.player.flickerLight()
@@ -172,10 +172,10 @@ export default class Game {
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
 
-    this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
-    this.scene.fogDensity = 0.02
-    this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
-    this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
+    // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
+    // this.scene.fogDensity = 0.02
+    // this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
+    // this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
     /* ------------ LIGHTS --------------- */
 
