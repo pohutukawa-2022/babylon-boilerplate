@@ -14,6 +14,9 @@ import hedges from './../assets/textures/hedges.jpg'
 
 import { HemisphericLight } from 'babylonjs'
 import Boss from './boss'
+import building3 from './building3'
+import building4 from './building4'
+import roofTop from './roofTop'
 
 export default class Game {
   constructor(canvasId) {
@@ -225,6 +228,10 @@ export default class Game {
 
     environment('environment', this.scene)
     Furniture('furniture', this.scene)
+    building3('building3', this.scene)
+    building4('building4', this.scene)
+    roofTop('roofTop', this.scene)
+
     this.createCamera()
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Shift') {
