@@ -41,7 +41,7 @@ export default class Game {
     this.camera.angularSensibility = 8000
     this.camera.speed = 1
 
-    this.camera.applyGravity = false
+    this.camera.applyGravity = true
     this.camera.checkCollisions = true
 
     this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)
@@ -75,7 +75,7 @@ export default class Game {
     // apply gravity
     const assumedFramesPerSecond = 60
     const earthGravity = -9.81
-    this.scene.gravity = new BABYLON.Vector3(0, -1, 0)
+    this.scene.gravity = new BABYLON.Vector3(0, -0.5, 0)
 
     /* ---------------MAP----------------- */
     let ground = BABYLON.MeshBuilder.CreateGround(
