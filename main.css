@@ -150,7 +150,7 @@ img {
 }
 
 .instruction-title{
-  font-size: 2rem;
+  font-size: 2.5rem;
   padding-bottom: 2rem;
 }
 
@@ -164,6 +164,8 @@ img {
 
 .e-content{
   margin-left: 2rem;
+  font-size: 1.3rem;
+  color: #fff;
 }
 
 .shift-key{
@@ -173,7 +175,9 @@ img {
 
 .shift-content{
   margin-left: 3.7rem;
+  font-size: 1.3rem;
   margin-top: 1rem;
+  color: #fff;
 }
 
 .f-key{
@@ -184,6 +188,8 @@ img {
 .f-content{
   margin-left: 2.3rem;
   margin-top: 1rem;
+  color: #fff;
+  font-size: 1.3rem;
 }
 
 .home__images{
