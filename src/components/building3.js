@@ -3,6 +3,7 @@ import bookTexture from '../assets/textures/bookshelf.png'
 import darkWood from '../assets/textures/dark_wood.jpg'
 import redCarpet from '../assets/textures/red_carpet.jpg'
 import pianoTexture from '../assets/textures/piano.jpeg'
+import chanTexture from '../assets/textures/chan.jpg'
 
 export default function building3(name, scene) {
   /* -------LIBRARY-------- */
@@ -394,6 +395,29 @@ export default function building3(name, scene) {
 
     keyMesh.material = micWrap
   })
+
+  // const chan = new BABYLON.SceneLoader.ImportMeshAsync(
+  //   '',
+  //   '../../public/models/',
+  //   'chan.obj'
+  // ).then((x) => {
+  //   const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+  //   keyMesh.scaling.x = 20
+  //   keyMesh.scaling.y = 20
+  //   keyMesh.scaling.z = 20
+
+  //   keyMesh.position.x = 0
+  //   keyMesh.position.y = 0
+  //   keyMesh.position.z = 0
+
+  //   keyMesh.rotation.y = Math.PI / 1
+
+  //   const micWrap = new BABYLON.StandardMaterial('micWrap', scene)
+  //   micWrap.diffuseTexture = new BABYLON.Texture(chanTexture, scene)
+
+  //   keyMesh.material = micWrap
+  // })
 
   /*-----CLASSROOM 2------*/
   const school2Chair = BABYLON.SceneLoader.ImportMeshAsync(

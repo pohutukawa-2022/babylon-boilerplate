@@ -4,6 +4,7 @@ import 'babylonjs-loaders'
 import metalTexture from '../assets/textures/metal.jpeg'
 import woodTexture from '../assets/textures/darkWood.jpeg'
 import bathTexture from '../assets/textures/bath.jpeg'
+import personTexture from '../assets/textures/metal.jpeg'
 
 export default function building1(name, scene, player) {
   const schoolDesk = BABYLON.SceneLoader.ImportMeshAsync(
@@ -346,5 +347,77 @@ export default function building1(name, scene, player) {
     const bathWrap = new BABYLON.StandardMaterial('bathWrap', scene)
     bathWrap.diffuseTexture = new BABYLON.Texture(bathTexture, scene)
     bathMesh.material = bathWrap
+  })
+
+  const person = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'person.obj'
+  ).then((x) => {
+    const lockerMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    lockerMesh.position.x = 95
+    lockerMesh.position.y = 1
+    lockerMesh.position.z = 47
+    lockerMesh.scaling.x = 0.05
+    lockerMesh.scaling.y = 0.05
+    lockerMesh.scaling.z = 0.05
+    lockerMesh.rotation.y = Math.PI / 1
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(personTexture, scene)
+    lockerMesh.material = lockerWrap
+  })
+
+  const person2 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'person.obj'
+  ).then((x) => {
+    const lockerMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    lockerMesh.position.x = 102
+    lockerMesh.position.y = 1
+    lockerMesh.position.z = 47
+    lockerMesh.scaling.x = 0.05
+    lockerMesh.scaling.y = 0.05
+    lockerMesh.scaling.z = 0.05
+    lockerMesh.rotation.y = Math.PI / 1
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(personTexture, scene)
+    lockerMesh.material = lockerWrap
+  })
+
+  const person3 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'person.obj'
+  ).then((x) => {
+    const lockerMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    lockerMesh.position.x = 109
+    lockerMesh.position.y = 1
+    lockerMesh.position.z = 47
+    lockerMesh.scaling.x = 0.05
+    lockerMesh.scaling.y = 0.05
+    lockerMesh.scaling.z = 0.05
+    lockerMesh.rotation.y = Math.PI / 1
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(personTexture, scene)
+    lockerMesh.material = lockerWrap
+  })
+
+  const person4 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'person.obj'
+  ).then((x) => {
+    const lockerMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
+    lockerMesh.position.x = 116
+    lockerMesh.position.y = 1
+    lockerMesh.position.z = 47
+    lockerMesh.scaling.x = 0.05
+    lockerMesh.scaling.y = 0.05
+    lockerMesh.scaling.z = 0.05
+    lockerMesh.rotation.y = Math.PI / 1
+    const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
+    lockerWrap.diffuseTexture = new BABYLON.Texture(personTexture, scene)
+    lockerMesh.material = lockerWrap
   })
 }
