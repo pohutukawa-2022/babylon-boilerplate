@@ -79,8 +79,8 @@ export default function keysAndMed(name, scene, player) {
       key: keyMesh,
       xMax: -82,
       xMin: -92,
-      zMax: -76,
-      zMin: -68,
+      zMax: -68,
+      zMin: -76,
     })
   })
 
@@ -105,11 +105,12 @@ export default function keysAndMed(name, scene, player) {
     keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
     keyMesh.material = keyWrap
     player.keys.push({
+      name: 'key4',
       key: keyMesh,
-      xMax: 100,
-      xMin: 120,
-      zMax: 80,
-      zMin: 100,
+      xMax: 130,
+      xMin: 80,
+      zMax: 120,
+      zMin: 60,
     })
   })
 

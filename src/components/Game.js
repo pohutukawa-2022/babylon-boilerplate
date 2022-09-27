@@ -69,14 +69,14 @@ export default class Game {
     // this.light.parent = this.camera
     // this.light.intensity = 3
 
-    this.player = new Player(this.camera, this.light)
+    this.player = new Player(this.camera, this.light, this)
     this.player.flickerLight()
     this.boss = new Boss(this.scene, this.player)
   }
- exitMenu(){
-  let menu = document.getElementById('main')
-  menu.remove()
-  this.inMenu = false
+  exitMenu() {
+    let menu = document.getElementById('main')
+    menu.remove()
+    this.inMenu = false
   }
   createScene() {
     this.scene = new BABYLON.Scene(this.engine)
@@ -113,9 +113,7 @@ export default class Game {
 
   doRender() {
     this.engine.runRenderLoop(() => {
-      if(this.boss.startMove){
-        this.boss.move(this.player.position)
-      }
+      this.boss.updateBoss()
       this.player.updatePlayer(this.camera)
       this.scene.render()
     })

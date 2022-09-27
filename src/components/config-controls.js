@@ -1,13 +1,12 @@
-export default function configControls(game){
+export default function configControls(game) {
   document.addEventListener('keydown', (e) => {
-    if(e.key === 'Enter'){
-      if(game.inMenu){
+    if (e.key === 'Enter') {
+      if (game.inMenu) {
         game.exitMenu()
       }
-    }else if(e.key === '1'){
+    } else if (e.key === '1') {
       game.boss.initialize()
-    }
-    else if (e.key === 'Shift') {
+    } else if (e.key === 'Shift') {
       game.player.sprinting = true
     } else if (e.key === 'f') {
       game.player.toggleLight()

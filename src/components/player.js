@@ -1,5 +1,5 @@
 export default class Player {
-  constructor(camera, light) {
+  constructor(camera, light, game) {
     this.camera = camera
     this.light = light
     this.isLightOn = true
@@ -11,6 +11,7 @@ export default class Player {
     this.sprinting = false
     this.maxSpeed = 2
     this.minSpeed = 0.7
+    this.game = game
   }
   updateLocation(camera) {
     this.position = camera.position
@@ -22,6 +23,15 @@ export default class Player {
       let key = allKeys[i]
       let { xMax, xMin, zMax, zMin } = key
       let position = this.position
+      console.log(
+        key.name,
+        position.x < xMax,
+        position.x > xMin,
+        position.z < zMax,
+        position.z > zMin
+      )
+      console.log(key)
+      console.log(position)
       if (
         position.x < xMax &&
         position.x > xMin &&
@@ -43,6 +53,7 @@ export default class Player {
     if (this.isLightOn) {
       this.light.setEnabled(false)
       this.isLightOn = false
+      this.game.boss.teleportBoss()
     } else {
       this.light.setEnabled(true)
       this.isLightOn = true
