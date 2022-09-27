@@ -41,6 +41,19 @@ export default function setBoundry(scene){
   boundry2.position.y = 5
   boundry2.position.z = -150
 
+  // let test = new BABYLON.MeshBuilder.CreateBox(
+  //   'boundry2',
+  //   {
+  //     width: 20,
+  //     height: 6,
+  //     depth: 10,
+  //   },
+  //   scene
+  // )
+  // test.position.x = -95
+  // test.position.y = 20
+  // test.position.z = -15
+
   const hedgeWrap2 = new BABYLON.StandardMaterial('hedge2', scene)
   hedgeWrap2.diffuseTexture = new BABYLON.Texture(hedges, scene)
 
