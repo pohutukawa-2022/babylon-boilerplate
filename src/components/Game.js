@@ -14,14 +14,11 @@ import building1 from './building1'
 import building2 from './building2'
 import keysAndMed from './keysAndMed'
 
-import dryGrass from './../assets/textures/dryGrass.jpg'
-
-import hedges from './../assets/textures/hedges.jpg'
-
 import Boss from './boss'
 import building3 from './building3'
 import building4 from './building4'
 import roofTop from './roofTop'
+import configControls from './config-controls'
 
 export default class Game {
   constructor(canvasId) {
@@ -89,11 +86,8 @@ export default class Game {
     }
     // apply gravity
 
-
     this.scene.gravity = new BABYLON.Vector3(0, -1, 0)
 
-
-    /* ---------------MAP----------------- */
     setBoundry(this.scene)
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
@@ -104,55 +98,7 @@ export default class Game {
     // this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
     // this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
-    /* ------------ LIGHTS --------------- */
-
-    // let light1 = new BABYLON.SpotLight(
-    //   'light1',
-    //   new BABYLON.Vector3(0, 5, -10),
-    //   new BABYLON.Vector3(0, -1, 0),
-
-    //   Math.PI / 3,
-    //   60,
-
-    //   this.scene
-    // )
-
-    // let light2 = new BABYLON.SpotLight(
-    //   'light2',
-    //   new BABYLON.Vector3(0, 5, 10),
-    //   new BABYLON.Vector3(0, -1, 0),
-
-    //   Math.PI / 3,
-    //   60,
-
-    //   this.scene
-    // )
-
-    // let light3 = new BABYLON.SpotLight(
-    //   'light3',
-    //   new BABYLON.Vector3(-10, 5, 0),
-    //   new BABYLON.Vector3(0, -1, 0),
-
-    //   Math.PI / 3,
-    //   60,
-
-    //   this.scene
-    // )
-
-    // let light4 = new BABYLON.SpotLight(
-    //   'light4',
-    //   new BABYLON.Vector3(10, 5, 0),
-    //   new BABYLON.Vector3(0, -1, 0),
-
-    //   Math.PI / 3,
-    //   60,
-
-    //   this.scene
-    // )
-
     environment('environment', this.scene)
-
-
 
     Furniture('furniture', this.scene)
     building1('building1', this.scene, this)
@@ -163,38 +109,7 @@ export default class Game {
     keysAndMed('keysAndMed', this.scene, this)
 
     this.createCamera()
-
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter'){
-        if(this.inMenu){
-          this.exitMenu()
-        }
-      }
-      if (e.key === 'Shift') {
-        this.player.sprinting = true
-      } else if (e.key === 'f') {
-        this.player.toggleLight()
-      } else if (e.key === 'e') {
-        let foundKey = this.player.checkForKey(this.keys)
-        if (foundKey) {
-          document.getElementById(
-            'key-found'
-          ).innerHTML = `${this.player.keysFound} OUT OF 5 KEYS FOUND`
-          this.churchBell.play()
-
-          setTimeout(() => {
-            document.getElementById('key-found').innerHTML = ''
-            this.churchBell.pause()
-            this.churchBell.currentTime = 0
-          }, 4000)
-        }
-      }
-    })
-    document.addEventListener('keyup', (e) => {
-      if (e.key === 'Shift') {
-        this.player.sprinting = false
-      }
-    })
+    configControls(this)
   }
 
   doRender() {
