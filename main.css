@@ -15,3 +15,308 @@ html, body {
   color: white;
   font-size: 2rem;
 }
+
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(2, 100%, 61%);
+  --first-color-alt: hsl(2, 89%, 33%);
+  --title-color: hsl(0, 0%, 68%);
+  --text-color: hsl(233, 4%, 35%);
+  --body-color: hsl(0, 0%, 10%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: ;
+  --second-font: ;
+  --biggest-font-size: 3.25rem;
+  --normal-font-size: .938rem;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 1024px) {
+  :root {
+    --biggest-font-size: 3.5rem;
+    --normal-font-size: 1rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+
+.container {
+  max-width: 1024px;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+.main {
+  overflow: hidden; /* For the animations */
+}
+
+/*=============== HOME ===============*/
+
+.home,
+.home__container{
+  position: relative;
+}
+
+.home__container{
+  padding-top: 8rem;
+  height: 100vh;
+  display: grid;
+  row-gap: 1rem;
+}
+
+.home__title{
+  font-size: var(--biggest-font-size);
+  font-family: 'Creepster', cursive;
+  color: var(--title-color);
+  margin-bottom: .75rem;
+}
+ 
+.home__title span{
+  display: block;
+  color: var(--first-color);
+}
+
+.home__data{
+  margin-bottom: 5rem;
+}
+
+.home__description,
+.home__button{
+  font-weight: 600;
+}
+
+.home__button{
+  display: inline-block;
+  font-family: 'Quantico', sans-serif;
+  background-color: var(--first-color);
+  color: #fff;
+  letter-spacing: .2rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem 1rem 0 1rem;
+  box-shadow: 0 8px 20px hsla(2, 100%, 45%, .28);
+  transition: background .4s;
+  cursor: pointer;
+}
+
+.home__button:hover{
+  background-color: var(--first-color-alt);
+}
+
+.home__instructions{
+  float: right;
+  color: rgb(225, 225, 225);
+  margin-top: 10rem;
+  font-family: 'Quantico', sans-serif;
+  margin-right: -2rem;
+}
+
+.home__controls{
+  margin-top: 3rem;
+  margin-left: -4rem;
+}
+
+.instruction-title{
+  font-size: 2rem;
+}
+
+.instruction-content{
+  font-size: 1.2rem;
+}
+
+.home__images{
+  position: relative;
+  width: 325px;
+  height: 378px;
+  justify-self: center;
+}
+
+.home__images img{
+  position: absolute;
+}
+
+.home__liquid{
+  width: 480px;
+  height: 380px;
+  left: -8rem;
+}
+
+.home__juice{
+  width: 140px;
+  transform: rotate(15deg);
+  left: 1rem;
+  right: 0;
+  top: 1rem;
+  margin: 0 auto;
+  animation: float-juice 4s ease-in-out infinite;
+}
+
+.home__juice-blood{
+  position: relative;
+  z-index: 2000000;
+}
+
+.home__shape-big{
+  background-color: hsl(15, 3%, 72%);
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.home__shape-big{
+  width: 250px;
+  height: 250px;
+  top: 17rem;
+  right: -8rem;
+}
+
+.home__torch{
+  width: 220px;
+  height: 220px;
+  rotate: -32deg;
+  top: 42rem;
+  right: -2rem;
+  position: absolute;
+}
+
+.home__shape-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: soft-light;
+}
+
+/* Animation juice */
+
+@keyframes float-juice {
+  0%{
+    transform: translateY(0) rotate(15deg);
+  }
+  50%{
+    transform: translateY(1.5rem) rotate(15deg);
+  }
+  100%{
+    transform: translateY(0) rotate(15deg);
+  }
+}
+
+/*=============== BREAKPOINTS ===============*/
+
+/* For small devices */
+@media screen and (max-width:330px){
+  .container{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .home__images{
+    width: 245px;
+    height: 320px;
+  }
+
+  .home__liquid{
+    width: 250px;
+    left: 0;
+  }
+
+  .home__juice{
+    width: 100px;
+  }
+}
+
+/* For medium devices */
+
+@media screen and (min-width: 767px){
+
+  .home__container{
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    align-items: center;
+    column-gap: 4rem;
+    padding-top: 4rem;
+  }
+}
+
+/* For large devices */
+
+@media screen and (min-width: 1024px) {
+
+  .home__title{
+    font-size: 5rem;
+    font-family: 'Creepster', cursive;
+    color: var(--title-color);
+    margin-bottom: .75rem;
+  }
+
+  .home__images{
+    width: 530px;
+    height: 590px;
+  }
+
+  .home__liquid{
+    width: 530px;
+  }
+
+  .home__juice{
+    width: 490px;
+    left: 0;
+    top: 1.5rem;
+    z-index: 1000;
+  }
+
+  .home__shape-big{
+    width: 500px;
+    height: 500px;
+    top: 16rem;
+    right: -4rem;
+  }
+
+  .home__blood{
+    width: 350px;
+    left: -42rem;
+    top: 14rem;
+  }
+}
+
+@media screen and (min-width: 1048px) {
+  .container{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+

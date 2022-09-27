@@ -9,7 +9,7 @@ import ceramicTexture from './../assets/textures/ceramics.png'
 import outhouseTexture from './../assets/textures/Toilet.png'
 import tintexture from './../assets/textures/tin.jpeg'
 import keyTexture from '../assets/textures/key.jpeg'
-import ghostTexture from '../assets/textures/Ghost_color.png'
+
 
 // import darkWall from './../assets/textures/dark-wall.jpeg'
 

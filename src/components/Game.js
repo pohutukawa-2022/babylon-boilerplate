@@ -7,7 +7,7 @@ import fragShader from './../shaders/shader.frag'
 import Furniture from './Furniture'
 import environment from './Environment'
 import Player from './player'
-
+import setBoundry from './set-boundry'
 import dryGrass from './../assets/textures/dryGrass.jpg'
 
 import hedges from './../assets/textures/hedges.jpg'
@@ -21,13 +21,12 @@ export default class Game {
     this.time = 0
     this.keys = []
     this.churchBell = new Audio('../../public/audio/church-bell.mp3')
+    this.inMenu = true
   }
   createCamera() {
     this.camera = new BABYLON.UniversalCamera(
       'camera1',
-
       new BABYLON.Vector3(20, 10, -10),
-
       this.scene
     )
     this.camera.setTarget(BABYLON.Vector3.Zero())
@@ -48,7 +47,6 @@ export default class Game {
     //   // clipping
     this.camera.minZ = 0.3
     this.light = new BABYLON.HemisphericLight()
-    // // this.light = new HemisphericLight()
     // this.light = new BABYLON.SpotLight(
     //   'light1',
     //   new BABYLON.Vector3(0, 5, -10),
@@ -65,7 +63,13 @@ export default class Game {
 
     this.player = new Player(this.camera, this.light)
     this.player.flickerLight()
-    this.boss = new Boss()
+    this.boss = new Boss(this.scene, this.player)
+    setTimeout(()=> this.boss.initialize(), 5000)
+  }
+ exitMenu(){
+  let menu = document.getElementById('main')
+  menu.remove()
+  this.inMenu = false
   }
   createScene() {
     this.scene = new BABYLON.Scene(this.engine)
@@ -73,109 +77,19 @@ export default class Game {
       if (evt.button === 0) this.canvas.requestPointerLock()
     }
     // apply gravity
-    const assumedFramesPerSecond = 60
-    const earthGravity = -9.81
+
     this.scene.gravity = new BABYLON.Vector3(0, -1, 0)
 
     /* ---------------MAP----------------- */
-    let ground = BABYLON.MeshBuilder.CreateGround(
-      'ground',
-      { width: 300, height: 300, subdivisions: 2 },
-
-      this.scene
-    )
-
-    let boundry1 = new BABYLON.MeshBuilder.CreateBox(
-      'boundry1',
-      {
-        width: 300,
-        height: 10,
-        depth: 2,
-      },
-      this.scene
-    )
-    boundry1.position.x = 0
-    boundry1.position.y = 5
-    boundry1.position.z = 150
-
-    const hedgeWrap1 = new BABYLON.StandardMaterial('hedge1', this.scene)
-    hedgeWrap1.diffuseTexture = new BABYLON.Texture(hedges, this.scene)
-
-    boundry1.material = hedgeWrap1
-    boundry1.checkCollisions = true
-
-    let boundry2 = new BABYLON.MeshBuilder.CreateBox(
-      'boundry2',
-      {
-        width: 300,
-        height: 10,
-        depth: 2,
-      },
-      this.scene
-    )
-    boundry2.position.x = 0
-    boundry2.position.y = 5
-    boundry2.position.z = -150
-
-    const hedgeWrap2 = new BABYLON.StandardMaterial('hedge2', this.scene)
-    hedgeWrap2.diffuseTexture = new BABYLON.Texture(hedges, this.scene)
-
-    boundry2.material = hedgeWrap2
-    boundry2.checkCollisions = true
-
-    let boundry3 = new BABYLON.MeshBuilder.CreateBox(
-      'boundry3',
-      {
-        width: 300,
-        height: 10,
-        depth: 2,
-      },
-      this.scene
-    )
-    boundry3.position.x = 150
-    boundry3.position.y = 5
-    boundry3.position.z = 0
-    boundry3.rotation.y = Math.PI / 2
-
-    const hedgeWrap3 = new BABYLON.StandardMaterial('hedge3', this.scene)
-    hedgeWrap3.diffuseTexture = new BABYLON.Texture(hedges, this.scene)
-
-    boundry3.material = hedgeWrap3
-    boundry3.checkCollisions = true
-
-    let boundry4 = new BABYLON.MeshBuilder.CreateBox(
-      'boundry4',
-      {
-        width: 300,
-        height: 10,
-        depth: 2,
-      },
-      this.scene
-    )
-    boundry4.position.x = -150
-    boundry4.position.y = 5
-    boundry4.position.z = 0
-    boundry4.rotation.y = Math.PI / 2
-
-    const hedgeWrap4 = new BABYLON.StandardMaterial('hedge4', this.scene)
-    hedgeWrap4.diffuseTexture = new BABYLON.Texture(hedges, this.scene)
-
-    boundry4.material = hedgeWrap4
-    boundry4.checkCollisions = true
-
-    const groundOutside = new BABYLON.StandardMaterial()
-    groundOutside.diffuseTexture = new BABYLON.Texture(dryGrass, this.scene)
-
-    ground.checkCollisions = true
-    ground.material = groundOutside
+    setBoundry(this.scene)
 
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
 
-    // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
-    // this.scene.fogDensity = 0.02
-    // this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
-    // this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
+    this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
+    this.scene.fogDensity = 0.02
+    this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
+    this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
     /* ------------ LIGHTS --------------- */
 
@@ -224,9 +138,15 @@ export default class Game {
     // )
 
     environment('environment', this.scene)
-    Furniture('furniture', this.scene)
+    Furniture('furniture', this.scene, this)
     this.createCamera()
+
     document.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter'){
+        if(this.inMenu){
+          this.exitMenu()
+        }
+      }
       if (e.key === 'Shift') {
         this.player.sprinting = true
       } else if (e.key === 'f') {
@@ -256,6 +176,9 @@ export default class Game {
 
   doRender() {
     this.engine.runRenderLoop(() => {
+      if(this.boss.startMove){
+        this.boss.move(this.player.position)
+      }
       this.player.updatePlayer(this.camera)
       this.scene.render()
     })
