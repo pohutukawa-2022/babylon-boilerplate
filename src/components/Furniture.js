@@ -5,6 +5,7 @@ import 'babylonjs-loaders'
 import stairTexture from '../assets/textures/stair.jpg'
 
 
+
 export default function Furniture(name, scene, player) {
   const stairs = BABYLON.SceneLoader.ImportMeshAsync(
     '',
