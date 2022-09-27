@@ -98,7 +98,7 @@ img {
 
 .home__title{
   font-size: var(--biggest-font-size);
-  font-family: 'Creepster', cursive;
+  font-family: 'Times New Roman', Times, serif;
   color: var(--title-color);
   margin-bottom: .75rem;
 }
@@ -137,22 +137,53 @@ img {
 .home__instructions{
   float: right;
   color: rgb(225, 225, 225);
-  margin-top: 10rem;
-  font-family: 'Quantico', sans-serif;
+  margin-top: 8rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
   margin-right: -2rem;
+  letter-spacing: 2px;
 }
 
 .home__controls{
-  margin-top: 3rem;
-  margin-left: -4rem;
+  margin-top: 9rem;
+  margin-left: -6rem;
 }
 
 .instruction-title{
   font-size: 2rem;
+  padding-bottom: 2rem;
 }
 
 .instruction-content{
   font-size: 1.2rem;
+}
+
+.e-key{
+  width: 25px;
+}
+
+.e-content{
+  margin-left: 2rem;
+}
+
+.shift-key{
+  width: 96px;
+  margin-top: .3rem;
+}
+
+.shift-content{
+  margin-left: 3.7rem;
+  margin-top: 1rem;
+}
+
+.f-key{
+  width: 29px;
+  margin-top: .9rem;
+}
+
+.f-content{
+  margin-left: 2.3rem;
+  margin-top: 1rem;
 }
 
 .home__images{
@@ -167,17 +198,25 @@ img {
 }
 
 .home__liquid{
-  width: 480px;
+  width: 580px;
   height: 380px;
   left: -8rem;
+  top: -11rem;
+}
+
+.home__juice-animate img{
+  width: 350px;
+  transform: rotate(0deg);
+  position: absolute;
+  top: 24rem;
+  left: -35rem;
 }
 
 .home__juice{
   width: 140px;
-  transform: rotate(15deg);
-  left: 1rem;
+  left: 7rem;
   right: 0;
-  top: 1rem;
+  top: 10rem;
   margin: 0 auto;
   animation: float-juice 4s ease-in-out infinite;
 }
@@ -205,8 +244,8 @@ img {
   width: 220px;
   height: 220px;
   rotate: -32deg;
-  top: 42rem;
-  right: -2rem;
+  top: 39rem;
+  right: -3rem;
   position: absolute;
 }
 
@@ -221,18 +260,6 @@ img {
 }
 
 /* Animation juice */
-
-@keyframes float-juice {
-  0%{
-    transform: translateY(0) rotate(15deg);
-  }
-  50%{
-    transform: translateY(1.5rem) rotate(15deg);
-  }
-  100%{
-    transform: translateY(0) rotate(15deg);
-  }
-}
 
 /*=============== BREAKPOINTS ===============*/
 
@@ -277,7 +304,8 @@ img {
 
   .home__title{
     font-size: 5rem;
-    font-family: 'Creepster', cursive;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
     color: var(--title-color);
     margin-bottom: .75rem;
   }
@@ -296,6 +324,10 @@ img {
     left: 0;
     top: 1.5rem;
     z-index: 1000;
+  }
+
+  .home__juice-animate{
+    width: 100px;
   }
 
   .home__shape-big{
