@@ -1,4 +1,4 @@
-import concrete from './../assets/textures/ceramics.png'
+import concrete from './../assets/textures/concrete.jpeg'
 
 export default function roofTop(name, scene) {
   /* ---------ROOFTOP--------- */
@@ -14,8 +14,8 @@ export default function roofTop(name, scene) {
     keyMesh.scaling.y = 0.04
     keyMesh.scaling.z = 0.04
 
-    keyMesh.position.x = -80
-    keyMesh.position.y = 20
+    keyMesh.position.x = -84
+    keyMesh.position.y = 18
     keyMesh.position.z = 6
 
     keyMesh.rotation.y = Math.PI / 1
@@ -38,8 +38,8 @@ export default function roofTop(name, scene) {
     keyMesh.scaling.z = 0.04
 
     keyMesh.position.x = -80
-    keyMesh.position.y = 20
-    keyMesh.position.z = 16
+    keyMesh.position.y = 18
+    keyMesh.position.z = 18
 
     keyMesh.rotation.y = Math.PI / 1
 

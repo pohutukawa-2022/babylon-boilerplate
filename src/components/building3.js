@@ -493,9 +493,9 @@ export default function building3(name, scene) {
     'desk.obj'
   ).then((x) => {
     const deskMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
-    deskMesh.position.x = -105
+    deskMesh.position.x = -104.5
     deskMesh.position.y = 0
-    deskMesh.position.z = -50
+    deskMesh.position.z = -53
     deskMesh.scaling.x = 0.15
     deskMesh.scaling.y = 0.15
     deskMesh.scaling.z = 0.15
@@ -511,9 +511,9 @@ export default function building3(name, scene) {
     'desk.obj'
   ).then((x) => {
     const deskMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
-    deskMesh.position.x = -115
+    deskMesh.position.x = -114.5
     deskMesh.position.y = 0
-    deskMesh.position.z = -50
+    deskMesh.position.z = -53
     deskMesh.scaling.x = 0.15
     deskMesh.scaling.y = 0.15
     deskMesh.scaling.z = 0.15
@@ -529,9 +529,9 @@ export default function building3(name, scene) {
     'desk.obj'
   ).then((x) => {
     const deskMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
-    deskMesh.position.x = -105
+    deskMesh.position.x = -104.5
     deskMesh.position.y = 0
-    deskMesh.position.z = -50
+    deskMesh.position.z = -53
     deskMesh.scaling.x = 0.15
     deskMesh.scaling.y = 0.15
     deskMesh.scaling.z = 0.15
@@ -547,9 +547,9 @@ export default function building3(name, scene) {
     'desk.obj'
   ).then((x) => {
     const deskMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
-    deskMesh.position.x = -125
+    deskMesh.position.x = -124.5
     deskMesh.position.y = 0
-    deskMesh.position.z = -40
+    deskMesh.position.z = -43
     deskMesh.scaling.x = 0.15
     deskMesh.scaling.y = 0.15
     deskMesh.scaling.z = 0.15
@@ -565,9 +565,9 @@ export default function building3(name, scene) {
     'desk.obj'
   ).then((x) => {
     const deskMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
-    deskMesh.position.x = -115
+    deskMesh.position.x = -114.5
     deskMesh.position.y = 0
-    deskMesh.position.z = -40
+    deskMesh.position.z = -43
     deskMesh.scaling.x = 0.15
     deskMesh.scaling.y = 0.15
     deskMesh.scaling.z = 0.15
@@ -583,9 +583,9 @@ export default function building3(name, scene) {
     'desk.obj'
   ).then((x) => {
     const deskMesh = BABYLON.Mesh.MergeMeshes(x.meshes)
-    deskMesh.position.x = -105
+    deskMesh.position.x = -104.5
     deskMesh.position.y = 0
-    deskMesh.position.z = -40
+    deskMesh.position.z = -43
     deskMesh.scaling.x = 0.15
     deskMesh.scaling.y = 0.15
     deskMesh.scaling.z = 0.15
