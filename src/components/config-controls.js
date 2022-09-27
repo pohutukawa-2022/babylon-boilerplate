@@ -4,8 +4,9 @@ export default function configControls(game){
       if(game.inMenu){
         game.exitMenu()
       }
-    }
-    if (e.key === 'Shift') {
+    }else if(e.key === '1'){
+      game.boss.initialize()
+    }else if (e.key === 'Shift') {
       game.player.sprinting = true
     } else if (e.key === 'f') {
       game.player.toggleLight()

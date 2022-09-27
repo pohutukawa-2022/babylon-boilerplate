@@ -72,7 +72,6 @@ export default class Game {
     this.player = new Player(this.camera, this.light)
     this.player.flickerLight()
     this.boss = new Boss(this.scene, this.player)
-    setTimeout(()=> this.boss.initialize(), 5000)
   }
  exitMenu(){
   let menu = document.getElementById('main')
