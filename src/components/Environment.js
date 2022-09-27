@@ -257,7 +257,7 @@ export default function environment(name, scene) {
     })
     threeTop.position.x = 69
     threeTop.position.y = 15.2
-    threeTop.position.z = 66
+    threeTop.position.z = 66.05
     threeTop.checkForCollisions
 
     const threeLeft = BABYLON.MeshBuilder.CreateBox('WallThreeLeft', {
@@ -276,7 +276,7 @@ export default function environment(name, scene) {
     })
     threeRight.position.x = 79
     threeRight.position.y = 8
-    threeRight.position.z = 66
+    threeRight.position.z = 65.95
 
     const doorway = [threeTop, threeLeft, threeRight]
     const extWall3 = new BABYLON.Mesh.MergeMeshes(doorway, scene)
