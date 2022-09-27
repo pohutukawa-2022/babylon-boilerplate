@@ -17,9 +17,9 @@ export default function keysAndMed(name, scene, player) {
     keyMesh.position.y = 5
     keyMesh.position.z = 18
 
-    keyMesh.scaling.x = 3
-    keyMesh.scaling.y = 3
-    keyMesh.scaling.z = 3
+    keyMesh.scaling.x = 2
+    keyMesh.scaling.y = 2
+    keyMesh.scaling.z = 2
 
     keyMesh.rotation.z = Math.PI / 2
     keyMesh.rotation.y = Math.PI / 2
@@ -37,13 +37,13 @@ export default function keysAndMed(name, scene, player) {
     'Worn_Key.obj'
   ).then((x) => {
     const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
-    keyMesh.position.x = 115
-    keyMesh.position.y = 5
-    keyMesh.position.z = -2
+    keyMesh.position.x = -93.2
+    keyMesh.position.y = 5.3
+    keyMesh.position.z = 29.3
 
-    keyMesh.scaling.x = 3
-    keyMesh.scaling.y = 3
-    keyMesh.scaling.z = 3
+    keyMesh.scaling.x = 2
+    keyMesh.scaling.y = 2
+    keyMesh.scaling.z = 2
 
     keyMesh.rotation.z = Math.PI / 2
     keyMesh.rotation.y = Math.PI / 2
@@ -52,7 +52,13 @@ export default function keysAndMed(name, scene, player) {
     const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
     keyMesh.material = keyWrap
-    player.keys.push({ key: keyMesh, xMax: 120, xMin: 110, zMax: 2, zMin: -6 })
+    player.keys.push({
+      key: keyMesh,
+      xMax: -88.2,
+      xMin: -98.2,
+      zMax: 34.3,
+      zMin: 24.3,
+    })
   })
 
   const key3 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -65,9 +71,9 @@ export default function keysAndMed(name, scene, player) {
     keyMesh.position.y = 9.2
     keyMesh.position.z = -72
 
-    keyMesh.scaling.x = 3
-    keyMesh.scaling.y = 3
-    keyMesh.scaling.z = 3
+    keyMesh.scaling.x = 2
+    keyMesh.scaling.y = 2
+    keyMesh.scaling.z = 2
     keyMesh.rotation.z = Math.PI / 2
     keyMesh.rotation.y = Math.PI / 1
     keyMesh.rotation.x = Math.PI / 2
@@ -77,10 +83,10 @@ export default function keysAndMed(name, scene, player) {
     keyMesh.material = keyWrap
     player.keys.push({
       key: keyMesh,
-      xMax: -82,
-      xMin: -92,
-      zMax: -68,
-      zMin: -76,
+      xMax: -80,
+      xMin: -94,
+      zMax: -67,
+      zMin: -77,
     })
   })
 
@@ -94,9 +100,9 @@ export default function keysAndMed(name, scene, player) {
     keyMesh.position.y = 0
     keyMesh.position.z = 90
 
-    keyMesh.scaling.x = 3
-    keyMesh.scaling.y = 3
-    keyMesh.scaling.z = 3
+    keyMesh.scaling.x = 2
+    keyMesh.scaling.y = 2
+    keyMesh.scaling.z = 2
     keyMesh.rotation.z = Math.PI / 2
     keyMesh.rotation.y = Math.PI / 1
     keyMesh.rotation.x = Math.PI / 2
@@ -107,10 +113,40 @@ export default function keysAndMed(name, scene, player) {
     player.keys.push({
       name: 'key4',
       key: keyMesh,
-      xMax: 130,
-      xMin: 80,
-      zMax: 120,
-      zMin: 60,
+      xMax: 115,
+      xMin: 105,
+      zMax: 95,
+      zMin: 85,
+    })
+  })
+
+  const key5 = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'Worn_Key.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+    keyMesh.position.x = 116
+    keyMesh.position.y = 9
+    keyMesh.position.z = 46.26
+
+    keyMesh.scaling.x = 1.7
+    keyMesh.scaling.y = 1.7
+    keyMesh.scaling.z = 1.7
+    keyMesh.rotation.z = Math.PI / 2
+    keyMesh.rotation.y = Math.PI / -2
+    keyMesh.rotation.x = Math.PI / 2
+
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
+    keyMesh.material = keyWrap
+    player.keys.push({
+      name: 'key4',
+      key: keyMesh,
+      xMax: 121,
+      xMin: 111,
+      zMax: 51.26,
+      zMin: 41.26,
     })
   })
 

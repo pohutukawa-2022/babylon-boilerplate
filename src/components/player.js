@@ -41,6 +41,26 @@ export default class Player {
     }
     return foundKey
   }
+
+  checkWin(location) {
+    let { xMax, xMin, zMax, zMin, yMin, yMax } = location
+    let position = this.position
+    if (
+      position.x < xMax &&
+      position.x > xMin &&
+      position.z < zMax &&
+      position.z > zMin &&
+      position.y < yMax &&
+      position.y > yMin
+    ) {
+      if (this.keysFound === 5) {
+        this.game.gameWon()
+      } else{
+        document.getElementById('announcement').innerHTML = `${5 - this.keysFound} keys left`
+        setTimeout(()=> document.getElementById('announcement').innerHTML = '', 5000)
+      }
+    }
+  }
   toggleLight() {
     if (this.isLightOn) {
       this.light.setEnabled(false)
