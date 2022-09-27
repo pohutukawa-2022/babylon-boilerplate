@@ -404,7 +404,6 @@ export default function environment(name, scene) {
     plaza2.checkCollisions = true
   })
 
-
   const bench3 = BABYLON.SceneLoader.ImportMeshAsync(
     '',
     '../../public/models/Bench_LowRes.obj'
@@ -500,7 +499,6 @@ export default function environment(name, scene) {
     keyMesh.material = keyWrap
   })
 
-  
 
 }
 
