@@ -6,6 +6,7 @@ export default class Player {
     this.position = camera.position
     this.keysFound = 0
     this.battery = 10
+    this.health = 100
     this.maxStamina = 100
     this.sprintMeter = this.maxStamina
     this.sprinting = false
