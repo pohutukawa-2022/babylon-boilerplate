@@ -1,4 +1,5 @@
 import ghostTexture from '../assets/textures/Ghost_color.png'
+import health from './health'
 export default class Boss {
   constructor(scene, player) {
     this.player = player
@@ -80,6 +81,7 @@ export default class Boss {
       this.body.absolutePosition.y - this.playerPosition.y
     )
     console.log(this.differenceInY)
+    // health(this.player, this)
   }
 
   //----teleport boss-----//
@@ -96,6 +98,9 @@ export default class Boss {
   updateBoss() {
     if (this.startMove && this.player.isLightOn) {
       this.move(this.player.position)
+    }
+    if (this.startMove) {
+      health(this.player, this)
     }
   }
 }

@@ -110,7 +110,6 @@ export default class Game {
 
     this.createCamera()
     configControls(this)
-    health(this)
   }
 
   doRender() {

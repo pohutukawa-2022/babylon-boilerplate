@@ -1,4 +1,4 @@
-export default function health(game) {
+export default function health(player, boss) {
   // if (game.inMenu === true) {
   //   document.getElementById('health').innerHTML = ''
   // } else {
@@ -6,21 +6,20 @@ export default function health(game) {
   //     'health'
   //   ).innerHTML = `HEALTH: ${game.player.health}`
   // }
-  document.getElementById('health').innerHTML = `HEALTH: ${game.player.health}`
+  document.getElementById('health').innerHTML = `HEALTH: ${player.health}`
 
-  let player = game.player
-  let boss = game.boss.body
+  // let player = game.player
+  // let boss = game.boss.body
 
   console.log('player', player.position)
-  console.log('ghost', boss.absolutePosition)
+  console.log('ghost', boss.body.absolutePosition)
 
-  setTimeout(() => {
-    if (
-      Math.floor(boss.absolutePosition.x) === Math.floor(player.position.x) &&
-      Math.floor(boss.absolutePosition.z) === Math.floor(player.position.z)
-    ) {
-      console.log('hit')
-      game.player.health - 10
-    }
-  }, 500)
+  if (
+    Math.floor(boss.body.absolutePosition.x) ===
+      Math.floor(player.position.x) &&
+    Math.floor(boss.body.absolutePosition.z) === Math.floor(player.position.z)
+  ) {
+    console.log('hit')
+    player.health -= 10
+  }
 }
