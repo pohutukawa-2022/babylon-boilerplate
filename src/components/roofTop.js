@@ -1,7 +1,28 @@
 import concrete from './../assets/textures/concrete.jpeg'
+import metal from './../assets/textures/metal.jpeg'
 
 export default function roofTop(name, scene) {
   /* ---------ROOFTOP--------- */
+  const endGate = new BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'gate_obj.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+
+    keyMesh.scaling.x = 0.16
+    keyMesh.scaling.y = 0.16
+    keyMesh.scaling.z = 0.16
+
+    keyMesh.position.x = -95
+    keyMesh.position.y = 17
+    keyMesh.position.z = -10
+
+    const endGateWrap = new BABYLON.StandardMaterial('endGateWrap', scene)
+    endGateWrap.diffuseTexture = new BABYLON.Texture(metal, scene)
+    keyMesh.material = endGateWrap
+    keyMesh.checkCollisions = true
+  })
 
   const angel1 = new BABYLON.SceneLoader.ImportMeshAsync(
     '',
@@ -14,11 +35,11 @@ export default function roofTop(name, scene) {
     keyMesh.scaling.y = 0.04
     keyMesh.scaling.z = 0.04
 
-    keyMesh.position.x = -84
-    keyMesh.position.y = 18
-    keyMesh.position.z = 6
+    keyMesh.position.x = -105
+    keyMesh.position.y = 17
+    keyMesh.position.z = -10
 
-    keyMesh.rotation.y = Math.PI / 1
+    keyMesh.rotation.y = Math.PI / 2
 
     const angel1Wrap = new BABYLON.StandardMaterial('angel1Wrap', scene)
     angel1Wrap.diffuseTexture = new BABYLON.Texture(concrete, scene)
@@ -37,9 +58,9 @@ export default function roofTop(name, scene) {
     keyMesh.scaling.y = 0.04
     keyMesh.scaling.z = 0.04
 
-    keyMesh.position.x = -80
-    keyMesh.position.y = 18
-    keyMesh.position.z = 18
+    keyMesh.position.x = -85
+    keyMesh.position.y = 17
+    keyMesh.position.z = -10
 
     keyMesh.rotation.y = Math.PI / 1
 

@@ -379,13 +379,15 @@ export default function building3(name, scene) {
   ).then((x) => {
     const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
 
-    keyMesh.scaling.x = 1
-    keyMesh.scaling.y = 1
-    keyMesh.scaling.z = 1
+    keyMesh.scaling.x = 5
+    keyMesh.scaling.y = 5
+    keyMesh.scaling.z = 5
 
     keyMesh.position.x = -115
-    keyMesh.position.y = 3
-    keyMesh.position.z = 14
+    keyMesh.position.y = 3.5
+    keyMesh.position.z = 3.5
+
+    keyMesh.rotation.y = Math.PI / 1
 
     const micWrap = new BABYLON.StandardMaterial('micWrap', scene)
     micWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
