@@ -11,9 +11,32 @@ import tvTexture from '../assets/textures/tv.jpg'
 import linoTexture from '../assets/textures/lino.jpeg'
 import diningTexture from '../assets/textures/diningset.png'
 import plateTexture from '../assets/textures/plate.png'
+import keyTexture from '../assets/textures/key.jpeg'
+import goldTexture from '../assets/textures/gold.jpeg'
 
 export default function building2(name, scene, player) {
   //---------principle's office---------//
+
+  const dog = BABYLON.SceneLoader.ImportMeshAsync(
+    '',
+    '../../public/models/',
+    'dog.obj'
+  ).then((x) => {
+    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
+    keyMesh.position.x = 30
+    keyMesh.position.y = 1
+    keyMesh.position.z = 85
+
+    keyMesh.scaling.x = 0.55
+    keyMesh.scaling.y = 0.55
+    keyMesh.scaling.z = 0.55
+
+    keyMesh.rotation.y = Math.PI / 1
+    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
+    keyWrap.diffuseTexture = new BABYLON.Texture(goldTexture, scene)
+    keyMesh.material = keyWrap
+  })
+
   const bookshelf = BABYLON.SceneLoader.ImportMeshAsync(
     '',
     '../../public/models/',

@@ -103,7 +103,7 @@ export default class Game {
     building1('building1', this.scene, this)
     building2('building2', this.scene, this)
     building3('building3', this.scene)
-    building4('building4', this.scene)
+    building4('building4', this.scene, this)
     roofTop('roofTop', this.scene)
     keysAndMed('keysAndMed', this.scene, this)
 
