@@ -14,12 +14,12 @@ export default function health(player, boss) {
   console.log('player', player.position)
   console.log('ghost', boss.body.absolutePosition)
 
-  if (
-    Math.floor(boss.body.absolutePosition.x) ===
-      Math.floor(player.position.x) &&
-    Math.floor(boss.body.absolutePosition.z) === Math.floor(player.position.z)
-  ) {
+  let diffX = Math.abs(boss.body.absolutePosition.x - player.position.x)
+  let diffZ = Math.abs(boss.body.absolutePosition.z - player.position.z)
+
+  if (diffX < 15 && diffZ < 15) {
     console.log('hit')
-    player.health -= 10
+    player.health -= 25
+    boss.teleportBoss()
   }
 }

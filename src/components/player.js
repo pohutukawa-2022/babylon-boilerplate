@@ -24,15 +24,6 @@ export default class Player {
       let key = allKeys[i]
       let { xMax, xMin, zMax, zMin } = key
       let position = this.position
-      console.log(
-        key.name,
-        position.x < xMax,
-        position.x > xMin,
-        position.z < zMax,
-        position.z > zMin
-      )
-      console.log(key)
-      console.log(position)
       if (
         position.x < xMax &&
         position.x > xMin &&
@@ -83,9 +74,15 @@ export default class Player {
   walk() {
     this.camera.speed = this.minSpeed
   }
+  gameOver() {
+    if (this.health === 0) {
+      console.log('game over, you lose')
+    }
+  }
   updatePlayer(camera) {
     this.updateLocation(camera)
     this.sprint()
     this.stamina()
+    this.gameOver()
   }
 }
