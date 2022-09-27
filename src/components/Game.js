@@ -19,6 +19,7 @@ import building3 from './building3'
 import building4 from './building4'
 import roofTop from './roofTop'
 import configControls from './config-controls'
+import health from './health'
 
 export default class Game {
   constructor(canvasId) {

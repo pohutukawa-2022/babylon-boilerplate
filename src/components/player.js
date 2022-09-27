@@ -6,6 +6,7 @@ export default class Player {
     this.position = camera.position
     this.keysFound = 0
     this.battery = 10
+    this.health = 100
     this.maxStamina = 100
     this.sprintMeter = this.maxStamina
     this.sprinting = false
@@ -93,9 +94,15 @@ export default class Player {
   walk() {
     this.camera.speed = this.minSpeed
   }
+  gameOver() {
+    if (this.health === 0) {
+      console.log('game over, you lose')
+    }
+  }
   updatePlayer(camera) {
     this.updateLocation(camera)
     this.sprint()
     this.stamina()
+    this.gameOver()
   }
 }
