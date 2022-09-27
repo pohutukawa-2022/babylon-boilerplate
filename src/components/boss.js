@@ -76,9 +76,8 @@ export default class Boss{
     console.log(this.differenceInY);
   }
   updatePosition(){
-    // let bossX = this.body.absolutePosition.x
-    // let bossY = this.body.absolutePosition.y
-    // let bossZ = this.body.absolutePosition.z
-    // this.body.position = new BABYLON.Vector3(bossX, bossY, bossZ)
+    this.boss.move(this.player.position)
+        this.boss.updatePosition()
+        this.boss.rotate()
   }
 }
