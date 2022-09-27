@@ -385,7 +385,7 @@ export default function building3(name, scene) {
 
     keyMesh.position.x = -115
     keyMesh.position.y = 3.5
-    keyMesh.position.z = 6.5
+    keyMesh.position.z = 7
 
     keyMesh.rotation.y = Math.PI / 1
 

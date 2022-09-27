@@ -58,7 +58,7 @@ export default function roofTop(name, scene) {
     keyMesh.scaling.y = 0.04
     keyMesh.scaling.z = 0.04
 
-    keyMesh.position.x = -85
+    keyMesh.position.x = -87
     keyMesh.position.y = 17
     keyMesh.position.z = -10
 
