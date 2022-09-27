@@ -23,15 +23,6 @@ export default class Player {
       let key = allKeys[i]
       let { xMax, xMin, zMax, zMin } = key
       let position = this.position
-      console.log(
-        key.name,
-        position.x < xMax,
-        position.x > xMin,
-        position.z < zMax,
-        position.z > zMin
-      )
-      console.log(key)
-      console.log(position)
       if (
         position.x < xMax &&
         position.x > xMin &&
@@ -48,6 +39,26 @@ export default class Player {
       allKeys.splice(keyToDelete, 1)
     }
     return foundKey
+  }
+
+  checkWin(location) {
+    let { xMax, xMin, zMax, zMin, yMin, yMax } = location
+    let position = this.position
+    if (
+      position.x < xMax &&
+      position.x > xMin &&
+      position.z < zMax &&
+      position.z > zMin &&
+      position.y < yMax &&
+      position.y > yMin
+    ) {
+      if (this.keysFound === 5) {
+        this.game.gameWon()
+      } else{
+        document.getElementById('announcement').innerHTML = `${5 - this.keysFound} keys left`
+        setTimeout(()=> document.getElementById('announcement').innerHTML = '', 5000)
+      }
+    }
   }
   toggleLight() {
     if (this.isLightOn) {
