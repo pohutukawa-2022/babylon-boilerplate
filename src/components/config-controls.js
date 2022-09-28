@@ -4,11 +4,11 @@ export default function configControls(game) {
       if (game.inMenu) {
         game.exitMenu()
       }
-    } else if(e.key === 'b'){
+    } else if (e.key === 'b') {
       game.gameOver()
-    }else if(e.key === 'n'){
+    } else if (e.key === 'n') {
       game.gameWon()
-    }else if (e.key === '1') {
+    } else if (e.key === '1') {
       game.boss.initialize()
     } else if (e.key === 'Shift') {
       game.player.sprinting = true
@@ -25,7 +25,11 @@ export default function configControls(game) {
           game.churchBell.pause()
           game.churchBell.currentTime = 0
         }, 4000)
-      }else{
+      }
+      if (game.player.pickupMedkit(game.medkit)) {
+        console.log('madeit')
+        game.player.health += 10
+      } else {
         game.player.checkWin(game.winningLocation)
       }
     }

@@ -55,9 +55,14 @@ export default class Player {
     ) {
       if (this.keysFound === 5) {
         this.game.gameWon()
-      } else{
-        document.getElementById('announcement').innerHTML = `${5 - this.keysFound} keys left`
-        setTimeout(()=> document.getElementById('announcement').innerHTML = '', 5000)
+      } else {
+        document.getElementById('announcement').innerHTML = `${
+          5 - this.keysFound
+        } keys left`
+        setTimeout(
+          () => (document.getElementById('announcement').innerHTML = ''),
+          5000
+        )
       }
     }
   }
@@ -94,6 +99,26 @@ export default class Player {
   walk() {
     this.camera.speed = this.minSpeed
   }
+
+  pickupMedkit() {
+    let medkits = this.game.medkit
+    for (let i = 0; i < medkits.length; i++) {
+      let medkitObj = medkits[i]
+      let { medkit, xMax, xMin, zMax, zMin } = medkitObj
+
+      if (
+        this.position.x < xMax &&
+        this.position.x > xMin &&
+        this.position.z < zMax &&
+        this.position.z > zMin
+      ) {
+        medkitObj.medkit.dispose()
+        this.game.medkit.splice(i, 1)
+        return true
+      }
+    }
+  }
+
   gameOver() {
     if (this.health === 0) {
       console.log('game over, you lose')
