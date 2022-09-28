@@ -1,11 +1,12 @@
 import ghostTexture from '../assets/textures/Ghost_color.png'
 import health from './health'
 export default class Boss {
-  constructor(scene, player) {
+  constructor(scene, player, game) {
     this.player = player
     this.playerPosition = player.position
     this.startMove = false
-    this.speed = 0.1
+    this.speed = 0.07
+    this.game = game
     BABYLON.SceneLoader.ImportMeshAsync(
       '',
       '../../public/models/',
@@ -13,13 +14,15 @@ export default class Boss {
     ).then((x) => {
       const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
 
-      keyMesh.position.x = 20
-      keyMesh.position.y = 1
-      keyMesh.position.z = 0
+      keyMesh.position.x = 45
+      keyMesh.position.y = 1.5
+      keyMesh.position.z = 112
 
       keyMesh.scaling.x = 0.07
       keyMesh.scaling.y = 0.07
       keyMesh.scaling.z = 0.07
+
+      keyMesh.rotation.y = Math.PI / 2
 
       const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
       keyWrap.diffuseTexture = new BABYLON.Texture(ghostTexture, scene)
@@ -73,6 +76,7 @@ export default class Boss {
         bossZ + this.speed
       )
     }
+    this.body.lookAt(this.player.position)
   }
   initialize() {
     this.startMove = true
@@ -80,8 +84,6 @@ export default class Boss {
     this.differenceInY = Math.abs(
       this.body.absolutePosition.y - this.playerPosition.y
     )
-    console.log(this.differenceInY)
-    // health(this.player, this)
   }
 
   //----teleport boss-----//
@@ -100,7 +102,7 @@ export default class Boss {
       this.move(this.player.position)
     }
     if (this.startMove) {
-      health(this.player, this)
+      health(this.player, this, this.game)
     }
   }
 }

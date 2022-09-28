@@ -19,6 +19,8 @@ import building3 from './building3'
 import building4 from './building4'
 import roofTop from './roofTop'
 import configControls from './config-controls'
+import health from './health'
+import gameAudio from './game-audio'
 
 export default class Game {
   constructor(canvasId) {
@@ -27,7 +29,8 @@ export default class Game {
     this.time = 0
     this.keys = []
     this.medkit = []
-    this.churchBell = new Audio('../../public/audio/church-bell.mp3')
+    this.churchBell = new Audio('../../public/audio/bellsound.mp3')
+    this.audio = new gameAudio()
     this.inMenu = true
     this.winningLocation = {
       xMax: -85,
@@ -80,7 +83,7 @@ export default class Game {
 
     this.player = new Player(this.camera, this.light, this)
     this.player.flickerLight()
-    this.boss = new Boss(this.scene, this.player)
+    this.boss = new Boss(this.scene, this.player, this)
   }
   gameOver() {
     document.getElementById('game-over').style.display = 'initial'

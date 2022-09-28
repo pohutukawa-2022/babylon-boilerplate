@@ -10,7 +10,6 @@ import outhouseTexture from './../assets/textures/Toilet.png'
 import tintexture from './../assets/textures/tin.jpeg'
 import keyTexture from '../assets/textures/key.jpeg'
 
-
 // import darkWall from './../assets/textures/dark-wall.jpeg'
 
 export default function environment(name, scene) {
@@ -478,28 +477,6 @@ export default function environment(name, scene) {
 
   //   scene
   // )
-
-  const torch = BABYLON.SceneLoader.ImportMeshAsync(
-    '',
-    '../../public/models/',
-    'Flashlight_01.obj'
-  ).then((x) => {
-    const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
-
-    keyMesh.position.x = 0
-    keyMesh.position.y = 20
-    keyMesh.position.z = 0
-
-    keyMesh.scaling.x = 10
-    keyMesh.scaling.y = 10
-    keyMesh.scaling.z = 10
-
-    const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
-    keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
-    keyMesh.material = keyWrap
-  })
-
-
 }
 
 environment()

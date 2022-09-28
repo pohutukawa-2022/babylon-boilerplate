@@ -10,8 +10,8 @@ export default class Player {
     this.maxStamina = 100
     this.sprintMeter = this.maxStamina
     this.sprinting = false
-    this.maxSpeed = 2
-    this.minSpeed = 0.7
+    this.maxSpeed = 1.5
+    this.minSpeed = 0.35
     this.game = game
   }
   updateLocation(camera) {
@@ -33,13 +33,16 @@ export default class Player {
         this.keysFound += 1
         foundKey = true
         keyToDelete = i
+        if (this.keysFound === 1) {
+          this.game.boss.initialize()
+        }
       }
     }
     if (!isNaN(keyToDelete)) {
       allKeys[keyToDelete].key.dispose()
       allKeys.splice(keyToDelete, 1)
+      return foundKey
     }
-    return foundKey
   }
 
   checkWin(location) {
@@ -121,7 +124,7 @@ export default class Player {
 
   gameOver() {
     if (this.health === 0) {
-      console.log('game over, you lose')
+      this.game.gameOver()
     }
   }
   updatePlayer(camera) {

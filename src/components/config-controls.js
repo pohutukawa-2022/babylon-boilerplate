@@ -21,9 +21,7 @@ export default function configControls(game) {
         ).innerHTML = `${game.player.keysFound} OUT OF 5 KEYS FOUND`
         game.churchBell.play()
         setTimeout(() => {
-          document.getElementById('key-found').innerHTML = ''
-          game.churchBell.pause()
-          game.churchBell.currentTime = 0
+          document.getElementById('announcement').innerHTML = ''
         }, 4000)
       }
       if (game.player.pickupMedkit(game.medkit)) {
