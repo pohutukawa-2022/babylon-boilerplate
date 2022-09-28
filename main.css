@@ -32,6 +32,14 @@ html, body {
   color: white;
 }
 
+#stamina{
+  position: absolute;
+  bottom: 0;
+  left: 60%;
+  font-size: 2rem;
+  color: bisque;
+}
+
 #game-won{
   display: none;
   position: absolute;

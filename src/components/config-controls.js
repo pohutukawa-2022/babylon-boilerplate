@@ -4,6 +4,10 @@ export default function configControls(game) {
       console.log(game.light);
       if (game.inMenu) {
         game.exitMenu()
+        let ambience = document.getElementById('myAudio')
+        ambience.loop = true
+        ambience.autoplay = true
+        ambience.load()
       }
     } else if (e.key === 'b') {
       game.gameOver()
@@ -27,6 +31,7 @@ export default function configControls(game) {
       }
       if (game.player.pickupMedkit(game.medkit)) {
         game.player.health += 10
+        game.audio.gotMed.play()
       } else {
         game.player.checkWin(game.winningLocation)
       }

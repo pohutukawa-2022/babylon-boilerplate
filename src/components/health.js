@@ -1,4 +1,3 @@
-
 export default function health(player, boss, game) {
 
   let diffX = Math.abs(boss.body.absolutePosition.x - player.position.x)
