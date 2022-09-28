@@ -5,7 +5,7 @@ export default class Boss {
     this.player = player
     this.playerPosition = player.position
     this.startMove = false
-    this.speed = 0.07
+    this.speed = 0.09
     this.game = game
     BABYLON.SceneLoader.ImportMeshAsync(
       '',

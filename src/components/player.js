@@ -11,7 +11,7 @@ export default class Player {
     this.sprintMeter = this.maxStamina
     this.sprinting = false
     this.maxSpeed = 1.5
-    this.minSpeed = 0.35
+    this.minSpeed = 0.45
     this.game = game
   }
   updateLocation(camera) {
@@ -117,13 +117,14 @@ export default class Player {
       ) {
         medkitObj.medkit.dispose()
         this.game.medkit.splice(i, 1)
+
         return true
       }
     }
   }
 
   gameOver() {
-    if (this.health === 0) {
+    if (this.health <= 0) {
       this.game.gameOver()
     }
   }
