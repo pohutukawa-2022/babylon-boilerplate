@@ -208,8 +208,8 @@ export default function keysAndMed(name, scene, player) {
     player.medkit.push({
       name: 'medkit2',
       medkit: keyMesh,
-      xMax: 39,
-      xMin: 31,
+      xMax: 40,
+      xMin: 30,
       zMax: 105,
       zMin: 95,
     })
