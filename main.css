@@ -17,12 +17,19 @@ html, body {
   font-size: 2rem;
 }
 
-#health{
+#health-container{
+  border: 1px solid white;
   position: absolute;
-  bottom: 0;
-  left: 33%;
-  font-size: 2rem;
-  color: bisque;
+  bottom: 2%;
+  left: 40%;
+  width: 15%;
+  height: 2%;
+}
+#health{
+  height: 100%;
+  width: 100%;
+  background-color: red;
+  color: white;
 }
 
 #stamina{
@@ -349,7 +356,7 @@ img {
 }
 
 .text{
-  font-size: 5vh;
+  font-size: 5rem;
   background: -webkit-linear-gradient(rgb(126, 126, 126), #000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

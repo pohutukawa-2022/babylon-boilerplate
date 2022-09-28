@@ -1,8 +1,4 @@
 export default function health(player, boss, game) {
-  document.getElementById('health').innerHTML = `HEALTH: ${player.health}`
-  document.getElementById('stamina').innerHTML = `STAMINA: ${Math.floor(
-    player.sprintMeter
-  )}`
 
   let diffX = Math.abs(boss.body.absolutePosition.x - player.position.x)
   let diffZ = Math.abs(boss.body.absolutePosition.z - player.position.z)
