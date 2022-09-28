@@ -19,7 +19,6 @@ import building3 from './building3'
 import building4 from './building4'
 import roofTop from './roofTop'
 import configControls from './config-controls'
-import health from './health'
 import gameAudio from './game-audio'
 
 export default class Game {
@@ -77,6 +76,7 @@ export default class Game {
 
       this.scene
     )
+
 
     this.light.parent = this.camera
     this.light.intensity = 3
