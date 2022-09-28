@@ -31,6 +31,7 @@ export default function configControls(game) {
       if (game.player.pickupMedkit(game.medkit)) {
         console.log('madeit')
         game.player.health += 10
+        game.audio.gotMed.play()
       } else {
         game.player.checkWin(game.winningLocation)
       }
