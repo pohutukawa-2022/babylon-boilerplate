@@ -95,6 +95,8 @@ export default class Game {
   exitMenu() {
     let menu = document.getElementById('main')
     menu.remove()
+    document.getElementById('sprint-container').style.display = 'initial'
+    document.getElementById('health-container').style.display = 'initial'
     this.inMenu = false
   }
   createScene() {

@@ -223,7 +223,7 @@ export default function keysAndMed(name, scene, player) {
     const keyMesh = new BABYLON.Mesh.MergeMeshes(x.meshes)
 
     keyMesh.position.x = 85
-    keyMesh.position.y = 0.5
+    keyMesh.position.y = 3
     keyMesh.position.z = -43
 
     keyMesh.scaling.x = 0.08

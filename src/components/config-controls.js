@@ -30,7 +30,7 @@ export default function configControls(game) {
         }, 4000)
       }
       if (game.player.pickupMedkit(game.medkit)) {
-        game.player.health += 10
+        game.player.health += 15
         game.audio.gotMed.play()
       } else {
         game.player.checkWin(game.winningLocation)
