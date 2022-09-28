@@ -1,6 +1,4 @@
-
 export default function health(player, boss, game) {
-
   document.getElementById('health').innerHTML = `HEALTH: ${player.health}`
 
   let diffX = Math.abs(boss.body.absolutePosition.x - player.position.x)

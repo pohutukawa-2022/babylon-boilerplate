@@ -117,6 +117,7 @@ export default class Player {
       ) {
         medkitObj.medkit.dispose()
         this.game.medkit.splice(i, 1)
+
         return true
       }
     }
