@@ -11,7 +11,7 @@ export default class Player {
     this.sprintMeter = this.maxStamina
     this.sprinting = false
     this.maxSpeed = 1.5
-    this.minSpeed = 0.35
+    this.minSpeed = 0.45
     this.game = game
   }
   updateLocation(camera) {
