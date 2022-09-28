@@ -171,6 +171,14 @@ export default function keysAndMed(name, scene, player) {
     keyWrap.diffuseTexture = new BABYLON.Texture(medTexture, scene)
 
     keyMesh.material = keyWrap
+    player.medkit.push({
+      name: 'medkit1',
+      medkit: keyMesh,
+      xMax: -9,
+      xMin: -19,
+      zMax: 109,
+      zMin: 99,
+    })
   })
 
   const medkit2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -196,6 +204,15 @@ export default function keysAndMed(name, scene, player) {
     keyWrap.diffuseTexture = new BABYLON.Texture(medTexture, scene)
 
     keyMesh.material = keyWrap
+
+    player.medkit.push({
+      name: 'medkit2',
+      medkit: keyMesh,
+      xMax: 39,
+      xMin: 31,
+      zMax: 105,
+      zMin: 95,
+    })
   })
 
   const medkit3 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -221,5 +238,14 @@ export default function keysAndMed(name, scene, player) {
     keyWrap.diffuseTexture = new BABYLON.Texture(medTexture, scene)
 
     keyMesh.material = keyWrap
+
+    player.medkit.push({
+      name: 'medkit3',
+      medkit: keyMesh,
+      xMax: 90,
+      xMin: 80,
+      zMax: -37,
+      zMin: -48,
+    })
   })
 }

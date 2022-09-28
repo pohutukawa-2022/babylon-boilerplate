@@ -23,6 +23,10 @@ export default function configControls(game) {
         setTimeout(() => {
           document.getElementById('announcement').innerHTML = ''
         }, 4000)
+      }
+      if (game.player.pickupMedkit(game.medkit)) {
+        console.log('madeit')
+        game.player.health += 10
       } else {
         game.player.checkWin(game.winningLocation)
       }

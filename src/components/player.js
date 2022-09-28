@@ -102,6 +102,26 @@ export default class Player {
   walk() {
     this.camera.speed = this.minSpeed
   }
+
+  pickupMedkit() {
+    let medkits = this.game.medkit
+    for (let i = 0; i < medkits.length; i++) {
+      let medkitObj = medkits[i]
+      let { medkit, xMax, xMin, zMax, zMin } = medkitObj
+
+      if (
+        this.position.x < xMax &&
+        this.position.x > xMin &&
+        this.position.z < zMax &&
+        this.position.z > zMin
+      ) {
+        medkitObj.medkit.dispose()
+        this.game.medkit.splice(i, 1)
+        return true
+      }
+    }
+  }
+
   gameOver() {
     if (this.health === 0) {
       this.game.gameOver()

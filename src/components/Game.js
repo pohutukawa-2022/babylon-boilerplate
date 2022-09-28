@@ -28,6 +28,7 @@ export default class Game {
     this.engine = new BABYLON.Engine(this.canvas, true)
     this.time = 0
     this.keys = []
+    this.medkit = []
     this.churchBell = new Audio('../../public/audio/bellsound.mp3')
     this.audio = new gameAudio()
     this.inMenu = true
