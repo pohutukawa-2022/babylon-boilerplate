@@ -31,7 +31,12 @@ export default class Boss {
     })
   }
   rotate() {
-    // this.body.rotation.y += 0.05
+    let diffX = Math.abs(this.body.absolutePosition.x - this.player.position.x)
+    let diffZ = Math.abs(this.body.absolutePosition.z - this.player.position.z)
+  
+    if (diffX > 20 || diffZ > 20) {
+      this.body.lookAt(this.player.position)
+    }
   }
   move(playerLocation) {
     let playerX = playerLocation.x
@@ -76,7 +81,8 @@ export default class Boss {
         bossZ + this.speed
       )
     }
-    this.body.lookAt(this.player.position)
+    this.rotate()
+
   }
   initialize() {
     this.startMove = true

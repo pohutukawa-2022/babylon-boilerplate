@@ -40,14 +40,7 @@ html, body {
   height: 100%;
   background-color: white;
 }
-#game-won p{
-  font-size: 5rem;
-  position: absolute;
-  top: 45%;
-  left: 40%;
 
-
-}
 #game-over{
   display: none;
   position: absolute;
@@ -316,6 +309,66 @@ img {
   mix-blend-mode: soft-light;
 }
 
+
+#app{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  perspective: 240px;
+  perspective-origin: center 15%;
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.fade{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 40vh;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0), rgb(255, 255, 255));
+  z-index: 10;
+}
+
+.background{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: no-repeat center/cover url(./assets/img/gate.jpeg);
+}
+
+.text-container{
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(255, 255, 255, 0.5);     */
+  transform: rotateX(64deg) scale(0.55, 0.3) translateY(120vh);
+  animation: 50s linear 0s infinite translateText;
+}
+
+.text{
+  font-size: 5vh;
+  background: -webkit-linear-gradient(rgb(126, 126, 126), #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.text-cast{
+  text-decoration: underline solid;
+}
+
+@keyframes translateText {
+  0%{
+   transform: rotateX(64deg) scale(0.55, 0.3) translateY(120vh);
+  }
+  100%{
+      transform: rotateX(64deg) scale(0.55, 0.3) translateY(-400vh);
+  }
+}
 /* Animation juice */
 
 /*=============== BREAKPOINTS ===============*/

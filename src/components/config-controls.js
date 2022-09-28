@@ -1,6 +1,7 @@
 export default function configControls(game) {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
+      console.log(game.light);
       if (game.inMenu) {
         game.exitMenu()
         let ambience = document.getElementById('myAudio')
