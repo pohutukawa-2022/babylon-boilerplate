@@ -86,7 +86,6 @@ export default class Boss {
   }
   initialize() {
     this.startMove = true
-    console.log(this.body.absolutePosition.y, this.playerPosition.y)
     this.differenceInY = Math.abs(
       this.body.absolutePosition.y - this.playerPosition.y
     )

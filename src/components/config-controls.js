@@ -26,7 +26,6 @@ export default function configControls(game) {
         }, 4000)
       }
       if (game.player.pickupMedkit(game.medkit)) {
-        console.log('madeit')
         game.player.health += 10
       } else {
         game.player.checkWin(game.winningLocation)
