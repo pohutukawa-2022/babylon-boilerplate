@@ -19,7 +19,6 @@ import building3 from './building3'
 import building4 from './building4'
 import roofTop from './roofTop'
 import configControls from './config-controls'
-import health from './health'
 import gameAudio from './game-audio'
 
 export default class Game {
@@ -65,21 +64,22 @@ export default class Game {
     //   // clipping
     this.camera.minZ = 0.3
 
-    this.light = new BABYLON.HemisphericLight()
+    // this.light = new BABYLON.HemisphericLight()
 
-    // this.light = new BABYLON.SpotLight(
-    //   'light1',
-    //   new BABYLON.Vector3(0, 5, -10),
-    //   new BABYLON.Vector3(0, 0, 1),
+    this.light = new BABYLON.SpotLight(
+      'light1',
+      new BABYLON.Vector3(0, 5, -10),
+      new BABYLON.Vector3(0, 0, 1),
 
-    //   Math.PI / 3,
-    //   60,
+      Math.PI / 3,
+      60,
 
-    //   this.scene
-    // )
+      this.scene
+    )
+    // this.light.projectionTextureLightNear(0)
 
-    // this.light.parent = this.camera
-    // this.light.intensity = 3
+    this.light.parent = this.camera
+    this.light.intensity = 3
 
     this.player = new Player(this.camera, this.light, this)
     this.player.flickerLight()

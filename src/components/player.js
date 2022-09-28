@@ -123,7 +123,7 @@ export default class Player {
   }
 
   gameOver() {
-    if (this.health === 0) {
+    if (this.health <= 0) {
       this.game.gameOver()
     }
   }

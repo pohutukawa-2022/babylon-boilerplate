@@ -3,6 +3,10 @@ export default function configControls(game) {
     if (e.key === 'Enter') {
       if (game.inMenu) {
         game.exitMenu()
+        let ambience = document.getElementById('myAudio')
+        ambience.loop = true
+        ambience.autoplay = true
+        ambience.load()
       }
     } else if (e.key === 'b') {
       game.gameOver()
