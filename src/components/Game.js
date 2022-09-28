@@ -56,7 +56,7 @@ export default class Game {
     this.camera.angularSensibility = 8000
     this.camera.speed = 1
 
-    this.camera.applyGravity = false
+    this.camera.applyGravity = true
     this.camera.checkCollisions = true
 
     this.camera.ellipsoid = new BABYLON.Vector3(1, 4, 1)
@@ -110,10 +110,10 @@ export default class Game {
     BABYLON.Effect.ShadersStore['customVertexShader'] = vertShader
     BABYLON.Effect.ShadersStore['customFragmentShader'] = fragShader
 
-    // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
-    // this.scene.fogDensity = 0.02
-    // this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
-    // this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
+    this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP
+    this.scene.fogDensity = 0.02
+    this.scene.fogColor = new BABYLON.Color3(0, 0, 0)
+    this.scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
     environment('environment', this.scene)
 
