@@ -76,7 +76,7 @@ export default class Game {
 
       this.scene
     )
-    // this.light.projectionTextureLightNear(0)
+
 
     this.light.parent = this.camera
     this.light.intensity = 3
@@ -103,7 +103,7 @@ export default class Game {
     }
     // apply gravity
 
-    this.scene.gravity = new BABYLON.Vector3(0, -1, 0)
+    this.scene.gravity = new BABYLON.Vector3(0, -0.3, 0)
 
     setBoundry(this.scene)
 
