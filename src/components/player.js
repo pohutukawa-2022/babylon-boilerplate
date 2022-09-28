@@ -133,7 +133,9 @@ export default class Player {
     this.sprint()
     this.stamina()
     this.gameOver()
-    document.getElementById('health').innerHTML= `  ${this.health}HP`
-    document.getElementById('health').style.width= `${this.health}%`
+    document.getElementById('health').innerHTML = `  ${this.health}HP`
+    document.getElementById('health').style.width = `${this.health}%`
+    // document.getElementById('sprint').innerHTML = `  ${Math.floor(this.sprintMeter)}%`
+    document.getElementById('sprint').style.width = `${Math.floor(this.sprintMeter)}%`
   }
 }
