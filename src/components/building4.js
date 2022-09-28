@@ -25,6 +25,7 @@ export default function building4(name, scene) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 
   const metalBox2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -43,6 +44,7 @@ export default function building4(name, scene) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 
   const locker2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -61,6 +63,7 @@ export default function building4(name, scene) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 
   const box2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -79,6 +82,7 @@ export default function building4(name, scene) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 
   const cash = BABYLON.SceneLoader.ImportMeshAsync(
@@ -117,6 +121,7 @@ export default function building4(name, scene) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(safeTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 
   const beanBag = BABYLON.SceneLoader.ImportMeshAsync(
@@ -173,6 +178,7 @@ export default function building4(name, scene) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(linoTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 
   const oilBarrel = BABYLON.SceneLoader.ImportMeshAsync(
