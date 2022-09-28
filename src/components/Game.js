@@ -19,6 +19,7 @@ import building3 from './building3'
 import building4 from './building4'
 import roofTop from './roofTop'
 import configControls from './config-controls'
+import health from './health'
 
 export default class Game {
   constructor(canvasId) {
@@ -28,6 +29,7 @@ export default class Game {
     this.keys = []
     this.churchBell = new Audio('../../public/audio/church-bell.mp3')
     this.inMenu = true
+    this.winningLocation ={xMax:-85, xMin:-105, zMax:-5, zMin: -20, yMax:30, yMin:14}
   }
   createCamera() {
     this.camera = new BABYLON.UniversalCamera(
@@ -73,6 +75,12 @@ export default class Game {
     this.player.flickerLight()
     this.boss = new Boss(this.scene, this.player)
   }
+  gameOver(){
+    document.getElementById('game-over').style.display = 'initial'
+  }
+  gameWon(){
+    document.getElementById('game-won').style.display = 'initial'
+  }
   exitMenu() {
     let menu = document.getElementById('main')
     menu.remove()
@@ -103,7 +111,7 @@ export default class Game {
     building1('building1', this.scene, this)
     building2('building2', this.scene, this)
     building3('building3', this.scene)
-    building4('building4', this.scene)
+    building4('building4', this.scene, this)
     roofTop('roofTop', this.scene)
     keysAndMed('keysAndMed', this.scene, this)
 
