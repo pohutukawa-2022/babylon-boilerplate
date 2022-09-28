@@ -25,6 +25,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     deskMesh.material = lockerWrap
+    deskMesh.checkCollisions = true
   })
 
   const schoolDesk2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -45,6 +46,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     deskMesh.material = lockerWrap
+    deskMesh.checkCollisions = true
   })
 
   const schoolDesk3 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -65,6 +67,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     deskMesh.material = lockerWrap
+    deskMesh.checkCollisions = true
   })
 
   const schoolDesk4 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -85,6 +88,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     deskMesh.material = lockerWrap
+    deskMesh.checkCollisions = true
   })
 
   const schoolDesk5 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -105,6 +109,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     deskMesh.material = lockerWrap
+    deskMesh.checkCollisions = true
   })
 
   const schoolDesk6 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -125,6 +130,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     deskMesh.material = lockerWrap
+    deskMesh.checkCollisions = true
   })
 
   const schoolChair = BABYLON.SceneLoader.ImportMeshAsync(
@@ -143,6 +149,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     chairMesh.material = lockerWrap
+    chairMesh.checkCollisions = true
   })
 
   const schoolChair2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -161,6 +168,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     chairMesh.material = lockerWrap
+    chairMesh.checkCollisions = true
   })
 
   const schoolChair3 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -179,6 +187,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     chairMesh.material = lockerWrap
+    chairMesh.checkCollisions = true
   })
 
   const schoolChair4 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -197,6 +206,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     chairMesh.material = lockerWrap
+    chairMesh.checkCollisions = true
   })
 
   const schoolChair5 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -215,6 +225,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     chairMesh.material = lockerWrap
+    chairMesh.checkCollisions = true
   })
 
   const schoolChair6 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -233,6 +244,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     chairMesh.material = lockerWrap
+    chairMesh.checkCollisions = true
   })
 
   const locker = BABYLON.SceneLoader.ImportMeshAsync(
@@ -251,6 +263,8 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     lockerMesh.material = lockerWrap
+
+    lockerMesh.checkCollisions = true
   })
   const locker2 = BABYLON.SceneLoader.ImportMeshAsync(
     '',
@@ -268,6 +282,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 
   const metalBox2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -286,6 +301,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 
   const box2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -305,6 +321,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(metalTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 
   const podium = BABYLON.SceneLoader.ImportMeshAsync(
@@ -326,6 +343,7 @@ export default function building1(name, scene, player) {
     const woodWrap = new BABYLON.StandardMaterial('woodWrap', scene)
     woodWrap.diffuseTexture = new BABYLON.Texture(woodTexture, scene)
     podiumMesh.material = woodWrap
+    podiumMesh.checkCollisions = true
   })
 
   const bath = BABYLON.SceneLoader.ImportMeshAsync(
@@ -347,6 +365,7 @@ export default function building1(name, scene, player) {
     const bathWrap = new BABYLON.StandardMaterial('bathWrap', scene)
     bathWrap.diffuseTexture = new BABYLON.Texture(bathTexture, scene)
     bathMesh.material = bathWrap
+    bathMesh.checkCollisions = true
   })
 
   const person = BABYLON.SceneLoader.ImportMeshAsync(
@@ -365,6 +384,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(personTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 
   const person2 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -383,6 +403,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(personTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 
   const person3 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -401,6 +422,7 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(personTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 
   const person4 = BABYLON.SceneLoader.ImportMeshAsync(
@@ -419,5 +441,6 @@ export default function building1(name, scene, player) {
     const lockerWrap = new BABYLON.StandardMaterial('lockerWrap', scene)
     lockerWrap.diffuseTexture = new BABYLON.Texture(personTexture, scene)
     lockerMesh.material = lockerWrap
+    lockerMesh.checkCollisions = true
   })
 }

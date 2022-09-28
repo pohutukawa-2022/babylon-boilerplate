@@ -28,7 +28,7 @@ export default function keysAndMed(name, scene, player) {
     const keyWrap = new BABYLON.StandardMaterial('keyWrap', scene)
     keyWrap.diffuseTexture = new BABYLON.Texture(keyTexture, scene)
     keyMesh.material = keyWrap
-    player.keys.push({ key: keyMesh, xMax: 101, xMin: 96, zMax: 21, zMin: 15 })
+    player.keys.push({ key: keyMesh, xMax: 106, xMin: 96, zMax: 23, zMin: 13 })
   })
 
   const key2 = BABYLON.SceneLoader.ImportMeshAsync(
